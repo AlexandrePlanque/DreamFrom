@@ -66,4 +66,8 @@ class UserController extends Controller{
         }
         return $retour;
     }
+    
+    public function register(){
+         $this->render("inscription");
+    }
 }       

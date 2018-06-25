@@ -1,0 +1,27 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+#team {
+    background: #eee !important;
+}
+
+@font-face {
+    font-family : days;
+    src : url(../fonts/Days.ttf);
+}
+
+@font-face {
+    font-family : testicule;
+    src : url(../fonts/Futura.ttc);
+}
+
+.card .card-header{
+    background-color: #91bbd8 !important;
+}
+.btn-success{
+    background-color: #006699;
+    border-color: #003366;
+   display: block;
+   margin : auto;
+}
+h4{
+    font-family : days;
+}

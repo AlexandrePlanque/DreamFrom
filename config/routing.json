@@ -4,6 +4,7 @@
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
     "/membres": "UserController:getUsers",
+    "/inscription": "UserController:register",
     "/membres/test": "UserController:getUsersOrder",
     "/api/users":{
         "GET":"UserController:getAll",

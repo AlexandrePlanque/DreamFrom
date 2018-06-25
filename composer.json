@@ -1,12 +1,12 @@
 {
-    "name": "beweb/php-mvc.bwb",
+    "name": "julien/dream-from",
     "authors": [
         {
-            "name": "Loic DERRIEUX",
-            "email": "l.derrieux@fondespierre.com"
+            "name": "JulienJauze",
+            "email": "julienjauze30@gmail.com"
         }
     ],
-    "require": {
+        "require": {
         "firebase/php-jwt": "^5.0"},
         
     "autoload": {
@@ -18,3 +18,5 @@
         }
     }
 }
+
+
