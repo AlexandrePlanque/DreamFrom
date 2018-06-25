@@ -16,18 +16,27 @@
             <a class="nav-link" href="/membres">Membres</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link " href="#">Bar</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#">Connexion</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Inscription</a>
           </li>
-          <li class="nav-item dropdown">
+<!--          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
             <div class="dropdown-menu" aria-labelledby="dropdown05">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
+          </li>-->
+          <li class="nav-item">
+            <a class="nav-link " href="#"><img src="../image/twiter_nav.png" alt=""/></a>           
+          </li>
+          <li class="nav-item">
+              <a class="nav-link " href="#"><img src="../image/facebook_nav.png" alt=""/></a>           
           </li>
         </ul>
 

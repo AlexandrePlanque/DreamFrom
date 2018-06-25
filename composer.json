@@ -1,9 +1,9 @@
 {
-    "name": "beweb/php-mvc.bwb",
+    "name": "fabien/dream-from",
     "authors": [
         {
-            "name": "Loic DERRIEUX",
-            "email": "l.derrieux@fondespierre.com"
+            "name": "fabien canehan",
+            "email": "fabien.canehan@gmail.com"
         }
     ],
     "require": {
