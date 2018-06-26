@@ -68,17 +68,8 @@ class DAOUser extends DAO {
 
 
 	public function getAll (){
-		$uri = explode('/',$_SERVER['REQUEST_URI']);
-                $uris = $uri[(count($uri)-1)];
-                $argq = str_replace("?", "", $uris);
-                $argu = array();
-                $arg = explode("&",$argq);
-                foreach($arg as $a){
-                    $b = explode("=", $a);
-                    array_push($argu, $b);
-                };
                 
-                $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id";
+                $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id order by date_creation asc";
 		$statement = $this->getPdo()->query($sql);
 		$results = $statement->fetchAll();
 		$entities = array();
@@ -105,7 +96,7 @@ class DAOUser extends DAO {
 	}
 
 	public function getAllOrder ($array){
-
+            
                 
 
                 $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id";
@@ -116,6 +107,7 @@ class DAOUser extends DAO {
                     }
                     $sql.= $ar;
                 };
+
 		$statement = $this->getPdo()->query($sql);
 		$results = $statement->fetchAll();
 		$entities = array();

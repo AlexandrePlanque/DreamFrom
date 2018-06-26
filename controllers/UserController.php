@@ -30,7 +30,7 @@ class UserController extends Controller{
     public function getUsers(){
         $dao = new DAOUser();
         $tata = (new DAOTheme())->getAll();
-        if(count($this->inputGet()) === 0 && $this->inputGet()['intitule'] !== ""){
+        if(count($this->inputGet()) === 0 || $this->inputGet()['intitule'] === ""){
         $toto = $dao->getAll();
         $datas = array("users" => $toto, "themes" => $tata);    
         }else{
@@ -44,8 +44,7 @@ class UserController extends Controller{
     
     public function getParams(){
         $para = $this->inputGet();
-        var_dump($para);
-        echo $this->inputGet()['intitule'];
+
         $retour = array();
         $i=0;
         foreach($para as $key => $value){

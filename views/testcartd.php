@@ -4,15 +4,17 @@ include "template/navbar.php";
 <section id="team" class="pb-5 membre">    <div class="container">
         <!--<h5 class="section-title h1">Liste des membres</h5>-->
         <select id="theme">
-            <option value=""></option>
+            <option value="">Tous les themes</option>
 <?php foreach($themes as $theme) : ?>
             <option value="<?= $theme->getIntitule()?>"<?= ($this->inputGet()['intitule'] === $theme->getIntitule())? "selected='true'": ""; ?>><?= ucfirst(implode(' ',explode('_',$theme->getIntitule())))?></option>
 <?php   endforeach;?>
         </select>
         <select id="date">
+            <option value="">Pas de préférences</option>
             <option value="asc">Les plus récents</option>
             <option value="desc">Les plus anciens</option>
         </select>
+        <input type="search" name="pseudo">
         
         <button onclick="search()">Go!</button>
         <div class="row">
