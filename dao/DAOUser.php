@@ -101,10 +101,12 @@ class DAOUser extends DAO {
 
                 $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id";
                 foreach($array as $ar){
-                    if($ar==="intitule"){
-                        $r = "theme".$ar;
-
-                    }
+//                    if($ar==="intitule"){
+//                        $r = "theme".$ar;
+//
+//                    }else if($ar==="date_creation"){
+//                        echo "<hr>".$ar;
+//                    }
                     $sql.= $ar;
                 };
 

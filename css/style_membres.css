@@ -2,7 +2,11 @@
 
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 #team {
-    background: #eee !important;
+    background-image: url('../image/background_membres.png') !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover!important;
+    min-height: 100%;
 }
 
 @font-face {
@@ -121,6 +125,7 @@ html, body {
     -ms-transition: 1s;
     -ms-transform-style: preserve-3d;
     transition: 1s;
+    transition-delay: 0.5s;
     transform-style: preserve-3d;
 }
 
@@ -244,7 +249,8 @@ padding: 14px 1px;
 }
 
 .footer {
-    position: absolute;
+    position: static;
+    bottom: 0;
     width: 100%;
     background-color: #2a5d95;
     max-height: 150px;
@@ -263,4 +269,57 @@ padding: 14px 1px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover!important;
+}
+
+.active-cyan-4 input[type=search]:focus:not([readonly]) {
+    border: 1px solid #4dd0e1!important;
+    box-shadow: 0 0 0 1px #4dd0e1!important;
+}
+.glyphicon {
+    z-index: 1;
+}
+
+.loupe {
+    height:100%;
+}
+.searchbutton{
+ position:relative;
+ right:4.5%;
+ max-height: 38px;
+ border-radius: 6px;
+ z-index: 1000;
+}
+
+.profile-userbuttons{
+    border: 1px solid #b1dafb;
+    margin-top: 30px;
+}
+.profile-userbuttons button{
+    display: block;
+    min-width: 100%;
+}
+
+.milieu{
+    margin-bottom: 2px;
+    margin-top: 1px;
+    
+}
+.custombtn {
+    box-sizing: border-box;
+    background-color: #90caf9;
+    border-radius: 0px!important;
+}
+
+.activebtn{
+    background-color: white;
+    height:100%;
+    width:100%;
+    z-index: 1000;
+}
+
+.bleucote{
+    background-color: black;
+    height:50px;
+    width: 100px;
+    z-index: 100;
 }

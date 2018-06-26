@@ -4,7 +4,8 @@
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
     "/membres": "UserController:getUsers",
-    "/membres/test": "UserController:getUsersOrder",
+    "/profil": "UserController:getProfil",
+    "/test": "UserController:test",
     "/api/users":{
         "GET":"UserController:getAll",
         "DELETE":"UserController:deleteAll",

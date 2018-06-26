@@ -3,20 +3,31 @@ include "template/navbar.php";
 ?>
 <section id="team" class="pb-5 membre">    <div class="container">
         <!--<h5 class="section-title h1">Liste des membres</h5>-->
-        <select id="theme">
+        <div class="row col-12">
+            
+        <select class="form-control col-3 mr-5" id="theme">
             <option value="">Tous les themes</option>
 <?php foreach($themes as $theme) : ?>
             <option value="<?= $theme->getIntitule()?>"<?= ($this->inputGet()['intitule'] === $theme->getIntitule())? "selected='true'": ""; ?>><?= ucfirst(implode(' ',explode('_',$theme->getIntitule())))?></option>
 <?php   endforeach;?>
         </select>
-        <select id="date">
+        <select class="form-control col-3 mr-5" id="date">
             <option value="">Pas de préférences</option>
-            <option value="asc">Les plus récents</option>
-            <option value="desc">Les plus anciens</option>
+            <option value="desc" <?= ($this->inputGet()['date_creation'] === "desc")? 'selected="true"': ""; ?> >Les plus récents</option>
+            <option value="asc" <?= ($this->inputGet()['date_creation'] === "asc")? 'selected="true"': ""; ?>>Les plus anciens</option>
         </select>
-        <input type="search" name="pseudo">
+        <div class="active-cyan-4 mb-4 col-3">
+            <div class="input-group mb-3">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="username">
+
+        </div>
+        <!--<input type="search" name="pseudo" id="username">-->
         
-        <button onclick="search()">Go!</button>
+        </div>
+        <button class="searchbutton" onclick="search()"><i class="fas fa-search" ></i></button>
+        </div>
+            
+        
         <div class="row">
 <?php foreach($users as $user) : ?>
     

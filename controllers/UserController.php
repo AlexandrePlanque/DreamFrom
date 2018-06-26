@@ -30,7 +30,7 @@ class UserController extends Controller{
     public function getUsers(){
         $dao = new DAOUser();
         $tata = (new DAOTheme())->getAll();
-        if(count($this->inputGet()) === 0 || $this->inputGet()['intitule'] === ""){
+        if(count($this->inputGet()) === 0){
         $toto = $dao->getAll();
         $datas = array("users" => $toto, "themes" => $tata);    
         }else{
@@ -50,13 +50,19 @@ class UserController extends Controller{
         foreach($para as $key => $value){
             $temp = "";
                 if($i === 0){
-                    if($key === "intitule"){
-                        $temp = " WHERE theme.".$key." = '".$value."'";  
+                    if($key === "date_creation"){
+//                        $temp = " WHERE theme.".$key." = '".$value."'";  
+//                    }else{
+//                        $temp = " WHERE ".$key." = '".$value."'";
+//                    }
+                    $temp = " ORDER BY ".$key." ".$value;
                     }else{
                         $temp = " WHERE ".$key." = '".$value."'";
-                    }
-                }else if($value === "asc" || $value === "desc"){
+                    
+                }
+                }else if($key === "date_creation"){
                     $temp = " ORDER BY ".$key." ".$value;
+                    
                 }else{
                     $temp = " AND ".$key." = '".$value."'";  
                 }
@@ -65,4 +71,9 @@ class UserController extends Controller{
         }
         return $retour;
     }
+    
+    public function getProfil(){
+        $this->render("profil");
+    }
+
 }       
