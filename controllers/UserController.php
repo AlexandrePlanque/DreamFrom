@@ -9,6 +9,7 @@
 namespace BWB\Framework\mvc\controllers;
 use BWB\Framework\mvc\models\User;
 use BWB\Framework\mvc\models\Theme;
+use BWB\Framework\mvc\models\Adresse;
 
 /**
  * Description of UserController
@@ -68,6 +69,37 @@ class UserController extends Controller{
     }
     
     public function register(){
-         $this->render("inscription");
+        $this->render("inscription");
+//        $this->createUser();
     }
-}       
+    
+    public function createUser(){
+        $adresse = new Adresse();
+        $user = new User();
+        $dao = new DAOUser();
+//            var_dump($this->inputPost());
+        
+            $user->setNom($_POST["nom"]);
+            $user->setPrenom($_POST["prenom"]);
+            $user->setPseudo($_POST["pseudo"]);
+            $user->setAdresse_id($dao->createAdresse($adresse));
+            $user->setEmail($_POST["email"]);
+            $user->setPassword($_POST["password"]);
+            $user->setCivilite("1");
+            $user->setTel("");
+            $user->setPrivilege_id("1");
+            $user->setDate_creation("2018-05-05");
+            $user->setActif_id("2");
+            $user->setTheme_id("1");
+            $user->setAvatar("");
+            
+            var_dump($userStatus = $dao->create($user));
+            echo $user->getAdresse_id();
+        
+        
+
+
+        
+        
+    }
+}  

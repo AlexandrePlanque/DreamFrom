@@ -2,6 +2,7 @@
 namespace BWB\Framework\mvc\dao;
 use BWB\Framework\mvc\DAO;
 use BWB\Framework\mvc\models\User;
+use BWB\Framework\mvc\models\Adresse;
 
 /* 
 *creer avec l'objet issue de la classe CreateEntity Class 
@@ -17,10 +18,11 @@ class DAOUser extends DAO {
 /* ____________________Crud methods____________________*/
 
 
-	public function create ($array){
+	public function create ($entity){
 
-		$sql = "INSERT INTO user (pseudo,password,nom,prenom,email,civilite,tel,date_creation,privilege_id,adresse_id,actif_id,theme_id,avatar) VALUES('" . $entity->getPseudo() . ',' . $entity->getPassword() . ',' . $entity->getNom() . ',' . $entity->getPrenom() . ',' . $entity->getEmail() . ',' . $entity->getCivilite() . ',' . $entity->getTel() . ',' . $entity->getDate_creation() . ',' . $entity->getPrivilege_id() . ',' . $entity->getAdresse_id() . ',' . $entity->getActif_id() . ',' . $entity->getTheme_id() . ',' . $entity->getAvatar() . "')";
-		$this->getPdo()->query($sql);
+		$sql = "INSERT INTO user (pseudo,password,nom,prenom,email,civilite,tel,date_creation,privilege_id,adresse_id,actif_id,theme_id,avatar) VALUES('" . $entity->getPseudo() . '\',\'' . $entity->getPassword() . '\',\'' . $entity->getNom() . '\',\'' . $entity->getPrenom() . '\',\'' . $entity->getEmail() . '\',\'' . $entity->getCivilite() . '\',\'' . $entity->getTel() . '\',\'' . $entity->getDate_creation() . '\',\'' . $entity->getPrivilege_id() . '\',\'' . $entity->getAdresse_id() . '\',\'' . $entity->getActif_id() . '\',\'' . $entity->getTheme_id() . '\',\'' . $entity->getAvatar() . "')";
+		echo $sql;
+                $this->getPdo()->query($sql);
 	}
 
 
@@ -176,4 +178,13 @@ class DAOUser extends DAO {
 		}
 		return $entities;
 	}
+        
+        public function createAdresse($entity) {
+            $sql = "INSERT INTO adresse (rue,numero,code_postal,ville) VALUES('" . $entity->getRue() . '\',\'' . $entity->getNumero() . '\',\'' . $entity->getCode_postal() . '\',\'' . $entity->getVille() . "')";
+            echo $sql;
+            $this->getPdo()->query($sql);
+            $entity->setId($this->getPdo()->lastInsertId());
+
+            return $entity->getId();
+        }
 }

@@ -5,6 +5,7 @@
     "/token": "DefaultController:token",
     "/membres": "UserController:getUsers",
     "/inscription": "UserController:register",
+    "/register": "UserController:createUser",
     "/membres/test": "UserController:getUsersOrder",
     "/api/users":{
         "GET":"UserController:getAll",
