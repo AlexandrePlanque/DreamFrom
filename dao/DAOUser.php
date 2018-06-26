@@ -22,6 +22,7 @@ class DAOUser extends DAO {
 
 		$sql = "INSERT INTO user (pseudo,password,nom,prenom,email,civilite,tel,date_creation,privilege_id,adresse_id,actif_id,theme_id,avatar) VALUES('" . $entity->getPseudo() . '\',\'' . $entity->getPassword() . '\',\'' . $entity->getNom() . '\',\'' . $entity->getPrenom() . '\',\'' . $entity->getEmail() . '\',\'' . $entity->getCivilite() . '\',\'' . $entity->getTel() . '\',\'' . $entity->getDate_creation() . '\',\'' . $entity->getPrivilege_id() . '\',\'' . $entity->getAdresse_id() . '\',\'' . $entity->getActif_id() . '\',\'' . $entity->getTheme_id() . '\',\'' . $entity->getAvatar() . "')";
 		echo $sql;
+
                 $this->getPdo()->query($sql);
 	}
 
@@ -179,12 +180,53 @@ class DAOUser extends DAO {
 		return $entities;
 	}
         
+        // methode pour insérer les données dans la Table "adresse"
         public function createAdresse($entity) {
             $sql = "INSERT INTO adresse (rue,numero,code_postal,ville) VALUES('" . $entity->getRue() . '\',\'' . $entity->getNumero() . '\',\'' . $entity->getCode_postal() . '\',\'' . $entity->getVille() . "')";
-            echo $sql;
+           
+            
+            // Utilisation de la methode getPdo du DAO pour connexion à la BDD et insertion
             $this->getPdo()->query($sql);
+            
+            // retourne le dernier ID créé en BDD
             $entity->setId($this->getPdo()->lastInsertId());
 
             return $entity->getId();
         }
+        
+        public function verifPseudo(){
+            
+            $bdd = $this->getPdo();
+            // vérification si le champ pseudo a bien été rempli
+            if (isset($_POST['pseudo']))
+{
+ 
+            // Alors dans ce cas on met saisie du $_POST['pseudo'] dans la variable $pseudo
+            $pseudo = ($_POST['pseudo']);
+     
+            // On insère la variable pseudo qui correspond à la saisie de l'utilisateur dans la requête SQL
+            $sql = $bdd->prepare('SELECT * FROM user WHERE pseudo = \''.$pseudo.'\';');
+            $sql->execute(array('.$pseudo.' => $_POST['pseudo']));
+ 
+            // recherche de résultat
+            $res = $sql->fetch();
+ 
+            if ($res)
+            {
+            // S'il y a un résultat, c'est à dire qu'il existe déjà un pseudo, alors "Ce pseudo est déjà utilisé"
+            echo "Ce pseudo est déjà utilisé !";
+            return FALSE;
+            }
+            // Sinon le résultat est nul ce qui veut donc dire qu'il ne contient aucun pseudo, donc on insère
+            else
+            {
+            echo "Ce pseudo n'a jamais été utilisé";
+            return True;
+            
+//           
+            }
+        }
+
+    }
 }
+            

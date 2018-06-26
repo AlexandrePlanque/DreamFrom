@@ -13,15 +13,16 @@ include "template/navbar.php";
                         <div class="card-body">
                             <form class="form" role="form" autocomplete="off" method="POST" action="http://<?= $_SERVER['SERVER_NAME']?>/register">
                                 <div class="form-row">
-                                    <div class="form-group col-md-4">
+                                 
+                                    <div class="form-group col-md-4 active-cyan-4">
                                         <label for="inputName">Nom</label>
                                         <input type="text" name="nom" class="form-control" placeholder="">
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-4 active-cyan-4">
                                         <label for="inputName">Prénom</label>
                                         <input type="text" name="prenom" class="form-control" placeholder="">
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-4 active-cyan-4">
                                         <label for="inputName">Pseudo</label>
                                         <input type="text" name="pseudo" class="form-control" placeholder="">
                                     </div>
@@ -30,7 +31,7 @@ include "template/navbar.php";
                                     <label for="inputName">Adresse</label>
                                     <input type="text" name="adresse"class="form-control" id="inputName" placeholder="">
                                 </div>-->
-                                <div class="form-group">
+                                <div class="form-group active-cyan-4">
                                     <label for="inputEmail3">Email</label>
                                     <div class="input-group mb-2">
                                     <div class="input-group-prepend">
@@ -39,7 +40,7 @@ include "template/navbar.php";
                                     <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="" required="">
                                 </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group active-cyan-4">
                                     <label for="inputPassword3">Mot de Passe</label>
                                     <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="" required="">
                                 </div>
