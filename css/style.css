@@ -311,7 +311,7 @@ padding: 14px 1px;
 }
 
 .footlogo {
-    height: 70%;
+    height: 80%;
 }
 
 
@@ -321,20 +321,30 @@ padding: 14px 1px;
 
 h1{
     font-weight: bold;
-    margin-left: 50px;
+    margin-left: 40px;
     font-stretch:  expanded;
-    font-size: 4em;
+
 }
 
 h2{
     color: orange;
-    margin-left: 50px;
+    margin-left: 40px;
     font-family: marck;
-    font-size: 3em;
+   
 }
 
 a{ 
    line-height: 2;
+}
+.content_width{
+    width: 100%;
+}
+
+.content_width>li{
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0; 
+    padding-right: 0;
 }
 .content-home{
     min-height:1080px;
@@ -349,10 +359,12 @@ a{
     display: inline;
     margin: 0 20px;
     color: white;
+    
 }
 
 .flex-container{
     display: flex;
     align-items: center;
+    height: 150px;
     
 }

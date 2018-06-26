@@ -1,23 +1,27 @@
 
 
 <div class="container-fluid select_home">
-    <ul>
-          <li class="one"><a href="#">Sélection</a></li><!--
-          --><li class="two"><a href="#">Projets</a></li><!--
-          --><li class="three"><a href="#">Membres</a></li><!--
-          --><li class="four"><a href="#">Evenements</a></li>
-          <hr />
-    </ul>    
+    <div class="row">
+        <ul class="content_width">
+                <li class="one col-md-3 col-sm-6 col-xs-12"><a href="#">Sélection</a></li><!--
+              --><li class="two col-md-3 col-sm-6 col-xs-12"><a href="#">Projets</a></li><!--
+              --><li class="three col-md-3 col-sm-6 col-xs-12"><a href="#">Membres</a></li><!--
+              --><li class="four col-md-3 col-sm-6 col-xs-12"><a href="#">Evenements</a></li>
+              <hr />
+        </ul>    
+    </div>
 </div>
 
-<div class="select_result">
-   test 
+<div class="select_result container-fluid">
+    <div class="row">
+        test
+    </div>
 </div>
 <section class="content-home">
  <!--       <img src="../image/background_description_home.png">-->
     <div class="container-fluid">
         <div class="row">
-            <div class ="col-md-6 col-lg-6 col-sm-12">
+            <div class ="col-md-4 col-lg-6 col-sm-12">
                 <h1>DreamFrom</h1>
                 <h2>découvrir... explorer... partager...</h2>
                 </hr>
