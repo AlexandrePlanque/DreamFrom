@@ -14,7 +14,8 @@
             "BWB\\Framework\\mvc\\": "core",
             "BWB\\Framework\\mvc\\models\\":"models",
             "BWB\\Framework\\mvc\\controllers\\":"controllers",
-            "BWB\\Framework\\mvc\\dao\\":"dao"
+            "BWB\\Framework\\mvc\\dao\\":"dao",
+            "BWB\\Framework\\mvc\\custom_core\\":"custom_core"
         }
     }
 }

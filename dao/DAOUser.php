@@ -21,7 +21,7 @@ class DAOUser extends DAO {
 	public function create ($entity){
 
 		$sql = "INSERT INTO user (pseudo,password,nom,prenom,email,civilite,tel,date_creation,privilege_id,adresse_id,actif_id,theme_id,avatar) VALUES('" . $entity->getPseudo() . '\',\'' . $entity->getPassword() . '\',\'' . $entity->getNom() . '\',\'' . $entity->getPrenom() . '\',\'' . $entity->getEmail() . '\',\'' . $entity->getCivilite() . '\',\'' . $entity->getTel() . '\',\'' . $entity->getDate_creation() . '\',\'' . $entity->getPrivilege_id() . '\',\'' . $entity->getAdresse_id() . '\',\'' . $entity->getActif_id() . '\',\'' . $entity->getTheme_id() . '\',\'' . $entity->getAvatar() . "')";
-		echo $sql;
+//		echo $sql;
 
                 $this->getPdo()->query($sql);
 	}
@@ -214,13 +214,13 @@ class DAOUser extends DAO {
             if ($res)
             {
             // S'il y a un résultat, c'est à dire qu'il existe déjà un pseudo, alors "Ce pseudo est déjà utilisé"
-            echo "Ce pseudo est déjà utilisé !";
+//            echo "Ce pseudo est déjà utilisé ! ";
             return FALSE;
             }
             // Sinon le résultat est nul ce qui veut donc dire qu'il ne contient aucun pseudo, donc on insère
             else
             {
-            echo "Ce pseudo n'a jamais été utilisé";
+//            echo "Ce pseudo n'a jamais été utilisé ";
             return True;
             
 //           
