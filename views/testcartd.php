@@ -48,7 +48,7 @@ include "template/navbar.php";
 <!--                                    <h4 class="card-title title-back">Détails</h4>-->
                                     <p class="card-text"><img src="http://<?= $_SERVER['SERVER_NAME']?>/image/note-blog.png" class="notebook"> <?= date("d-m-Y", strtotime($user->getDate_creation())); ?></p>
                                     <p class="card-text"><img src="http://<?= $_SERVER['SERVER_NAME']?>/image/like.png" class="coeursurtoname"> <?= ucfirst(implode(' ' ,explode('_' ,$user->getTheme_id()))) ?></p>
-                                    <a href="#secondpart">
+                                    <a href="#secondpart" class="acontact">
                                         <div class="contact">
                                         </div>
                                     </a>

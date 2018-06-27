@@ -1,7 +1,9 @@
 <?php
 namespace BWB\Framework\mvc\dao;
+
 use BWB\Framework\mvc\DAO;
 use BWB\Framework\mvc\models\User;
+use PDO;
 
 /* 
 *creer avec l'objet issue de la classe CreateEntity Class 
@@ -23,27 +25,18 @@ class DAOUser extends DAO {
 		$this->getPdo()->query($sql);
 	}
 
-
+/*
+ * La méthode retrieve s'appuie sur la méthode de pdo setFetchMode FETCH_CLASS qui permet de générer un objet
+ * directement après avoir récuperer les données
+ */
 	public function retrieve ($id){
 
-		$sql = "SELECT * FROM user WHERE id=" . $id;
+		$sql = "SELECT *,theme.intitule as theme from user inner join theme on user.theme_id = theme.id WHERE user.id=1"; //. $id;
 		$statement = $this->getPdo()->query($sql);
-		$result = $statement->fetch(PDO::FETCH_ASSOC);
-		$entity = new User();
-		$entity->setPseudo();
-		$entity->setPassword();
-		$entity->setNom();
-		$entity->setPrenom();
-		$entity->setEmail();
-		$entity->setCivilite();
-		$entity->setTel();
-		$entity->setDate_creation();
-		$entity->setPrivilege_id();
-		$entity->setAdresse_id();
-		$entity->setActif_id();
-		$entity->setTheme_id();
-		$entity->setAvatar();
-		return $entity;
+                $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\User");
+                $test = $statement->fetch();
+		return $test;
+
 	}
 
 
@@ -170,4 +163,6 @@ class DAOUser extends DAO {
 		}
 		return $entities;
 	}
+        
+
 }

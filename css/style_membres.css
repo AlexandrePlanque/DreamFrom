@@ -230,6 +230,10 @@ html, body {
 
 }
 
+.acontact{
+        outline: none!important;
+}
+
 .contact {
     min-height: 50%;
     background-image: url("../image/bouton_contacter.png");
@@ -289,7 +293,7 @@ padding: 14px 1px;
  border-radius: 6px;
  z-index: 1000;
 }
-
+/*
 .profile-userbuttons{
     border: 1px solid #b1dafb;
     margin-top: 30px;
@@ -305,7 +309,7 @@ padding: 14px 1px;
     
 }
 .custombtn {
-    box-sizing: border-box;
+    box-sizing: border-box!important;
     background-color: #90caf9;
     border-radius: 0px!important;
 }
@@ -315,11 +319,4 @@ padding: 14px 1px;
     height:100%;
     width:100%;
     z-index: 1000;
-}
-
-.bleucote{
-    background-color: black;
-    height:50px;
-    width: 100px;
-    z-index: 100;
-}
+}*/

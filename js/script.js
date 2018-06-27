@@ -1,5 +1,5 @@
 
-$(document).ready(function(){
+//$(document).ready(function(){
 //active state  
 //$(function() {
 //    $('li a').click(function(e) {
@@ -18,7 +18,7 @@ $(document).ready(function(){
 //home.className = 'current';
 //}
 
-});
+//});
 
 function search(){
 //    alert($('option').val());

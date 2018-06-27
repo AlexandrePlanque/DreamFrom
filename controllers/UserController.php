@@ -72,8 +72,6 @@ class UserController extends Controller{
         return $retour;
     }
     
-    public function getProfil(){
-        $this->render("profil");
-    }
+
 
 }       
