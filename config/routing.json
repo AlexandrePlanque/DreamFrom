@@ -6,6 +6,7 @@
     "/membres": "UserController:getUsers",
     "/inscription": "UserController:register",
     "/register": "UserController:createUser",
+    "/validation": "UserController:activation",
     "/membres/test": "UserController:getUsersOrder",
     "/api/users":{
         "GET":"UserController:getAll",

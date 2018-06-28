@@ -194,6 +194,7 @@ class DAOUser extends DAO {
             return $entity->getId();
         }
         
+        // fonction qui va vérifier si le pseudo existe déja dans la BDD
         public function verifPseudo(){
             
             $bdd = $this->getPdo();
@@ -227,6 +228,33 @@ class DAOUser extends DAO {
             }
         }
 
+    }
+    
+    public function verifTokenMail($testo){
+        
+        // Récupération des variables nécessaires à l'activation
+        $prenom = $testo['prenom'];
+        $pseudo = $testo['pseudo'];
+        $sql2 = "SELECT * FROM user WHERE prenom ='"."$prenom"."' AND pseudo = '". $pseudo."'";
+        $bdd = $this->getPdo()->query($sql2)->fetch();
+//        $sql = $bdd->prepare("SELECT * FROM user WHERE prenom = $prenom AND pseudo = $pseudo");
+        
+        if($bdd !== false){
+            $this->activeAccount($bdd["id"]);
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+//        $test = $sql->execute(array('prenom' => $prenom,'pseudo' => $pseudo));
+//        
+//        $res = $sql->fetch();     
+        
+    }
+    
+    public function activeAccount($id) {
+        
+        $stmt = $this->getPdo()->exec("UPDATE user SET actif_id = 1 WHERE id=". $id);
+        return $stmt;
     }
 }
             
