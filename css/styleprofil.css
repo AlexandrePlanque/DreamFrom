@@ -18,10 +18,8 @@
     
 }
 
-.profile-sidebar{
-    /*margin-left:-80px;*/
-        min-height: 10000px!important;
-}
+
+
 
 .profile-userbuttons{
     border: 1px solid #b1dafb;
@@ -50,7 +48,6 @@
 .profilavatar{
     background-color: white!important;
     width: 30%;
-    /*height:100%;*/
 }
 
 .avatarbtn{
@@ -64,4 +61,19 @@
     background-color: #42a5f5!important;
     color: white;
     
+}
+
+.projetimg{
+    width: 40%!important;
+}
+
+.cardprojet{
+    padding:0px!important;
+    width:47%!important;
+}
+
+.hide{
+    /*margin-top: -660px;*/
+    /*display: inline!important;*/
+    display: none!important;
 }

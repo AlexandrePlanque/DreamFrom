@@ -4,6 +4,7 @@ use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\dao\DAOTheme;
 use BWB\Framework\mvc\dao\DAOAdresse;
+use BWB\Framework\mvc\dao\DAOProjet;
 
 
 /*
@@ -23,15 +24,18 @@ class ProfilController extends Controller{
     public function getProfil(){
         $dao = (new DaoUser())->retrieve(1);
         $dao->setAdresse((new DAOAdresse())->retrieve($dao->getAdresse_id()));
-        var_dump($dao->getAdresse());
-        $data = array("user" => $dao, "themes" => $this->getTheme());
+        $data = array("user" => $dao, "themes" => $this->getTheme(), "projets" => $this->getProjet());
 
         $this->render("profil", $data);
     }
 
-    public function getTheme(){
+    private function getTheme(){
                 $tata = (new DAOTheme())->getAll();
                 return $tata;
     }
     
+    private function getProjet(){
+        return (new DAOProjet())->getProfilProjet(1);
+       
+    }
 }

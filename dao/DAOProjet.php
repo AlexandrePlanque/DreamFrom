@@ -1,7 +1,9 @@
 <?php
 namespace BWB\Framework\mvc\dao;
+
 use BWB\Framework\mvc\DAO;
 use BWB\Framework\mvc\models\Projet;
+use PDO;
 
 /* 
 *creer avec l'objet issue de la classe CreateEntity Class 
@@ -112,4 +114,16 @@ class DAOProjet extends DAO {
 		}
 		return $entities;
 	}
+        
+        public function getProfilProjet($id){
+            $sql = "select * from projet inner join user_projet on projet.id = user_projet.projet_id where user_projet.user_id =".$id;
+            $statement = $this->getPdo()->query($sql);
+            $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Projet");
+            $projets = $statement->fetchAll();
+		return $projets;
+            }
+            
+        public function getProjetFeature(){
+            
+        }
 }

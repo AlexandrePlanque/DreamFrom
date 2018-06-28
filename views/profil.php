@@ -9,9 +9,9 @@ include "template/navbar.php";
 			<div class="profile-sidebar">
 
 				<div class="profile-userbuttons">
-                                    <button type="button" class="btn custombtn">Mon Profil</button>
-                                    <button type="button" class="btn custombtn activebtn middlebtn">Mes Projets</button>
-                                    <button type="button lastone" class="btn custombtn">Mes Messages</button>
+                                    <button type="button" class="btn custombtn activebtn" id="btnprofil">Mon Profil</button>
+                                    <button type="button" class="btn custombtn middlebtn" id="btnprojet">Mes Projets</button>
+                                    <button type="button lastone" class="btn custombtn" id="btnmsg">Mes Messages</button>
 				</div>
                             
 			</div>
@@ -19,8 +19,8 @@ include "template/navbar.php";
 
 <!--<div class="row">-->
 
-<div class="col-6 mt-4">
-                   <div class="card card-outline-secondary mt-2" id="toggle">                        
+<div class="col-6 mt-4" id="toggleprofil">
+                   <div class="card-outline-secondary mt-2 " id="">                        
                        <div class="card-img-top">
                            <!--<img class="img-fluid profilavatar offset-1" src="http://<?= $_SERVER['SERVER_NAME']?>/image/User_Avatar_2.png">-->
                            <img class="img-fluid profilavatar offset-1 mt-5" src="http://www.mag-ma.org/files/design/avatar_default.png">
@@ -71,25 +71,25 @@ include "template/navbar.php";
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-home"></i></div>
                                    </div>
-                                        <input type="text" name="numero" class="form-control" placeholder="Numéro" value='<?= "test" ?>'>
+                                        <input type="text" name="numero" class="form-control" placeholder="Numéro" value='<?= $user->getAdresse()->getNumero() ?>'>
                                     </div>
                                     <div class="input-group mt-5 mb-2 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-home"></i></div>
                                    </div>
-                                        <input type="text" name="rue" class="form-control" placeholder="Rue">
+                                        <input type="text" name="rue" class="form-control" placeholder="Rue"  value='<?= $user->getAdresse()->getRue()?>'>
                                     </div>
                                     <div class="input-group mb-3 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-home"></i></div>
                                    </div>
-                                        <input type="text" name="ville" class="form-control" placeholder="Ville">
+                                        <input type="text" name="ville" class="form-control" placeholder="Ville"  value='<?= $user->getAdresse()->getVille() ?>'>
                                     </div>
                                     <div class="input-group mb-3 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-home"></i></div>
                                    </div>
-                                        <input type="text" name="code_postal" class="form-control" placeholder="Code postal">
+                                        <input type="text" name="code_postal" class="form-control" placeholder="Code postal"  value='<?= $user->getAdresse()->getCode_postal() ?>'>
                                     </div>
                                 </div>
 
@@ -99,116 +99,36 @@ include "template/navbar.php";
                                 </div>
                                      </div>
                             </form>
+                            
                     </div>
                     </div>
-                    </div>
-    </div>
-    </div>
-    </div>
-
-<!--    
-    <div class="row">
-<div class="col-md-12">
-    <div class="accordion-wrapper">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Featured Story
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                <div class="panel-body">
-                    <h4>Slide Title</h4>
-                </div>
-            </div>
-        </div>
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingTwo">
-            <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">About The Reins Act
-                </a>
-            </h4>
-        </div>
-        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="panel-body">
-                <h4>Slide Title</h4>
-            </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingThree">
-            <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Video
-                </a>
-            </h4>
-        </div>
-        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-            <div class="panel-body">
-                <h4>Slide Title</h4>
-            </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingFour">
-            <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseFour">Photos
-                </a>
-            </h4>
-        </div>
-        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-            <div class="panel-body">
-                <h4>Slide Title</h4>
-            </div>
-        </div>
-    </div>
-    </div>
-</div>-->
-
-<!--		<div class="col-md-9">
-            <div class="profile-content">
-                <div class="input-group mb-2 col-md-4">
-                                   <div class="input-group-prepend">
-                                       <div class="input-group-text"><i class="fas fa-user"></i></div>
-                                   </div>
-                <input placeholder="Nom">
-                <div class="input-group mb-2">
-                                   <div class="input-group-prepend">
-                                       <div class="input-group-text"><i class="fas fa-user"></i></div>
-                                   </div>
-                    
-                <input placeholder="Prénom">
-                <div class="input-group mb-2">
-                   <div class="input-group-prepend">
-                       <div class="input-group-text"><i class="fas fa-phone"></i></div>
-                   </div>
-                <input placeholder="Téléphone">
-                <div class="input-group mb-2">
-                   <div class="input-group-prepend">
-                       <div class="input-group-text"><i class="fas fa-envelope-square"></i></div>
-                   </div>
-                <input placeholder="Adresse mail">
-                </div>
-                <div class="col-md-5">
-                <div class="input-group mb-2">
-                   <div class="input-group-prepend">
-                       <div class="input-group-text"><i class="fas fa-envelope-square"></i></div>
-                   </div>
-                <input placeholder="truc">
-                <div class="input-group mb-2">
-                   <div class="input-group-prepend">
-                       <div class="input-group-text"><i class="fas fa-envelope-square"></i></div>
-                   </div>
-                <input>
-                </div>
-            </div>
-		</div>
-	</div>
 </div>
-                </div>
+<!--</div>-->
+<div class="col-6 mt-4 " id="toggleprojet">
+    <div class='row' >
+        <?php foreach($projets as $projet) : ?>
+        
+                            <div class="card card-outline-secondary text-center  mt-2  cardprojet">
+  <div class="card-header">
+      <h4><?= $projet->getTitre()?></h4>
+  </div>
+  <div class="card-body">
+      <img class="card-img projetimg " src=" <?= $projet->getImage()?>">
+    <p class="card-text">Avancé des features: {=====} ceci est une barre de progression</p>
+    <a href="#" class="btn btn-primary">Accéder au projet</a>
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
+        <?php  endforeach; ?>
+</div>
+                    </div>
     </div>
-</div>-->
+    </div>
+                            <!--                 Partie Projets                             -->
+                            
+    </div>
 
 <?php
 include "template/footer.php";

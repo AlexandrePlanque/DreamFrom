@@ -90,16 +90,8 @@ class DAOUser extends DAO {
 
 	public function getAllOrder ($array){
             
-                
-
                 $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id";
                 foreach($array as $ar){
-//                    if($ar==="intitule"){
-//                        $r = "theme".$ar;
-//
-//                    }else if($ar==="date_creation"){
-//                        echo "<hr>".$ar;
-//                    }
                     $sql.= $ar;
                 };
 
