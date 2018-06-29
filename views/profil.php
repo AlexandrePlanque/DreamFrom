@@ -116,7 +116,7 @@ include "template/navbar.php";
       <img class="card-img projetimg " src=" <?= $projet->getImage()?>">
     <p class="card-text">Progression</p>
         <div class="progress custombgprogress mb-3">
-  <div class="progress-bar customprogress" style="width:<?= $projet->getPourcentage()?>"></div>
+  <div class="progress-bar customprogress" style="width:<?= $projet->getFeatProgress()?>"></div>
 </div> 
 
 <div id="bar-basic" value="100">

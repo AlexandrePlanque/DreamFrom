@@ -16,11 +16,11 @@
 .card .card-header{
     background-color: #91bbd8 !important;
 }
-.btn-success{
-    background-color: #006699;
-    border-color: #003366;
-   display: block;
-   margin : auto;
+.btninscription{
+    background-color: #006699!important;
+    border-color: #003366!important;
+   display: block!important;
+   margin : auto!important;
 }
 h4{
     font-family : days;

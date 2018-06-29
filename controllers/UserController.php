@@ -71,7 +71,7 @@ class UserController extends Controller{
      * d'effectuer une prétraitement pour préparer les requêtes en fonctions des
      * arguments présents pour faciliter la création des requêtes dans les daos.
      */
-    public function getParams(){
+        public function getParams(){
         //récupération des paramètres présents dans la variable $_GET
         $para = $this->inputGet();
 
@@ -95,16 +95,12 @@ class UserController extends Controller{
                 }else{
                     $temp = " AND ".$key." = '".$value."'";  
                 }
-            } else if ($value === "asc" || $value === "desc") {
-                $temp = " ORDER BY " . $key . " " . $value;
-            } else {
-                $temp = " AND " . $key . " = '" . $value . "'";
-            }
             array_push($retour, $temp);
             $i++;
         }
         return $retour;
     }
+    
 
     public function register() {
         $this->render("inscription");
@@ -143,6 +139,7 @@ class UserController extends Controller{
         $user->setActif_id("2");
         $user->setTheme_id("1");
         $user->setAvatar("");
+        $user->setContact(1);
 
         // on fait appel a la methode create du DAOUser 
         // on génère un token JWT et on vérifie si les données correspondent au POST du formulaire
@@ -177,7 +174,7 @@ class UserController extends Controller{
 
         $token = $secu->generateToken($user);
 
-        $message = "<a href='http://dreamfrom/validation/?valid=$token'>confirmation inscription</a>";
+        $message = "<a href='http://".$_SERVER['SERVER_NAME']."/validation/?valid=$token'>confirmation inscription</a>";
 
 
         //Paramètres du Serveur

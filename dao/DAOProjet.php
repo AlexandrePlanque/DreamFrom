@@ -141,7 +141,8 @@ class DAOProjet extends DAO {
         public function getNomLeader($id){
             //req sql qui joint les tables user et projet
             // si l'id du user correspond à l'id dans projet.chef_projet, affichage du pseudo selon l'id du projet
-            $sql = "SELECT user.pseudo from user INNER JOIN projet where user.id = projet.chef_projet AND projet.id = ".$id;    
+//            $sql = "SELECT user.pseudo from user INNER JOIN projet where user.id = projet.chef_projet AND projet.id = ".$id;    
+            $sql = "SELECT user.pseudo from user INNER JOIN user_projet where user.id = user_projet.user_id AND user_projet.projet_id = ".$id." AND user_projet.droit_projet = 1";    
             $statement = $this->getPdo()->query($sql);
 		$results = $statement->fetch();
                 return $results['pseudo'];
@@ -155,8 +156,8 @@ class DAOProjet extends DAO {
 		$results = $statement->fetchAll();
                 $finies = 0; 
             foreach($results as $result){
-                if($result['fini'] === "1"){
-                        $finies.=1;
+                if($result['etat'] === "1"){
+                        $finies++;
                     $pourcentage = floor($finies * 100/count($results));
                 }else {
                     $pourcentage = "0";
@@ -174,7 +175,7 @@ class DAOProjet extends DAO {
             $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Projet");
             $projets = $statement->fetchAll();
             foreach($projets as $projet){
-                $projet->setPourcentage($this->getProjetFeature($projet->getId()));
+                $projet->setFeatProgress($this->getProjetFeature($projet->getId()));
             }
 		return $projets;
             }

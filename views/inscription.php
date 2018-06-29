@@ -45,7 +45,7 @@ include "template/navbar.php";
                                     <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="" required="">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success">Créer votre compte DreamFrom</button>
+                                    <button type="submit" class="btn btn-success btninscription">Créer votre compte DreamFrom</button>
                                 </div>
                             </form>
                         </div>
@@ -54,3 +54,4 @@ include "template/navbar.php";
     </div>
 
 <?php
+include "template/footer.php";

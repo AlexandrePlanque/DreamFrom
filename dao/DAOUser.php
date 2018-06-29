@@ -23,7 +23,13 @@ class DAOUser extends DAO {
 
 	public function create ($entity){
 
-		$sql = "INSERT INTO user (pseudo,password,nom,prenom,email,civilite,tel,date_creation,privilege_id,adresse_id,actif_id,theme_id,avatar) VALUES('" . $entity->getPseudo() . '\',\'' . $entity->getPassword() . '\',\'' . $entity->getNom() . '\',\'' . $entity->getPrenom() . '\',\'' . $entity->getEmail() . '\',\'' . $entity->getCivilite() . '\',\'' . $entity->getTel() . '\',\'' . $entity->getDate_creation() . '\',\'' . $entity->getPrivilege_id() . '\',\'' . $entity->getAdresse_id() . '\',\'' . $entity->getActif_id() . '\',\'' . $entity->getTheme_id() . '\',\'' . $entity->getAvatar() . "')";
+		$sql = "INSERT INTO user (pseudo,password,nom,prenom,email,civilite,tel,date_creation,privilege_id,adresse_id,actif_id,theme_id,avatar,contact) VALUES('" 
+                        . $entity->getPseudo() . '\',\'' . $entity->getPassword() 
+                        . '\',\'' . $entity->getNom() . '\',\'' . $entity->getPrenom() 
+                        . '\',\'' . $entity->getEmail() . '\',\'' . $entity->getCivilite() . '\',\'' . $entity->getTel() . '\',\'' 
+                        . $entity->getDate_creation() . '\',\'' . $entity->getPrivilege_id() . '\',\'' 
+                        . $entity->getAdresse_id() . '\',\'' . $entity->getActif_id() 
+                        . '\',\'' . $entity->getTheme_id() . '\',\'' . $entity->getAvatar() . '\',\'' . $entity->getContact() . "')";
 //		echo $sql;
 
                 $this->getPdo()->query($sql);

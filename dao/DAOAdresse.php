@@ -28,10 +28,11 @@ class DAOAdresse extends DAO {
 
 	public function retrieve ($id){
 
-		$sql = "SELECT * from adresse where id = ".$id; //. $id;
+		$sql = "SELECT * from adresse where id = ".$id;
 		$statement = $this->getPdo()->query($sql);
                 $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Adresse");
                 $test = $statement->fetch();
+                var_dump($test);
 		return $test;
 	}
 

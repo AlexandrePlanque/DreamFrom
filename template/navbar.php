@@ -7,10 +7,10 @@
       <div class="collapse navbar-collapse align-content-start" id="navbarsExample05">
         <ul class="navbar-nav ml-auto mr-5">
           <li class="nav-item">
-            <a class="nav-link" href="#" id="home">Accueil</a>
+            <a class="nav-link" href="/" id="home">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Projets</a>
+            <a class="nav-link" href="/projets">Projets</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/membres">Membres</a>
@@ -19,34 +19,73 @@
             <a class="nav-link " href="#">Bar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Connexion</a>
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Connexion</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="/inscription.php">Inscription</a>
+              <a class="nav-link" href="/inscription">Inscription</a>
           </li>
 <!--          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+-->
 
-
-        <?=  (isset($_COOKIE['tkn']))? '<li class="nav-item dropdown">
+         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profil</a>
             <div class="dropdown-menu" aria-labelledby="dropdown05">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="/profil">Mon Profil</a>
+              <a class="dropdown-item" href="/profil">Mes Projets</a>
+              <a class="dropdown-item" href="/profil">Mes Messages</a>
             </div>
-          </li>' : '<li class="nav-item">
-            <a class="nav-link" href="#">Connexion</a>
-          <li class="nav-item">
-            <a class="nav-link " href="#"><img src="../image/twiter_nav.png" alt=""/></a>           
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Inscription</a>
-          </li>' ?>
-          <li class="nav-item">
-              <a class="nav-link " href="#"><img src="../image/facebook_nav.png" alt=""/></a>           
-          </li>
+
+                        <li class="nav-item">
+                            <a class="social-icon text-center" target="_blank" href="#">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="social-icon text-center" target="_blank" href="#">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
         </ul>
 
       </div>
     </nav>
+<div class="container pb-modalreglog-container">
+    <div class="row">
+        <div class="col-xs-12 col-md-4 offset-md-4">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group active-cyan-4">
+                                    <div class="input-group pb-modalreglog-input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+                                        </div>
+                                        <input type="email" class="form-control" id="email" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group active-cyan-4">
+                                    <div class="input-group pb-modalreglog-input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                                        </div>
+                                        <input type="password" class="form-control" id="pws" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="pass "><a href="#">Mot de passe oublié ?</a></div>
+                                    <div class="pass "><a href="/inscription" class="link">Nouveau Membre ?</a></div>
+                                    <button type="button" class="btn btn-outline-info btn-sm btn_connexion">Connexion</button>                
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

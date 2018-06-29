@@ -40,6 +40,8 @@ Class User implements UserInterface {
 		private $theme;
 		
 		private $avatar;
+                
+                private $contact;
 
 
 /* ____________________ Getter and Setter Part ____________________ */
@@ -199,6 +201,15 @@ Class User implements UserInterface {
 
 	public function setAvatar ($val){
 		$this->avatar = $val;
+	}
+
+	public function getContact (){
+		return $this->contact;
+	}
+
+
+	public function setContact ($val){
+		$this->contact = $val;
 	}
 
         public function getRoles() {
