@@ -1,6 +1,7 @@
 body {
   background-image: url("../image/background_fiche_projet.png");
   
+  
 }
 
 
@@ -29,12 +30,11 @@ body {
 
 .card_global{
     border: 1px solid black;
-     
-    
+ 
 }
 
 .card_detail{
-    text-decoration: none;
+
 }
 
 .creat_proj{
@@ -45,9 +45,13 @@ body {
 
 .prog_bar{
     color:#4dd0e1;
-     max-width: 100px!important;
+    max-width: 100px!important;
 }
 
 progress{
      padding-right: 20px;
+}
+
+a{
+    text-decoration: none;
 }
