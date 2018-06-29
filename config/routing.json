@@ -5,6 +5,8 @@
     "/token": "DefaultController:token",
     "/membres": "UserController:getUsers",
     "/membres/test": "UserController:getUsersOrder",
+    "/projets": "ProjetController:getProjet",    
+    "/projets/test": "ProjetController:getAllBy",    
     "/api/users":{
         "GET":"UserController:getAll",
         "DELETE":"UserController:deleteAll",

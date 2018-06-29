@@ -20,18 +20,51 @@ $(document).ready(function(){
 
 });
 
+//function search(){
+////    alert($('option').val());
+//
+//var yourSelect = document.getElementById( "theme" );
+//var test = yourSelect.options[ yourSelect.selectedIndex ].value;
+//
+//var b = document.getElementById( "date" );
+//var tast = b.options[ b.selectedIndex ].value;
+//var tost = test + tast;
+//
+//window.location.href = 'http://dreamfrom/membres/?intitule='+test+"&date_creation="+tast;
+
 function search(){
 //    alert($('option').val());
 
 var yourSelect = document.getElementById( "theme" );
 var test = yourSelect.options[ yourSelect.selectedIndex ].value;
+//(test === ''? alert("c'est vide"): alert ('ya pa bon'));
 
-var b = document.getElementById( "date" );
-var tast = b.options[ b.selectedIndex ].value;
-var tost = test + tast;
+var b = document.getElementById( "date" ).options[ document.getElementById( "date" ).selectedIndex ].value;
 
-window.location.href = 'http://dreamfrom/membres/?intitule='+test+"&date_creation="+tast;
+var c = document.getElementById( "username" ).value;
+var ura = "/?pseudo="+c;
+var uri = (test === ''? '': '/?intitule='+test)+(b !== '' && test === ''? (b === ''? '': '/?date_creation='+b) : (b === ''? '': '&date_creation='+b));
+
+window.location.href = 'http://dreamfrom/membres'+(c !== ''? ''+ura : ''+uri);
+
 
 
 }
 
+function searchProjet(){
+//    alert($('option').val());
+// selection du theme 
+var choix = document.getElementById( "theme" );
+// transformation en valeur equivalente dans la bdd
+var valeurChoix = choix.options[ choix.selectedIndex ].value;
+
+var date = document.getElementById( "date" );
+var valeurDate = date.options[ date.selectedIndex ].value;
+//var valeurs = valeurChoix + valeurDate;
+
+//var collaborateur = document.getElementById( "" );
+//var valeurDate = date.options[ date.selectedIndex ].value;
+window.location.href = 'http://dreamfrom/projets/?intitule='+valeurChoix+"&date_creation="+valeurDate;
+
+
+}
