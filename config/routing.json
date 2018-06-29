@@ -4,6 +4,7 @@
     "/logout": "DefaultController:logout",
     "/token": "UserController:testMail",
     "/membres": "UserController:getUsers",
+    "/projets": "ProjetController:getProjet",    
     "/inscription": "UserController:register",
     "/register": "UserController:createUser",
     "/validation": "UserController:activation",

@@ -79,24 +79,36 @@ class DAOProjet extends DAO {
 			$entity->setDate_modif($result['date_modif']);
 			$entity->setTheme_id($result['theme_id']);
 			$entity->setImage($result['image']);
-			array_push($entities,$entity);
+        // fait appel au setter et fonction permettant de recuperer dynamiquement le nb de participants  
+			$entity->setParticipants($this->getNbParticipants($entity->getId()));
+        // fait appel au setter et fonction permettant de recuperer dynamiquement le nom du chef de projet 
+                        $entity->setLeader($this->getNomLeader($entity->getId()));
+        // fait appel au setter et fonction permettant de recuperer dynamiquement le %age de features accompli 
+                        $entity->setFeatProgress($this->featureProgress($entity->getId()));
+			
+                        array_push($entities,$entity);
+
+                        
 		}
+
 		return $entities;
 	}
 
 
 	public function getAllBy ($filter){
-		$sql = "SELECT * FROM projet";
+		$sql = "SELECT *, theme.intitule FROM projet inner join theme on projet.theme_id = theme.id";
 		$i = 0;
 		foreach($filter as $key => $value){
-			if($i===0){
-				$sql .= " WHERE ";
-			} else {
-				$sql .= " AND ";
-			}
-			$sql .= $key . " = " . $value . "'";
+//			if($i===0){
+//				$sql .= " WHERE ";
+//			} else {
+//				$sql .= " AND ";
+//			}
+//			$sql .= $key . " = " . $value . "'";
+                    $sql .= $value;
 			$i++;
 		}
+                echo $sql;
 		$entities = array();
 		$statement = $this->getPdo()->query($sql);
 		$results = $statement->fetchAll();
@@ -114,7 +126,48 @@ class DAOProjet extends DAO {
 		}
 		return $entities;
 	}
+
+        // cette fonction récupère le nombre de participants d'un projet pour l'afficher dans la card
+        public function  getNbParticipants($id) {
+            // req sql pour compter dans la table user_projet les particpants selon l'id du projet
+            $sql = "SELECT COUNT(*) as participants FROM user_projet WHERE projet_id = ".$id;
+            $statement = $this->getPdo()->query($sql);
+		$results = $statement->fetch();
+            // return à partir du tableau $results de la donnée égale à la clef "participants"
+                return $results["participants"];
+        }
         
+        // cette fonction récupère le nom du chef de projet pour l'afficher dans la card.
+        public function getNomLeader($id){
+            //req sql qui joint les tables user et projet
+            // si l'id du user correspond à l'id dans projet.chef_projet, affichage du pseudo selon l'id du projet
+            $sql = "SELECT user.pseudo from user INNER JOIN projet where user.id = projet.chef_projet AND projet.id = ".$id;    
+            $statement = $this->getPdo()->query($sql);
+		$results = $statement->fetch();
+                return $results['pseudo'];
+        }
+        
+        // cette fonction récupère les features pour afficher le %age achevé
+        public function featureProgress($id){
+            //req sql qui recupére le nombre de features selon l id du projet
+            $sql = "SELECT *  FROM projet_feature WHERE projet_id = ".$id;
+            $statement = $this->getPdo()->query($sql);
+		$results = $statement->fetchAll();
+                $finies = 0; 
+            foreach($results as $result){
+                if($result['fini'] === "1"){
+                        $finies.=1;
+                    $pourcentage = floor($finies * 100/count($results));
+                }else {
+                    $pourcentage = "0";
+                }
+            }  
+            //traitement de results pour en obtenir un %age 
+            return $pourcentage."%";
+        }
+         
+         
+
         public function getProfilProjet($id){
             $sql = "select * from projet inner join user_projet on projet.id = user_projet.projet_id where user_projet.user_id =".$id;
             $statement = $this->getPdo()->query($sql);

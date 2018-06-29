@@ -1,0 +1,57 @@
+body {
+  background-image: url("../image/background_fiche_projet.png");
+  
+  
+}
+
+
+.projet_image{
+    border: 6px black solid;
+    margin-bottom: 0;
+}
+
+.card_bottom{
+    text-align:  left;
+    padding-left: 20px;
+}
+
+.active-cyan-4 input[type=search]:focus:not([readonly]) {
+    border: 1px solid #4dd0e1!important;
+    box-shadow: 0 0 0 1px #4dd0e1!important;
+}
+
+.card_title{
+    text-align: center;
+    vertical-align: middle;
+    max-height: 100px;
+    min-height: 90px;
+
+}
+
+.card_global{
+    border: 1px solid black;
+ 
+}
+
+.card_detail{
+
+}
+
+.creat_proj{
+    
+    background-color: #4dd0e1;
+    box-shadow: 0 0 0 1px black;
+}
+
+.prog_bar{
+    color:#4dd0e1;
+    max-width: 100px!important;
+}
+
+progress{
+     padding-right: 20px;
+}
+
+a{
+    text-decoration: none;
+}
