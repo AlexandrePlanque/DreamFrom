@@ -1,3 +1,7 @@
+<?php 
+include "template/header.php";
+include "template/bannerhome.php";
+?>
 <html>
     <head>
         

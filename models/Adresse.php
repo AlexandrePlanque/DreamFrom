@@ -16,8 +16,16 @@ Class Adresse {
 		private $code_postal;
 
 		private $ville;
+                
+                function __construct($rue="null", $numero="null", $code_postal="null", $ville="null") {
+                    $this->id = $id;
+                    $this->rue = $rue;
+                    $this->numero = $numero;
+                    $this->code_postal = $code_postal;
+                    $this->ville = $ville;
+                }
 
-
+                
 /* ____________________ Getter and Setter Part ____________________ */
 
 

@@ -1,7 +1,9 @@
 <?php
 namespace BWB\Framework\mvc\dao;
+
 use BWB\Framework\mvc\DAO;
 use BWB\Framework\mvc\models\Adresse;
+use PDO;
 
 /* 
 *creer avec l'objet issue de la classe CreateEntity Class 
@@ -26,15 +28,11 @@ class DAOAdresse extends DAO {
 
 	public function retrieve ($id){
 
-		$sql = "SELECT * FROM adresse WHERE id=" . $id;
+		$sql = "SELECT * from adresse where id = ".$id; //. $id;
 		$statement = $this->getPdo()->query($sql);
-		$result = $statement->fetch(PDO::FETCH_ASSOC);
-		$entity = new Adresse();
-		$entity->setRue();
-		$entity->setNumero();
-		$entity->setCode_postal();
-		$entity->setVille();
-		return $entity;
+                $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Adresse");
+                $test = $statement->fetch();
+		return $test;
 	}
 
 
