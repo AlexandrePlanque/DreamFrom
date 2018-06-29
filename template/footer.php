@@ -8,5 +8,9 @@
                 </div>
 	</section>
 <script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/script.js"></script>
+<script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/profilscript.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/messagerie.js" type="text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

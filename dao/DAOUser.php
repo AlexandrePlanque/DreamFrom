@@ -1,7 +1,9 @@
 <?php
 namespace BWB\Framework\mvc\dao;
+
 use BWB\Framework\mvc\DAO;
 use BWB\Framework\mvc\models\User;
+use PDO;
 
 /* 
 *creer avec l'objet issue de la classe CreateEntity Class 
@@ -23,38 +25,30 @@ class DAOUser extends DAO {
 		$this->getPdo()->query($sql);
 	}
 
-
+/*
+ * La méthode retrieve s'appuie sur la méthode de pdo setFetchMode FETCH_CLASS qui permet de générer un objet
+ * directement après avoir récuperer les données
+ */
 	public function retrieve ($id){
 
-		$sql = "SELECT * FROM user WHERE id=" . $id;
+		$sql = "SELECT *,theme.intitule as theme from user inner join theme on user.theme_id = theme.id WHERE user.id=1"; //. $id;
 		$statement = $this->getPdo()->query($sql);
-		$result = $statement->fetch(PDO::FETCH_ASSOC);
-		$entity = new User();
-		$entity->setPseudo();
-		$entity->setPassword();
-		$entity->setNom();
-		$entity->setPrenom();
-		$entity->setEmail();
-		$entity->setCivilite();
-		$entity->setTel();
-		$entity->setDate_creation();
-		$entity->setPrivilege_id();
-		$entity->setAdresse_id();
-		$entity->setActif_id();
-		$entity->setTheme_id();
-		$entity->setAvatar();
-		return $entity;
+                $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\User");
+                $test = $statement->fetch();
+		return $test;
+
 	}
 
 
 	public function update ($array){
-
-		$sql = "UPDATE user SET pseudo = '" . $entity->getPseudo() ."',password = '" . $entity->getPassword() ."',nom = '" . $entity->getNom() ."',prenom = '" . $entity->getPrenom() ."',email = '" . $entity->getEmail() ."',civilite = '" . $entity->getCivilite() ."',tel = '" . $entity->getTel() ."',date_creation = '" . $entity->getDate_creation() ."',privilege_id = '" . $entity->getPrivilege_id() ."',adresse_id = '" . $entity->getAdresse_id() ."',actif_id = '" . $entity->getActif_id() ."',theme_id = '" . $entity->getTheme_id() ."',avatar = '" . $entity->getAvatar() ." WHERE id = ". $entity->getId();
-		if ($this->getPdo()->exec($sql) !== 0){
-			echo "Updated";
-		} else {
-			echo "Failed";
-		}
+                var_dump($array);
+		$sql = "UPDATE user SET ".(isset($array['pseudo'])?"pseudo = '" . $entity->getPseudo() ."',password = '" : ""); //."pseudo = '" . $entity->getPseudo() ."',password = '" . $entity->getPassword() ."',nom = '" . $entity->getNom() ."',prenom = '" . $entity->getPrenom() ."',email = '" . $entity->getEmail() ."',civilite = '" . $entity->getCivilite() ."',tel = '" . $entity->getTel() ."',date_creation = '" . $entity->getDate_creation() ."',privilege_id = '" . $entity->getPrivilege_id() ."',adresse_id = '" . $entity->getAdresse_id() ."',actif_id = '" . $entity->getActif_id() ."',theme_id = '" . $entity->getTheme_id() ."',avatar = '" . $entity->getAvatar() ." WHERE id = ". $entity->getId();
+//		if ($this->getPdo()->exec($sql) !== 0){
+//			echo "Updated";
+//		} else {
+//			echo "Failed";
+//		}
+                echo $sql;
 	}
 
 
@@ -68,17 +62,8 @@ class DAOUser extends DAO {
 
 
 	public function getAll (){
-		$uri = explode('/',$_SERVER['REQUEST_URI']);
-                $uris = $uri[(count($uri)-1)];
-                $argq = str_replace("?", "", $uris);
-                $argu = array();
-                $arg = explode("&",$argq);
-                foreach($arg as $a){
-                    $b = explode("=", $a);
-                    array_push($argu, $b);
-                };
                 
-                $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id";
+                $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id order by date_creation asc";
 		$statement = $this->getPdo()->query($sql);
 		$results = $statement->fetchAll();
 		$entities = array();
@@ -105,17 +90,12 @@ class DAOUser extends DAO {
 	}
 
 	public function getAllOrder ($array){
-
-                
-
+            
                 $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id";
                 foreach($array as $ar){
-                    if($ar==="intitule"){
-                        $r = "theme".$ar;
-
-                    }
                     $sql.= $ar;
                 };
+
 		$statement = $this->getPdo()->query($sql);
 		$results = $statement->fetchAll();
 		$entities = array();
@@ -176,4 +156,6 @@ class DAOUser extends DAO {
 		}
 		return $entities;
 	}
+        
+
 }

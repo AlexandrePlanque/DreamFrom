@@ -22,6 +22,8 @@ Class Projet {
 		private $theme_id;
 
 		private $image;
+                
+                private $pourcentage;
 
 
 /* ____________________ Getter and Setter Part ____________________ */
@@ -104,6 +106,16 @@ Class Projet {
 
 	public function setImage ($val){
 		$this->image = $val;
+        }
+                
+        
+	public function getPourcentage (){
+		return $this->pourcentage;
+	}
+
+
+	public function setPourcentage ($val){
+		$this->pourcentage = $val;
 	}
 
 }

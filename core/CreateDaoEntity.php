@@ -131,12 +131,18 @@ class CreateDaoEntity extends DAO {
         }
         $a = substr($a, 0, -1);
         $a .= ") VALUES('\"";
+        $i=0;
         foreach ($props as $prop) {
+            
             if ($prop[0] !== "id") {
-                $a .= " . \$entity->get" . ucfirst($prop[0]) . "() . ','";
+                $a .= " . \$array->get" . ucfirst($prop[0]) . "()";
+                if($i>=0){
+                    $a.= ".\"','\"";
+                }
             }
+            $i++;
         }
-
+        
         $a = substr($a, 0, -6);
         $a .= " . \"')\";\n\t\t\$this->getPdo()->query(\$sql);\n\t}";
         return $a;

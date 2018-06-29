@@ -19,7 +19,7 @@ class DAOSujet extends DAO {
 
 	public function create ($array){
 
-		$sql = "INSERT INTO sujet (idsujet,titre,date_creation,user_id,bar_id) VALUES('" . $entity->getIdsujet() . ',' . $entity->getTitre() . ',' . $entity->getDate_creation() . ',' . $entity->getUser_id() . ',' . $entity->getBar_id() . "')";
+		$sql = "INSERT INTO sujet (idsujet,titre,date_creation,user_id,bar_id) VALUES('" . $array->getIdsujet()."','" . $array->getTitre()."','" . $array->getDate_creation()."','" . $array->getUser_id()."','" . $array->getBar_id() . "')";
 		$this->getPdo()->query($sql);
 	}
 
