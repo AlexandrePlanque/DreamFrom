@@ -19,16 +19,25 @@
             <a class="nav-link" href="#">Connexion</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="../views/inscription.php">Inscription</a>
+              <a class="nav-link" href="/inscription.php">Inscription</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+
+
+        <?=  (isset($_COOKIE['tkn']))? '<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profil</a>
             <div class="dropdown-menu" aria-labelledby="dropdown05">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
+          </li>' : '<li class="nav-item">
+            <a class="nav-link" href="#">Connexion</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Inscription</a>
+          </li>' ?>
         </ul>
 
       </div>

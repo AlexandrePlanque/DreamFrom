@@ -1,7 +1,9 @@
 <?php
 namespace BWB\Framework\mvc\dao;
+
 use BWB\Framework\mvc\DAO;
 use BWB\Framework\mvc\models\Projet;
+use PDO;
 
 /* 
 *creer avec l'objet issue de la classe CreateEntity Class 
@@ -112,4 +114,33 @@ class DAOProjet extends DAO {
 		}
 		return $entities;
 	}
+        
+        public function getProfilProjet($id){
+            $sql = "select * from projet inner join user_projet on projet.id = user_projet.projet_id where user_projet.user_id =".$id;
+            $statement = $this->getPdo()->query($sql);
+            $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Projet");
+            $projets = $statement->fetchAll();
+            foreach($projets as $projet){
+                $projet->setPourcentage($this->getProjetFeature($projet->getId()));
+            }
+		return $projets;
+            }
+            
+        public function getProjetFeature($idp){
+            $sql = "select * from projet_feature where projet_id =" . $idp;
+            $statement = $this->getPdo()->query($sql);
+            $test = $statement->fetchAll();
+            $i=0;
+            foreach($test as $f){
+                if($f['etat']==="1"){
+                    $i++;
+            $testi = $i * 100 / count($test);
+                }else{
+                $testi =0;
+                    }
+            }
+
+            return $testi."%";
+            
+        }
 }
