@@ -120,10 +120,27 @@ class DAOProjet extends DAO {
             $statement = $this->getPdo()->query($sql);
             $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Projet");
             $projets = $statement->fetchAll();
+            foreach($projets as $projet){
+                $projet->setPourcentage($this->getProjetFeature($projet->getId()));
+            }
 		return $projets;
             }
             
-        public function getProjetFeature(){
+        public function getProjetFeature($idp){
+            $sql = "select * from projet_feature where projet_id =" . $idp;
+            $statement = $this->getPdo()->query($sql);
+            $test = $statement->fetchAll();
+            $i=0;
+            foreach($test as $f){
+                if($f['etat']==="1"){
+                    $i++;
+            $testi = $i * 100 / count($test);
+                }else{
+                $testi =0;
+                    }
+            }
+
+            return $testi."%";
             
         }
 }

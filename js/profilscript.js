@@ -1,4 +1,5 @@
-//$("button").click(function(){
+
+////$("button").click(function(){
 //    $("#card").animate({
 //        width: '0',
 //        opacity: '0.5',

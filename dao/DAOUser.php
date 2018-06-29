@@ -41,13 +41,14 @@ class DAOUser extends DAO {
 
 
 	public function update ($array){
-
-		$sql = "UPDATE user SET pseudo = '" . $entity->getPseudo() ."',password = '" . $entity->getPassword() ."',nom = '" . $entity->getNom() ."',prenom = '" . $entity->getPrenom() ."',email = '" . $entity->getEmail() ."',civilite = '" . $entity->getCivilite() ."',tel = '" . $entity->getTel() ."',date_creation = '" . $entity->getDate_creation() ."',privilege_id = '" . $entity->getPrivilege_id() ."',adresse_id = '" . $entity->getAdresse_id() ."',actif_id = '" . $entity->getActif_id() ."',theme_id = '" . $entity->getTheme_id() ."',avatar = '" . $entity->getAvatar() ." WHERE id = ". $entity->getId();
-		if ($this->getPdo()->exec($sql) !== 0){
-			echo "Updated";
-		} else {
-			echo "Failed";
-		}
+                var_dump($array);
+		$sql = "UPDATE user SET ".(isset($array['pseudo'])?"pseudo = '" . $entity->getPseudo() ."',password = '" : ""); //."pseudo = '" . $entity->getPseudo() ."',password = '" . $entity->getPassword() ."',nom = '" . $entity->getNom() ."',prenom = '" . $entity->getPrenom() ."',email = '" . $entity->getEmail() ."',civilite = '" . $entity->getCivilite() ."',tel = '" . $entity->getTel() ."',date_creation = '" . $entity->getDate_creation() ."',privilege_id = '" . $entity->getPrivilege_id() ."',adresse_id = '" . $entity->getAdresse_id() ."',actif_id = '" . $entity->getActif_id() ."',theme_id = '" . $entity->getTheme_id() ."',avatar = '" . $entity->getAvatar() ." WHERE id = ". $entity->getId();
+//		if ($this->getPdo()->exec($sql) !== 0){
+//			echo "Updated";
+//		} else {
+//			echo "Failed";
+//		}
+                echo $sql;
 	}
 
 

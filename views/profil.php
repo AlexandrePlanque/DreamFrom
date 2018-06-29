@@ -27,7 +27,7 @@ include "template/navbar.php";
                                     <button type="button" class="btn mt-3 avatarbtn">Modifier l'avatar</button>
                         </div>
                         <div class="card-body">
-                            <form class="form" role="form" autocomplete="off" method="POST" action="http://<?= $_SERVER['SERVER_NAME']?>/register">
+                            <form class="form" role="form" autocomplete="off" method="POST" action="http://<?= $_SERVER['SERVER_NAME']?>/edit">
                                 <div class="form-row">
                                  
                                     <!--<div class="form-group col-md-4 active-cyan-4">-->
@@ -114,7 +114,14 @@ include "template/navbar.php";
   </div>
   <div class="card-body">
       <img class="card-img projetimg " src=" <?= $projet->getImage()?>">
-    <p class="card-text">Avancé des features: {=====} ceci est une barre de progression</p>
+    <p class="card-text">Progression</p>
+        <div class="progress custombgprogress mb-3">
+  <div class="progress-bar customprogress" style="width:<?= $projet->getPourcentage()?>"></div>
+</div> 
+
+<div id="bar-basic" value="100">
+   
+</div>
     <a href="#" class="btn btn-primary">Accéder au projet</a>
   </div>
   <div class="card-footer text-muted">
