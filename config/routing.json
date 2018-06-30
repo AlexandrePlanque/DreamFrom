@@ -6,7 +6,7 @@
     "/membres": "UserController:getUsers",
     "/membres/test": "UserController:getUsersOrder",
     "/projets": "ProjetController:getProjet",    
-    "/projets/test": "ProjetController:getAllBy",    
+   
     "/createProjet": "ProjetController:getFormular",
     "/creationProjet":"ProjetController:createProj",
         "/api/users":{
