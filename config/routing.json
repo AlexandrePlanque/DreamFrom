@@ -7,7 +7,9 @@
     "/membres/test": "UserController:getUsersOrder",
     "/projets": "ProjetController:getProjet",    
     "/projets/test": "ProjetController:getAllBy",    
-    "/api/users":{
+    "/createProjet": "ProjetController:getFormular",
+    "/creationProjet":"ProjetController:createProj",
+        "/api/users":{
         "GET":"UserController:getAll",
         "DELETE":"UserController:deleteAll",
         "POST":"UserController:test"

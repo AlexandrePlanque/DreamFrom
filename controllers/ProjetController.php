@@ -13,7 +13,7 @@ use BWB\Framework\mvc\models\Theme;
 use BWB\Framework\mvc\dao\DAOProjet;
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\dao\DAOTheme;
-
+use BWB\Framework\mvc\dao\DAOFeature;
 
 /**
  *
@@ -65,5 +65,36 @@ class ProjetController extends Controller{
         }
         return $retour;
     }
+    
+    
+    /*
+     * cette fonction a pour objectif de permettre a un membre enregistré de créer un projet
+     * lorsque le membre a cliqué sur le bouton "créer un projet" à partir de la page de la liste des projets
+     * il accède à une page qui lui soumet des champs à remplir 
+     * et dont les informations sont gérées par cette fonction.
+     * les informations de bases sont stockées dans une variable et soumises à la bdd projet
+     * les informations relatives aux features sont stockées dans une variable et soumises à la bdd feature
+     */
+    public function getFormular(){
+            $dao = new DAOProjet();
+            $details = $_POST;
+            $insertDetails = 
+        $this->render("createProjet");
+    }
+        
+     $themes = (new DAOTheme())->getAll();
+        // si l'entrée transmise dans l'uri est vide, la liste retournee est entiere
+        if(count($this->inputGet()) === 0 && $this->inputGet()['intitule'] !== ""){
+        $projet = $dao->getAll();
+        $datas = array("projets" => $projet, "themes" => $themes);  
+        // si la valeur du projet est remplie, le tri se fait par selon l
+        }else{
+        $proj = $dao->getAllBy($this->getParams());
+        $datas = array("projets" => $proj, "themes" => $themes);
+        }
+        
+        $this->render("getProjet", $datas);
+    }
 }       
 
+ 

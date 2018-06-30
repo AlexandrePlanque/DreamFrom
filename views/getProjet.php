@@ -43,7 +43,7 @@ include "template/navbar.php";
             </div>
             </br>
             <div class="row">
-                <button type="button" class="btn creat_proj offset-10">Créer un projet</button>
+                <a href="/createProjet" class="btn btn-info creat_proj offset-10" role="button">Créer un projet</a>
             </div>
             </br>
         <div class="row">
