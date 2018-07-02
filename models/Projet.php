@@ -22,6 +22,12 @@ Class Projet {
 		private $theme_id;
 
 		private $image;
+                
+        private $participants;
+                
+        private $leader;
+                
+        private $featProgress;
 
 
 /* ____________________ Getter and Setter Part ____________________ */
@@ -104,6 +110,31 @@ Class Projet {
 
 	public function setImage ($val){
 		$this->image = $val;
+    }
+
+        public function getParticipants (){
+		return $this->participants;
 	}
 
+	public function setParticipants ($val){
+		$this->participants = $val;
+    }   
+
+        
+    public function getLeader (){
+		return $this->leader;
+	}
+
+
+	public function setLeader ($val){
+		$this->leader = $val;
+	}   
+    
+    public function getFeatProgress (){
+		return $this->featProgress;
+	}
+
+	public function setFeatProgress ($val){
+		$this->featProgress = $val;
+	}   
 }

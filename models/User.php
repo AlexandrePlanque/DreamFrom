@@ -31,11 +31,17 @@ Class User implements UserInterface {
 
 		private $adresse_id;
 
+		private $adresse;
+                
 		private $actif_id;
 
 		private $theme_id;
 
+		private $theme;
+		
 		private $avatar;
+                
+                private $contact;
 
 
 /* ____________________ Getter and Setter Part ____________________ */
@@ -150,6 +156,14 @@ Class User implements UserInterface {
 		$this->adresse_id = $val;
 	}
 
+	public function getAdresse (){
+		return $this->adresse;
+	}
+
+
+	public function setAdresse ($val){
+		$this->adresse = $val;
+	}
 
 	public function getActif_id (){
 		return $this->actif_id;
@@ -170,6 +184,15 @@ Class User implements UserInterface {
 		$this->theme_id = $val;
 	}
 
+	public function getTheme (){
+		return $this->theme;
+	}
+
+
+	public function setTheme ($val){
+		$this->theme = $val;
+	}
+
 
 	public function getAvatar (){
 		return $this->avatar;
@@ -180,12 +203,21 @@ Class User implements UserInterface {
 		$this->avatar = $val;
 	}
 
+	public function getContact (){
+		return $this->contact;
+	}
+
+
+	public function setContact ($val){
+		$this->contact = $val;
+	}
+
         public function getRoles() {
             
         }
 
         public function getUsername() {
-            
+            return $this->getPseudo();
         }
         
         

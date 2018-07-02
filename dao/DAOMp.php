@@ -78,6 +78,28 @@ class DAOMp extends DAO {
 		return $entities;
 	}
 
+        //dédié à récuperer tout les mp concernant un utilisateur
+	public function getAllFor ($id){
+		$sql = "SELECT * FROM mp order by date_creation";
+		$statement = $this->getPdo()->query($sql);
+		$results = $statement->fetchAll();
+//                var_dump($results);
+		$entities = array();
+		foreach($results as $result){
+//			$entity = new Mp();
+//			$entity->setId($result['id']);
+//			$entity->setSujet($result['sujet']);
+//			$entity->setDestinataire($result['destinataire']);
+//			$entity->setMessage($result['message']);
+//			$entity->setDate_creation($result['date_creation']);
+//			$entity->setUser_id($result['user_id
+			if($result['user_id'] === $id || $result['destinataire'] === $id){
+                        $entity = array( "sujet" => $result['sujet'], "message" => $result['message'], "date_creation" => $result['date_creation'], "destinataire" => $result['destinataire'], "expediteur" => $result['user_id']);
+			array_push($entities,$entity);
+                        }
+		}
+		return $entities;
+	}
 
 	public function getAllBy ($filter){
 		$sql = "SELECT * FROM mp";
