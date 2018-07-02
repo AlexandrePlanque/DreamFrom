@@ -4,6 +4,7 @@ namespace BWB\Framework\mvc\custom_core;
 
 
 use BWB\Framework\mvc\SecurityMiddleware;
+use BWB\Framework\mvc\dao\DAOUser;
 use Exception;
 use Firebase\JWT\JWT;
 use UserInterface;
@@ -87,5 +88,30 @@ class MySecu extends SecurityMiddleware{
             return false;
         }
     }
+    
+    
+    // methode qui va permettre la création d'un Cookie contenant des données utilisateurs
+    public function generateCookie($user){
+        
+        // on stocke dans un tableau le Pseudo et le Privilege de l'utilisateur
+        $info = array(
+            "pseudo" => $user->getPseudo(),
+            "privilege" => $user->getPrivilege_id()
+        );
+        
+        // on encode le tableau au format Json pour pouvoir le stocker dans le Cookie
+        $data = json_encode($info);
+
+        // on insère les données dans le Cookie et sa durée
+        
+        setcookie("cookie",$data,time()-3600,"/");
+        
+        setcookie("cookie",$data,time()+3600,"/");
+        var_dump($_COOKIE["cookie"]);
+        
+        
+        
+    }
+    
     
 }

@@ -7,7 +7,8 @@
     "/inscription": "UserController:register",
     "/register": "UserController:createUser",
     "/validation": "UserController:activation",
-    "/membres/test": "UserController:getUsersOrder",
+    "/connexion": "UserController:modalConnexion",
+    "/signin": "UserController:login",
     "/api/users":{
         "GET":"UserController:getAll",
         "DELETE":"UserController:deleteAll",

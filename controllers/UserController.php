@@ -127,6 +127,7 @@ class UserController extends Controller {
         }
     }
 
+    // methode pour la confirmation d'inscrciption par l'envoi de mail
     public function registerConfirm() {
 
         $mail = new PHPMailer(true);
@@ -179,13 +180,43 @@ class UserController extends Controller {
       
       $dao = new DAOUser();
       $secu = new MySecu();
-//      var_dump($this->inputGet()["valid"]); 
+
+      // recupération du token dans l'URI avec la fonction inputGet()
+      $recup = ($secu->verifyToken($this->inputGet()["valid"]));
       
-      $toto = ($secu->verifyToken($this->inputGet()["valid"]));
-      
-      $dao->verifTokenMail(json_decode(json_encode($toto),true));
+      // transformation du token en tableau associatif et on applique la fonction verifTokenMail() pour la comparaison avec les données en BDD
+      $dao->verifTokenMail(json_decode(json_encode($recup),true));
       
         $this->render("emailconfirmation");
+    }
+    
+       public function modalConnexion() {
+        $this->render("modalconnexion");
+    }
+    
+    // methode pour la connexion
+    public function login() {
+        
+        // création des nouveaux objets
+        $user = new User();
+        $dao = new DAOUser();
+        $secu = new MySecu();
+        
+        // Récupération des variables nécessaires à la connexion
+        $user->setPseudo($_POST["pseudo"]);
+        $user->setPassword($_POST["password"]);
+        
+        // si le l'utilisateur est bien confirmé en BDD alors on appelle la methode getRang en argument de Privilege_id()
+        // et on génère le Cookie
+        if($dao->verifUser()){
+            $user->setPrivilege_id($dao->getRang($_POST['pseudo'])['rang']);
+            $secu->generateCookie($user);
+            
+            echo "connexion réussie";
+        }else{
+            echo"erreur connexion";
+        }
+        
     }
 
 }

@@ -3,8 +3,8 @@ include "template/header.php";
 include "template/navbar.php";
 ?>
 
-<br>
-<div class="row">
+
+<div class="row formulaire">
                 <div class="col-md-6 offset-md-3">
                    <div class="card card-outline-secondary">
                         <div class="card-header">
