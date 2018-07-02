@@ -5,6 +5,7 @@ use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\dao\DAOTheme;
 use BWB\Framework\mvc\dao\DAOAdresse;
 use BWB\Framework\mvc\dao\DAOProjet;
+use BWB\Framework\mvc\dao\DAOMp;
 use BWB\Framework\mvc\models\User;
 use ReflectionClass;
 
@@ -28,7 +29,9 @@ class ProfilController extends Controller{
     public function getProfil(){
         $dao = (new DaoUser())->retrieve(1);
         $dao->setAdresse((new DAOAdresse())->retrieve($dao->getAdresse_id()));
-        $data = array("user" => $dao, "themes" => $this->getTheme(), "projets" => $this->getProjet());
+//        $this->getMp();
+        $data = array("user" => $dao, "themes" => $this->getTheme(), "projets" => $this->getProjet(), "users" => ((new DAOUser())->getAll()));
+        
 
         $this->render("profil", $data);
     }
@@ -57,7 +60,7 @@ class ProfilController extends Controller{
         $reflex = new ReflectionClass("BWB\\Framework\\mvc\\models\\User");
         $props = json_decode(json_encode($reflex->getProperties()),true);
         $user = new User();
-        var_dump($props);
+//        var_dump($props);
         $i = 0;
         foreach($props as $key){
             $test = $key['name'];
@@ -77,5 +80,11 @@ class ProfilController extends Controller{
             $i++;
         }
         
+    }
+    
+    public function getMp($value){
+
+        $mp = json_encode((new DAOMp())->getAllFor($value));
+        echo ($mp);
     }
 }

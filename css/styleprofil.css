@@ -87,3 +87,24 @@
     background: linear-gradient(to bottom,  #f2f2f2 , #dbdbdb)!important;
     border-radius: 15px!important
 }
+
+.profil{
+    
+    border: 1px solid lightgrey;
+    z-index:10;
+    background-color:white;
+}
+
+.projetprofil{
+    position: absolute!important;
+    top: 0;
+    left:27%;
+}
+
+.projetshow{
+    padding-bottom: 200px;
+}
+.profilpage{
+    min-height:700px!important;
+}
+

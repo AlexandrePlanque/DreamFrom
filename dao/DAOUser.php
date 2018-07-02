@@ -41,7 +41,7 @@ class DAOUser extends DAO {
  */
 	public function retrieve ($id){
 
-		$sql = "SELECT *,theme.intitule as theme from user inner join theme on user.theme_id = theme.id WHERE user.id=1"; //. $id;
+		$sql = "SELECT *,theme.intitule as theme from user inner join theme on user.theme_id = theme.id WHERE user.id=". $id;
 		$statement = $this->getPdo()->query($sql);
                 $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\User");
                 $test = $statement->fetch();
@@ -79,6 +79,7 @@ class DAOUser extends DAO {
 		$entities = array();
 
 		foreach($results as $result){
+                    var_dump($result["id"]);
 			$entity = new User();
 			$entity->setId($result['id']);
 			$entity->setPseudo($result['pseudo']);
@@ -96,6 +97,7 @@ class DAOUser extends DAO {
 			$entity->setAvatar($result['avatar']);
 			array_push($entities,$entity);
 		}
+                var_dump($entities);
 		return $entities;
 	}
 
@@ -170,6 +172,12 @@ class DAOUser extends DAO {
 
         // methode pour insérer les données dans la Table "adresse"
         public function createAdresse($entity) {
+            //création d'un objet adresse par défault par soucis de foreign key dans la DB
+            $entity = new Adresse();
+            $entity->setNumero("null");
+            $entity->setRue("null");
+            $entity->setVille("null");
+            $entity->setCode_postal("null");
             $sql = "INSERT INTO adresse (rue,numero,code_postal,ville) VALUES('" . $entity->getRue() . '\',\'' . $entity->getNumero() . '\',\'' . $entity->getCode_postal() . '\',\'' . $entity->getVille() . "')";
            
             

@@ -19,5 +19,8 @@
     },
     "/api/default/(:)":{
         "GET":"DefaultController:getByValue"
+    },
+    "/api/mp/(:)":{
+        "GET":"ProfilController:getMp"
     }
 }
