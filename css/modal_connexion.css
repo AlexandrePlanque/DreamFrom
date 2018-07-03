@@ -1,0 +1,51 @@
+.pb-modalreglog-container
+{
+    margin-top: 100px;
+}
+
+.pb-modalreglog-legend
+{
+    text-align: center;
+}
+
+.pb-modalreglog-input-group
+{
+    margin: auto;
+}
+
+.pb-modalreglog-submit
+{
+    margin-left: 5px;
+}
+
+.pb-modalreglog-form-reg
+{
+    text-align: center;
+}
+
+.pb-modalreglog-footer p
+{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.modal-content{
+    width: 80%!important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.btn_connexion{
+    margin-top: -20px !important;
+    float: right;
+    margin-left: 10px !important;
+}
+
+.pass{
+    font-size: 0.8em;
+    padding-top: 10px;
+}
+
+
+
