@@ -10,7 +10,7 @@ var c = document.getElementById( "username" ).value;
 var ura = "/?pseudo="+c;
 var uri = (test === ''? '': '/?intitule='+test)+(b !== '' && test === ''? (b === ''? '': '/?date_creation='+b) : (b === ''? '': '&date_creation='+b));
 
-window.location.href = 'http://appalpha/membres'+(c !== ''? ''+ura : ''+uri);
+window.location.href = 'http://dreamfrom/membres'+(c !== ''? ''+ura : ''+uri);
 
 }
 
@@ -27,7 +27,32 @@ var valeurDate = date.options[ date.selectedIndex ].value;
 
 //var collaborateur = document.getElementById( "" );
 //var valeurDate = date.options[ date.selectedIndex ].value;
-window.location.href = 'http://appalpha/projets/?intitule='+valeurChoix+"&date_creation="+valeurDate;
+window.location.href = 'http://dreamfrom/projets/?intitule='+valeurChoix+"&date_creation="+valeurDate;
 
 
 }
+
+function disconnect(){
+    $.ajax({
+        type: "GET",
+        url: "http://dreamfrom/logout",
+        dataType: 'json',
+
+//        success: function (data) {
+//            console.log(data);
+//            alert('ya bon bb');
+//            if(data.length > 0){
+//              msg(data, id);
+//          }else{noMsg()}
+//
+//        },
+//        error: function (param1, param2) {
+//            alert('ya PAS bon bb');
+//            
+//        }
+        });
+
+
+
+}
+

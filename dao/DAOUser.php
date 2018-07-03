@@ -22,7 +22,6 @@ class DAOUser extends DAO {
 
     public function create($entity) {
 
-	public function create ($entity){
 
 		$sql = "INSERT INTO user (pseudo,password,nom,prenom,email,civilite,tel,date_creation,privilege_id,adresse_id,actif_id,theme_id,avatar,contact) VALUES('" 
                         . $entity->getPseudo() . '\',\'' . $entity->getPassword() 
@@ -50,13 +49,13 @@ class DAOUser extends DAO {
 
 	}
 
-        $sql = "UPDATE user SET pseudo = '" . $entity->getPseudo() . "',password = '" . $entity->getPassword() . "',nom = '" . $entity->getNom() . "',prenom = '" . $entity->getPrenom() . "',email = '" . $entity->getEmail() . "',civilite = '" . $entity->getCivilite() . "',tel = '" . $entity->getTel() . "',date_creation = '" . $entity->getDate_creation() . "',privilege_id = '" . $entity->getPrivilege_id() . "',adresse_id = '" . $entity->getAdresse_id() . "',actif_id = '" . $entity->getActif_id() . "',theme_id = '" . $entity->getTheme_id() . "',avatar = '" . $entity->getAvatar() . " WHERE id = " . $entity->getId();
-        if ($this->getPdo()->exec($sql) !== 0) {
-            echo "Updated";
-        } else {
-            echo "Failed";
-        }
-    }
+//        $sql = "UPDATE user SET pseudo = '" . $entity->getPseudo() . "',password = '" . $entity->getPassword() . "',nom = '" . $entity->getNom() . "',prenom = '" . $entity->getPrenom() . "',email = '" . $entity->getEmail() . "',civilite = '" . $entity->getCivilite() . "',tel = '" . $entity->getTel() . "',date_creation = '" . $entity->getDate_creation() . "',privilege_id = '" . $entity->getPrivilege_id() . "',adresse_id = '" . $entity->getAdresse_id() . "',actif_id = '" . $entity->getActif_id() . "',theme_id = '" . $entity->getTheme_id() . "',avatar = '" . $entity->getAvatar() . " WHERE id = " . $entity->getId();
+//        if ($this->getPdo()->exec($sql) !== 0) {
+//            echo "Updated";
+//        } else {
+//            echo "Failed";
+//        }
+//    }
 
 	public function update ($array){
                 var_dump($array);
@@ -87,43 +86,37 @@ class DAOUser extends DAO {
             array_push($argu, $b);
         };
 
-        $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id";
-        $statement = $this->getPdo()->query($sql);
-        $results = $statement->fetchAll();
-        $entities = array();
-
-        foreach ($results as $result) {
-            $entity = new User();
-            $entity->setId($result['id']);
-            $entity->setPseudo($result['pseudo']);
-            $entity->setPassword($result['password']);
-            $entity->setNom($result['nom']);
-            $entity->setPrenom($result['prenom']);
-            $entity->setEmail($result['email']);
-            $entity->setCivilite($result['civilite']);
-            $entity->setTel($result['tel']);
-            $entity->setDate_creation($result['date_creation']);
-            $entity->setPrivilege_id($result['privilege_id']);
-            $entity->setAdresse_id($result['adresse_id']);
-            $entity->setActif_id($result['actif_id']);
-            $entity->setTheme_id($result['intitule']);
-            $entity->setAvatar($result['avatar']);
-            array_push($entities, $entity);
-        }
-        return $entities;
-    }
-
-    public function getAllOrder($array) {
-
-	public function getAll (){
-                
+//        $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id";
+//        $statement = $this->getPdo()->query($sql);
+//        $results = $statement->fetchAll();
+//        $entities = array();
+//
+//        foreach ($results as $result) {
+//            $entity = new User();
+//            $entity->setId($result['id']);
+//            $entity->setPseudo($result['pseudo']);
+//            $entity->setPassword($result['password']);
+//            $entity->setNom($result['nom']);
+//            $entity->setPrenom($result['prenom']);
+//            $entity->setEmail($result['email']);
+//            $entity->setCivilite($result['civilite']);
+//            $entity->setTel($result['tel']);
+//            $entity->setDate_creation($result['date_creation']);
+//            $entity->setPrivilege_id($result['privilege_id']);
+//            $entity->setAdresse_id($result['adresse_id']);
+//            $entity->setActif_id($result['actif_id']);
+//            $entity->setTheme_id($result['intitule']);
+//            $entity->setAvatar($result['avatar']);
+//            array_push($entities, $entity);
+//        }
+//        return $entities;
                 $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id order by date_creation asc";
 		$statement = $this->getPdo()->query($sql);
 		$results = $statement->fetchAll();
 		$entities = array();
 
 		foreach($results as $result){
-                    var_dump($result["id"]);
+//                    var_dump($result["id"]);
 			$entity = new User();
 			$entity->setId($result['id']);
 			$entity->setPseudo($result['pseudo']);
@@ -141,9 +134,11 @@ class DAOUser extends DAO {
 			$entity->setAvatar($result['avatar']);
 			array_push($entities,$entity);
 		}
-                var_dump($entities);
+//                var_dump($entities);
 		return $entities;
-	}
+    }
+
+
 
 	public function getAllOrder ($array){
             

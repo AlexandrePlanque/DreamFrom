@@ -8,13 +8,6 @@
 
 namespace BWB\Framework\mvc\controllers;
 
-use BWB\Framework\mvc\models\User;
-use BWB\Framework\mvc\models\Theme;
-use BWB\Framework\mvc\models\Adresse;
-use BWB\Framework\mvc\custom_core\MySecu;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
 require 'vendor/autoload.php';
 
 /**
@@ -22,9 +15,16 @@ require 'vendor/autoload.php';
  *
  * @author alexandreplanque
  */
+
 use BWB\Framework\mvc\Controller;
-use BWB\Framework\mvc\dao\DAOUser;
+use BWB\Framework\mvc\custom_core\MySecu;
 use BWB\Framework\mvc\dao\DAOTheme;
+use BWB\Framework\mvc\dao\DAOUser;
+use BWB\Framework\mvc\models\Adresse;
+use BWB\Framework\mvc\models\Theme;
+use BWB\Framework\mvc\models\User;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 
 /**
  * Description of VideothequeController
@@ -63,7 +63,7 @@ class UserController extends Controller{
          *  Finalement on appel la méthode render qui permet de récuperer la vue 
          * et d'y faire transiter les données récuperer préalablement insérer dans une array
          */
-        $this->render("testcartd", $datas);
+        $this->render("membres", $datas);
     }
     
     /*
@@ -248,6 +248,10 @@ class UserController extends Controller{
             echo"erreur connexion";
         }
         
+    }
+    
+    public function logout(){
+        setcookie("cookie",$data,time()-3600,"/");
     }
 
 }

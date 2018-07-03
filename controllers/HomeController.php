@@ -17,6 +17,7 @@ use BWB\Framework\mvc\Controller;
 class HomeController extends Controller {
     
     public function GetHome(){
+        var_dump($_COOKIE['cookie']);
     $this->render("getHome");
     }
 }

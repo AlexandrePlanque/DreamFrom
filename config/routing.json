@@ -10,13 +10,14 @@
     "/validation": "UserController:activation",
     "/connexion": "UserController:modalConnexion",
     "/signin": "UserController:login",
+    "/logout": "UserController:logout",
     "/api/users":{
         "GET":"UserController:getAll",
         "DELETE":"UserController:deleteAll",
-        "POST":"UserController:test",
-    "/profil": "ProfilController:getProfil",
-    "/edit": "ProfilController:editProfil"
+        "POST":"UserController:test"
     },
+    "/profil": "ProfilController:getProfil",
+    "/edit": "ProfilController:editProfil",
     "/api/default/(:)":{
         "GET":"DefaultController:getByValue"
     },

@@ -1,4 +1,4 @@
-<div>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-perso" id="secondpart">
     <a class="navbar-brand entete" href="#">DreamFrom</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,10 +17,16 @@
             <a class="nav-link" href="/membres">Membres</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="#">Bar</a>
+            <a class="nav-link " href="/bar">Bar</a>
+          </li>
+          <?php ($_COOKIE['cookie'] !== null ) ? '' : '<li class="nav-item">
+            <a class="nav-link" href="" data-toggle="modal" data-target="#myModal">Connexion</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Connexion</a>
+              <a class="nav-link" href="/inscription">Inscription</a>
+          </li>' ?> 
+          <li class="nav-item">
+            <a class="nav-link" href="" data-toggle="modal" data-target="#myModal">Connexion</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="/inscription">Inscription</a>
@@ -35,6 +41,7 @@
               <a class="dropdown-item" href="/profil">Mon Profil</a>
               <a class="dropdown-item" href="/profil">Mes Projets</a>
               <a class="dropdown-item" href="/profil">Mes Messages</a>
+              <a class="dropdown-item" href="/" onclick="disconnect()">Déconnexion</a>
             </div>
           </li>
 
@@ -59,13 +66,13 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
-                            <form>
+                            <form role="form" autocomplete="off" method="POST" action="http://<?= $_SERVER['SERVER_NAME']?>/signin">
                                 <div class="form-group active-cyan-4">
                                     <div class="input-group pb-modalreglog-input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fas fa-envelope"></i></div>
                                         </div>
-                                        <input type="email" class="form-control" id="email" placeholder="Email">
+                                        <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo">
                                     </div>
                                 </div>
                                 <div class="form-group active-cyan-4">
@@ -73,13 +80,13 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fas fa-lock"></i></div>
                                         </div>
-                                        <input type="password" class="form-control" id="pws" placeholder="Password">
+                                        <input type="password" class="form-control" id="pws" name="password" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="pass "><a href="#">Mot de passe oublié ?</a></div>
                                     <div class="pass "><a href="/inscription" class="link">Nouveau Membre ?</a></div>
-                                    <button type="button" class="btn btn-outline-info btn-sm btn_connexion">Connexion</button>                
+                                    <button type="submit" class="btn btn-outline-info btn-sm btn_connexion">Connexion</button>                
                                 </div>
                             </form>
                         </div>
