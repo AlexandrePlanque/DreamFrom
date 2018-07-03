@@ -13,9 +13,9 @@
     "/api/users":{
         "GET":"UserController:getAll",
         "DELETE":"UserController:deleteAll",
-        "POST":"UserController:test"
+        "POST":"UserController:test",
     "/profil": "ProfilController:getProfil",
-    "/edit": "ProfilController:editProfil",
+    "/edit": "ProfilController:editProfil"
     },
     "/api/default/(:)":{
         "GET":"DefaultController:getByValue"
