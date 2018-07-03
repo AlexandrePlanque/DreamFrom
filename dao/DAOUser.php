@@ -43,9 +43,26 @@ class DAOUser extends DAO {
 
 		$sql = "SELECT *,theme.intitule as theme from user inner join theme on user.theme_id = theme.id WHERE user.id=". $id;
 		$statement = $this->getPdo()->query($sql);
-                $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\User");
-                $test = $statement->fetch();
-		return $test;
+//                $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\User");
+                $result = $statement->fetch();
+                $entity = new User();
+                $entity->setId($result['0']);
+                $entity->setPseudo($result['pseudo']);
+                $entity->setPassword($result['password']);
+                $entity->setNom($result['nom']);
+                $entity->setPrenom($result['prenom']);
+                $entity->setEmail($result['email']);
+                $entity->setCivilite($result['civilite']);
+                $entity->setTel($result['tel']);
+                $entity->setDate_creation($result['date_creation']);
+                $entity->setPrivilege_id($result['privilege_id']);
+                $entity->setAdresse_id($result['adresse_id']);
+                $entity->setActif_id($result['actif_id']);
+                $entity->setTheme_id($result['theme_id']);
+                $entity->setTheme($result['intitule']);
+                $entity->setAvatar($result['avatar']);
+//                var_dump($entity);
+		return $entity;
 
 	}
 
@@ -76,15 +93,15 @@ class DAOUser extends DAO {
     /* ____________________Repository methods____________________ */
 
     public function getAll() {
-        $uri = explode('/', $_SERVER['REQUEST_URI']);
-        $uris = $uri[(count($uri) - 1)];
-        $argq = str_replace("?", "", $uris);
-        $argu = array();
-        $arg = explode("&", $argq);
-        foreach ($arg as $a) {
-            $b = explode("=", $a);
-            array_push($argu, $b);
-        };
+//        $uri = explode('/', $_SERVER['REQUEST_URI']);
+//        $uris = $uri[(count($uri) - 1)];
+//        $argq = str_replace("?", "", $uris);
+//        $argu = array();
+//        $arg = explode("&", $argq);
+//        foreach ($arg as $a) {
+//            $b = explode("=", $a);
+//            array_push($argu, $b);
+//        };
 
 //        $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id";
 //        $statement = $this->getPdo()->query($sql);
@@ -110,15 +127,15 @@ class DAOUser extends DAO {
 //            array_push($entities, $entity);
 //        }
 //        return $entities;
-                $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id order by date_creation asc";
+                $sql = "select * from user inner join theme on user.theme_id = theme.id order by date_creation asc";
 		$statement = $this->getPdo()->query($sql);
 		$results = $statement->fetchAll();
 		$entities = array();
 
 		foreach($results as $result){
-//                    var_dump($result["id"]);
+//                    var_dump($result);
 			$entity = new User();
-			$entity->setId($result['id']);
+			$entity->setId($result['0']);
 			$entity->setPseudo($result['pseudo']);
 			$entity->setPassword($result['password']);
 			$entity->setNom($result['nom']);
@@ -311,6 +328,16 @@ class DAOUser extends DAO {
         $sql = "SELECT privilege.rang FROM user INNER JOIN privilege WHERE user.privilege_id = privilege.id AND user.pseudo ='" .$pseudo."'";
         $statement = $this->getPdo()->query($sql);
         $results = $statement->fetch();
+        return $results;
+        
+    }
+    
+    public function getAvatar($id){
+        
+        $sql = "select avatar from user where id =".$id;
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetch();
+//        var_dump($results);
         return $results;
         
     }

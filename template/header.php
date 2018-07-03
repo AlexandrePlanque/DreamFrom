@@ -13,7 +13,6 @@
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/styleprofil.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="http://<?= $_SERVER['SERVER_NAME']?>/css/inscription.css">
         <link rel="stylesheet" type="text/css" href="http://<?= $_SERVER['SERVER_NAME']?>/css/modal_connexion.css">
-
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/connexion.css" rel="stylesheet" type="text/css"/>
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/style.css" rel="stylesheet" type="text/css"/>
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/message.css" rel="stylesheet" type="text/css"/>

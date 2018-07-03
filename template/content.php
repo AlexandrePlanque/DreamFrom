@@ -7,7 +7,7 @@
               --><li class="two col-md-3 col-sm-6 col-xs-12"><a href="#">Projets</a></li><!--
               --><li class="three col-md-3 col-sm-6 col-xs-12"><a href="#">Membres</a></li><!--
               --><li class="four col-md-3 col-sm-6 col-xs-12"><a href="#">Evenements</a></li>
-              <hr />
+              <hr/>
         </ul>    
     </div>
 </div>

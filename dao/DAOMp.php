@@ -1,6 +1,7 @@
 <?php
 namespace BWB\Framework\mvc\dao;
 use BWB\Framework\mvc\DAO;
+use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\models\Mp;
 
 /* 
@@ -83,19 +84,17 @@ class DAOMp extends DAO {
 		$sql = "SELECT * FROM mp order by date_creation";
 		$statement = $this->getPdo()->query($sql);
 		$results = $statement->fetchAll();
-//                var_dump($results);
 		$entities = array();
 		foreach($results as $result){
-//			$entity = new Mp();
-//			$entity->setId($result['id']);
-//			$entity->setSujet($result['sujet']);
-//			$entity->setDestinataire($result['destinataire']);
-//			$entity->setMessage($result['message']);
-//			$entity->setDate_creation($result['date_creation']);
-//			$entity->setUser_id($result['user_id
-			if($result['user_id'] === $id || $result['destinataire'] === $id){
-                        $entity = array( "sujet" => $result['sujet'], "message" => $result['message'], "date_creation" => $result['date_creation'], "destinataire" => $result['destinataire'], "expediteur" => $result['user_id']);
-			array_push($entities,$entity);
+			if(($result["user_id"] === (string)$id) || ($result['destinataire'] === (string)$id)){
+//                            echo "<hr>";
+//                            var_dump(((new DAOUser())->getAvatar($result['destinataire'])['avatar']));
+//                            echo "<hr>";
+                            $entity = array( "sujet" => $result['sujet'], "message" => $result['message'], 
+                                "date_creation" => $result['date_creation'], "destinataire" => $result['destinataire'], 
+                                "avatarD" => ((new DAOUser())->getAvatar($result['destinataire'])['avatar']),"expediteur" => $result['user_id'],
+                                "avatarE" => ((new DAOUser())->getAvatar($result['user_id'])['avatar']));
+                            array_push($entities,$entity);
                         }
 		}
 		return $entities;

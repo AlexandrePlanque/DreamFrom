@@ -59,7 +59,7 @@ img{ max-width:90%;}
 }
 .inbox_chat { height: 550px; overflow-y: scroll;}
 
-.active_chat{ background:#ebebeb;}
+/*.active_chat{ background:#ebebeb;}*/
 
 .incoming_msg_img {
   display: inline-block;

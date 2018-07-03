@@ -17,8 +17,6 @@ include "template/navbar.php";
 			</div>
 		</div>
 
-<!--<div class="row">-->
-
 <div class="col-6 mt-4 profil mb-4" id="toggleprofil">
                    <div class="card-outline-secondary mt-2 debugprofil" id="">                        
                        <div class="card-img-top">
@@ -27,7 +25,7 @@ include "template/navbar.php";
                                     <button type="button" class="btn mt-3 avatarbtn">Modifier l'avatar</button>
                         </div>
                         <div class="card-body">
-                            <form class="form" role="form" autocomplete="off" method="POST" action="http://<?= $_SERVER['SERVER_NAME']?>/edit">
+                            <form class="form" role="form" autocomplete="off" id="formprofils">
                                 <div class="form-row">
                                  
                                     <!--<div class="form-group col-md-4 active-cyan-4">-->
@@ -35,33 +33,33 @@ include "template/navbar.php";
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-user-circle"></i></div>
                                    </div>
-                                        <input type="text" name="nom" class="form-control" placeholder="Nom" value='<?= $user->getNom() ?>'>
+                                        <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom" value='<?= $user->getNom() ?>'>
                                     </div>
                                 <div class="input-group mb-2 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-user-circle"></i></div>
                                    </div>
-                                        <input type="text" name="prenom" class="form-control" placeholder="Prénom" value='<?= $user->getPrenom() ?>'>
+                                        <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Prénom" value='<?= $user->getPrenom() ?>'>
                                     </div>
                                 <div class="input-group mb-2 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-phone"></i></div>
                                    </div>
-                                        <input type="text" name="telephone" class="form-control" placeholder="Téléphone" value='<?= $user->getTel() ?>'>
+                                        <input type="text" id="tel" name="tel" class="form-control" placeholder="Téléphone" value='<?= $user->getTel() ?>'>
                                     </div>
                                 <div class="input-group mb-2 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-at"></i></div>
                                    </div>
-                                        <input type="text" name="Email" class="form-control" placeholder="Email" value='<?= $user->getEmail() ?>'>
+                                        <input type="text" id="email" name="email" class="form-control" placeholder="Email" value='<?= $user->getEmail() ?>'>
                                     </div>
                                 <div class="input-group col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-heart"></i></div>
                                    </div>
-                                     <select class="form-control themeselector " id="theme">
+                                     <select class="form-control themeselector" name="theme_id" id="theme">
                                          <?php foreach($themes as $theme) :?>
-                                        <option value="<?= $theme->getIntitule()?>"<?= ($user->getTheme() === $theme->getIntitule())? "selected='true'": ""; ?>><?= ucfirst(implode(' ',explode('_',$theme->getIntitule())))?></option>
+                                        <option name="<?= $theme->getId()?>" value="<?= $theme->getId()?>"<?= ($user->getTheme() === $theme->getIntitule())? "selected='true'": ""; ?>><?= ucfirst(implode(' ',explode('_',$theme->getIntitule())))?></option>
                                         <?php  endforeach; ?>
                                     </select>
                                 </div>
@@ -71,31 +69,31 @@ include "template/navbar.php";
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-home"></i></div>
                                    </div>
-                                        <input type="text" name="numero" class="form-control" placeholder="Numéro" value='<?= $user->getAdresse()->getNumero() ?>'>
+                                        <input type="text" id="numero" name="numero" class="form-control" placeholder="Numéro" value='<?= $user->getAdresse()->getNumero() ?>'>
                                     </div>
                                     <div class="input-group mt-5 mb-2 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-home"></i></div>
                                    </div>
-                                        <input type="text" name="rue" class="form-control" placeholder="Rue"  value='<?= $user->getAdresse()->getRue()?>'>
+                                        <input type="text" name="rue" id="rue" class="form-control" placeholder="Rue"  value='<?= $user->getAdresse()->getRue()?>'>
                                     </div>
                                     <div class="input-group mb-3 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-home"></i></div>
                                    </div>
-                                        <input type="text" name="ville" class="form-control" placeholder="Ville"  value='<?= $user->getAdresse()->getVille() ?>'>
+                                        <input type="text" id="ville" name="ville" class="form-control" placeholder="Ville"  value='<?= $user->getAdresse()->getVille() ?>'>
                                     </div>
                                     <div class="input-group mb-3 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-home"></i></div>
                                    </div>
-                                        <input type="text" name="code_postal" class="form-control" placeholder="Code postal"  value='<?= $user->getAdresse()->getCode_postal() ?>'>
+                                        <input type="text" id="code_postal" name="code_postal" class="form-control" placeholder="Code postal"  value='<?= $user->getAdresse()->getCode_postal() ?>'>
                                     </div>
                                 </div>
 
                                      <div class="form-row mt-3 container-fluid">
                                 <div class="form-group col">
-                                    <button type="submit" class="btn validbtn  float-right">Modifier le profil</button>
+                                    <button type="button" class="btn validbtn  float-right" id="btnedit" onclick="preparePut(<?= $user->getId() ?>, <?= $user->getAdresse_id() ?>)">Modifier le profil</button>
                                 </div>
                                      </div>
                             </form>
@@ -141,7 +139,7 @@ include "template/navbar.php";
     <!--</div>-->
 <!--<div class="container">-->
                             <!--<h3 class=" text-center">Messaging</h3>-->
-<div class="messaging col-6 mt-4 ">
+<div class="messaging col-6 mt-4 " id="togglemsg">
       <div class="inbox_msg">
         <div class="inbox_people">
           <div class="headind_srch">

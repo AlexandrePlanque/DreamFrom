@@ -23,5 +23,8 @@
     },
     "/api/mp/(:)":{
         "GET":"ProfilController:getMp"
+    },
+    "/api/edit/(:)":{
+        "PUT":"ProfilController:editProfil"
     }
 }

@@ -104,9 +104,9 @@ class MySecu extends SecurityMiddleware{
 
         // on insère les données dans le Cookie et sa durée
         
-        setcookie("cookie",$data,time()-3600,"/");
+//        setcookie("cookie",$data,time()-3600,"/");
         
-        setcookie("cookie",$data,time()+3600,"/");
+        setcookie("cookie",$data,time()+3600*24,"/");
 //        echo "yeah";
         header('location: http://'.$_SERVER['SERVER_NAME'].'/');
         var_dump($_COOKIE["cookie"]);

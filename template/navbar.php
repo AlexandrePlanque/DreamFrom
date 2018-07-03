@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-perso" id="secondpart">
+<nav class="navbar navbar-expand-lg navbar-dark bg-perso naventete" id="secondpart">
     <a class="navbar-brand entete" href="#">DreamFrom</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -19,12 +19,6 @@
           <li class="nav-item">
             <a class="nav-link " href="/bar">Bar</a>
           </li>
-          <?php ($_COOKIE['cookie'] !== null ) ? '' : '<li class="nav-item">
-            <a class="nav-link" href="" data-toggle="modal" data-target="#myModal">Connexion</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="/inscription">Inscription</a>
-          </li>' ?> 
           <li class="nav-item">
             <a class="nav-link" href="" data-toggle="modal" data-target="#myModal">Connexion</a>
           </li>

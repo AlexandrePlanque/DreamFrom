@@ -327,7 +327,7 @@ a{
     padding-right: 0;
 }
 .content-home{
-    min-height:1080px;
+    min-height:80%;
     width:auto;
     background-image: url("../image/background_description_home.png");
     background-position: center;

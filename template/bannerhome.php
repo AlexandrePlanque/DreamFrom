@@ -20,17 +20,18 @@
                             <a class="nav-link " href="#">Bar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="">Connexion</a>
+                            <a class="nav-link " href="" data-toggle="modal" data-target="#myModal">Connexion</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="/inscription">Inscription</a>
                         </li>
                         <li class="nav-item dropdown">
-                           <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                           <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profil</a>
                            <div class="dropdown-menu" aria-labelledby="dropdown05">
-                               <a class="dropdown-item" href="#">Mon Profil</a>
-                               <a class="dropdown-item" href="#">Mes Projets</a>
-                               <a class="dropdown-item" href="#">Mes Messages</a>
+                               <a class="dropdown-item" href="/profil">Mon Profil</a>
+                               <a class="dropdown-item" href="/profil">Mes Projets</a>
+                               <a class="dropdown-item" href="/profil">Mes Messages</a>
+                               <a class="dropdown-item" href="/" onclick="disconnect()">Déconnexion</a>
 
                            </div>
                        </li>

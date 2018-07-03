@@ -251,7 +251,7 @@ class UserController extends Controller{
     }
     
     public function logout(){
-        setcookie("cookie",$data,time()-3600,"/");
+        setcookie("cookie","",time()-3600*24,"/");
     }
 
 }

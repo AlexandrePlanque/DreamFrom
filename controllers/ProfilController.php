@@ -7,6 +7,7 @@ use BWB\Framework\mvc\dao\DAOAdresse;
 use BWB\Framework\mvc\dao\DAOProjet;
 use BWB\Framework\mvc\dao\DAOMp;
 use BWB\Framework\mvc\models\User;
+use BWB\Framework\mvc\models\Adresse;
 use ReflectionClass;
 
 
@@ -29,9 +30,8 @@ class ProfilController extends Controller{
     public function getProfil(){
         $dao = (new DaoUser())->retrieve(1);
         $dao->setAdresse((new DAOAdresse())->retrieve($dao->getAdresse_id()));
-//        $this->getMp();
+//        $this->getMp(1);
         $data = array("user" => $dao, "themes" => $this->getTheme(), "projets" => $this->getProjet(), "users" => ((new DAOUser())->getAll()));
-        
 
         $this->render("profil", $data);
     }
@@ -51,7 +51,7 @@ class ProfilController extends Controller{
     }
     
     public function editProfil(){
-//        var_dump($this->inputPost());
+        var_dump($this->inputPut());
 //        var_dump( ((new User())->setNom($this->inputPost()['nom'])->setPrenom($this->inputPost()['prenom'])));
 //        (new DAOUser())->update($this->inputPost());
         $this->prepareUser();
@@ -60,27 +60,28 @@ class ProfilController extends Controller{
         $reflex = new ReflectionClass("BWB\\Framework\\mvc\\models\\User");
         $props = json_decode(json_encode($reflex->getProperties()),true);
         $user = new User();
-//        var_dump($props);
-        $i = 0;
+
         foreach($props as $key){
             $test = $key['name'];
-//            echo $test;
             if($test !== "adresse"){
-                foreach($this->inputPost() as $val){
-//                    var_dump ($this->inputPost());
-                    if($this->inputPost() === $test){
-                $setter = "set".ucfirst($test)."(".$val.")";
-                echo $setter;
-                    }
-                    
+                foreach($this->inputPost() as $key => $value){
+                    if($key === $test){
+                        $setter = "set".ucfirst($test);
+                        $user->$setter($value);
+                    }   
                 }
-//                echo $test;
-//                $user->
             }
-            $i++;
         }
-        
+        return $user;        
     }
+    
+//    private function prepareAdresse(){
+//        $reflex = new ReflectionClass("BWB\\Framework\\mvc\\models\\Adresse");
+//        $props = json_decode(json_encode($reflex->getProperties()),true);
+//        $user = new Adresse();
+//        
+//        
+//    }
     
     public function getMp($value){
 
