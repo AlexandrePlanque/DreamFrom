@@ -6,9 +6,9 @@
     "/membres": "UserController:getUsers",
     "/membres/test": "UserController:getUsersOrder",
     "/projets": "ProjetController:getProjet",    
-   
-    "/createProjet": "ProjetController:getFormular",
-    "/creationProjet":"ProjetController:createProj",
+    "/test2":"CreateProjetController:test",
+    "/createProjet": "CreateProjetController:test",
+    "/creationProjet":"CreateProjetController:createProj",
         "/api/users":{
         "GET":"UserController:getAll",
         "DELETE":"UserController:deleteAll",

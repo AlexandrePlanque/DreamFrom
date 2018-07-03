@@ -13,7 +13,7 @@ Class Projet {
 
 		private $description;
 
-		private $chef_projet;
+		//private $chef_projet;
 
 		private $date_creation;
 
@@ -63,14 +63,14 @@ Class Projet {
 	}
 
 
-	public function getChef_projet (){
-		return $this->chef_projet;
-	}
-
-
-	public function setChef_projet ($val){
-		$this->chef_projet = $val;
-	}
+//	public function getChef_projet (){
+//		return $this->chef_projet;
+//	}
+//
+//
+//	public function setChef_projet ($val){
+//		$this->chef_projet = $val;
+//	}
 
 
 	public function getDate_creation (){

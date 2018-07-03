@@ -17,9 +17,9 @@ class DAOFeature extends DAO {
 /* ____________________Crud methods____________________*/
 
 
-	public function create ($array){
+	public function create ($entity){
 
-		$sql = "INSERT INTO feature (nom) VALUES('" . $entity->getNom() . "')";
+		$sql = "INSERT INTO feature (nom,description,etat) VALUES('".$entity->getNom()."','".$entity->getDescription."',0)";
 		$this->getPdo()->query($sql);
 	}
 
