@@ -4,6 +4,7 @@ namespace BWB\Framework\mvc\dao;
 
 use BWB\Framework\mvc\DAO;
 use BWB\Framework\mvc\models\Projet;
+use PDO;
 
 /*
  * creer avec l'objet issue de la classe CreateEntity Class 
@@ -108,12 +109,6 @@ class DAOProjet extends DAO {
         $sql = "SELECT *, theme.intitule FROM projet inner join theme on projet.theme_id = theme.id";
         $i = 0;
         foreach ($filter as $key => $value) {
-//			if($i===0){
-//				$sql .= " WHERE ";
-//			} else {
-//				$sql .= " AND ";
-//			}
-//			$sql .= $key . " = " . $value . "'";
             $sql .= $value;
             $i++;
         }
@@ -146,34 +141,6 @@ class DAOProjet extends DAO {
         return $results["participants"];
     }
 
-    // cette fonction récupère le nom du chef de projet pour l'afficher dans la card.
-    public function getNomLeader($id) {
-        //req sql qui joint les tables user et projet
-        // si l'id du user correspond à l'id dans projet.chef_projet, affichage du pseudo selon l'id du projet
-        $sql = "SELECT user.pseudo from user INNER JOIN projet where user.id = projet.chef_projet AND projet.id = " . $id;
-        $statement = $this->getPdo()->query($sql);
-        $results = $statement->fetch();
-        return $results['pseudo'];
-    }
-
-    // cette fonction récupère les features pour afficher le %age achevé
-    public function featureProgress($id) {
-        //req sql qui recupére le nombre de features selon l id du projet
-        $sql = "SELECT *  FROM projet_feature WHERE projet_id = " . $id;
-        $statement = $this->getPdo()->query($sql);
-        $results = $statement->fetchAll();
-        $finies = 0;
-        foreach ($results as $result) {
-            if ($result['fini'] === "1") {
-                $finies .= 1;
-                $pourcentage = floor($finies * 100 / count($results));
-            } else {
-                $pourcentage = "0";
-            }
-        }
-        //traitement de results pour en obtenir un %age 
-        return $pourcentage . "%";
-    }
 
     // fonction qui va vérifier si le projet existe déja dans la BDD
     public function verifProjet() {
@@ -207,4 +174,63 @@ class DAOProjet extends DAO {
         }
     }
 
+
+        // cette fonction récupère le nom du chef de projet pour l'afficher dans la card.
+        public function getNomLeader($id){
+            //req sql qui joint les tables user et projet
+            // si l'id du user correspond à l'id dans projet.chef_projet, affichage du pseudo selon l'id du projet
+//            $sql = "SELECT user.pseudo from user INNER JOIN projet where user.id = projet.chef_projet AND projet.id = ".$id;    
+            $sql = "SELECT user.pseudo from user INNER JOIN user_projet where user.id = user_projet.user_id AND user_projet.projet_id = ".$id." AND user_projet.droit_projet = 1";    
+            $statement = $this->getPdo()->query($sql);
+		$results = $statement->fetch();
+                return $results['pseudo'];
+        }
+        
+        // cette fonction récupère les features pour afficher le %age achevé
+        public function featureProgress($id){
+            //req sql qui recupére le nombre de features selon l id du projet
+            $sql = "SELECT *  FROM projet_feature WHERE projet_id = ".$id;
+            $statement = $this->getPdo()->query($sql);
+		$results = $statement->fetchAll();
+                $finies = 0; 
+            foreach($results as $result){
+                if($result['etat'] === "1"){
+                        $finies++;
+                    $pourcentage = floor($finies * 100/count($results));
+                }else {
+                    $pourcentage = "0";
+                }
+            }  
+            //traitement de results pour en obtenir un %age 
+            return $pourcentage."%";
+        }
+
+        public function getProfilProjet($id){
+            $sql = "select * from projet inner join user_projet on projet.id = user_projet.projet_id where user_projet.user_id =".$id;
+            $statement = $this->getPdo()->query($sql);
+            $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Projet");
+            $projets = $statement->fetchAll();
+            foreach($projets as $projet){
+                $projet->setFeatProgress($this->getProjetFeature($projet->getId()));
+            }
+		return $projets;
+            }
+            
+        public function getProjetFeature($idp){
+            $sql = "select * from projet_feature where projet_id =" . $idp;
+            $statement = $this->getPdo()->query($sql);
+            $test = $statement->fetchAll();
+            $i=0;
+            foreach($test as $f){
+                if($f['etat']==="1"){
+                    $i++;
+            $testi = $i * 100 / count($test);
+                }else{
+                $testi =0;
+                    }
+            }
+
+            return $testi."%";
+            
+        }
 }

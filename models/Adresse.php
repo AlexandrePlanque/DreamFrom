@@ -16,8 +16,10 @@ Class Adresse {
 		private $code_postal;
 
 		private $ville;
+                
+                
 
-
+                
 /* ____________________ Getter and Setter Part ____________________ */
 
 

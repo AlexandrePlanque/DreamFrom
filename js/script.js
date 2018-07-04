@@ -1,43 +1,8 @@
-
-$(document).ready(function(){
-//active state  
-//$(function() {
-//    $('li a').click(function(e) {
-//        e.preventDefault();
-//        var $this = $(this);
-//        $this.closest('ul').find('li.active,a.active').removeClass('active');
-//        $this.addClass('active');
-//        $this.parent().addClass('active');
-//
-//    });
-//  });
-//if (location.pathname !== '/') {
-//$("a[href*='" + location.pathname + "']").addClass("current");
-//} else {
-//var home = document.getElementById("home").getElementsByTagName('a')[0];
-//home.className = 'current';
-//}
-
-});
-
-//function search(){
-////    alert($('option').val());
-//
-//var yourSelect = document.getElementById( "theme" );
-//var test = yourSelect.options[ yourSelect.selectedIndex ].value;
-//
-//var b = document.getElementById( "date" );
-//var tast = b.options[ b.selectedIndex ].value;
-//var tost = test + tast;
-//
-//window.location.href = 'http://dreamfrom/membres/?intitule='+test+"&date_creation="+tast;
-
 function search(){
-//    alert($('option').val());
+
 
 var yourSelect = document.getElementById( "theme" );
 var test = yourSelect.options[ yourSelect.selectedIndex ].value;
-//(test === ''? alert("c'est vide"): alert ('ya pa bon'));
 
 var b = document.getElementById( "date" ).options[ document.getElementById( "date" ).selectedIndex ].value;
 
@@ -47,12 +12,10 @@ var uri = (test === ''? '': '/?intitule='+test)+(b !== '' && test === ''? (b ===
 
 window.location.href = 'http://dreamfrom/membres'+(c !== ''? ''+ura : ''+uri);
 
-
-
 }
 
 function searchProjet(){
-//    alert($('option').val());
+
 // selection du theme 
 var choix = document.getElementById( "theme" );
 // transformation en valeur equivalente dans la bdd
@@ -68,3 +31,28 @@ window.location.href = 'http://dreamfrom/projets/?intitule='+valeurChoix+"&date_
 
 
 }
+
+function disconnect(){
+    $.ajax({
+        type: "GET",
+        url: "http://dreamfrom/logout",
+        dataType: 'json',
+
+//        success: function (data) {
+//            console.log(data);
+//            alert('ya bon bb');
+//            if(data.length > 0){
+//              msg(data, id);
+//          }else{noMsg()}
+//
+//        },
+//        error: function (param1, param2) {
+//            alert('ya PAS bon bb');
+//            
+//        }
+        });
+
+
+
+}
+

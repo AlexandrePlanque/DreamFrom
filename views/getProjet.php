@@ -57,10 +57,13 @@ include "template/navbar.php";
                             <h4 class="card_title"><?= $projet->getTitre() ?></h4>
                                 <div class="card_bottom">
                                     <p>Chef de projet : <?= $projet->getLeader() ?></p>
-                                    <div class="progress">
+                                    <div class="progress mb-3">
+  <div class="progress-bar customprogress" style="width:<?= $projet->getFeatProgress()?>"></div>
+</div> 
+<!--                                    <div class="progress">
                                         <div class="progress-bar prog_bar progress-bar-striped " role="progressbar"
                                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:<?=$projet->getFeatProgress() ?>"></div>
-                                    </div>
+                                    </div>-->
                                     <p><?=$projet->getFeatProgress() ?> terminés</p>
                                     <p><?= $projet->getParticipants()?> collaborateurs</p>
                                     <p>crée le <?= $projet->getDate_creation() ?></p>

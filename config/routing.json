@@ -1,23 +1,25 @@
 {
-    "/": "DefaultController:getDefault",
-    "/login": "DefaultController:login",
-    "/logout": "DefaultController:logout",
-    "/token": "DefaultController:token",
+    "/": "HomeController:getHome",
+    "/token": "UserController:testMail",
     "/membres": "UserController:getUsers",
-    "/membres/test": "UserController:getUsersOrder",
     "/projets": "ProjetController:getProjet",    
-    "/test2":"CreateProjetController:test",
     "/creationProjet":"CreateProjetController:createProj",
     "/createProjet": "CreateProjetController:getview",
-    "/test": "CreateProjetController:getThemes",
-    "/api/users":{
-        "GET":"UserController:getAll",
-        "DELETE":"UserController:deleteAll",
-        "POST":"UserController:test"
+    "/inscription": "UserController:register",
+    "/register": "UserController:createUser",
+    "/validation": "UserController:activation",
+    "/connexion": "UserController:modalConnexion",
+    "/signin": "UserController:login",
+    "/logout": "UserController:logout",
+    "/profil": "ProfilController:getProfil",
+    "/edit": "ProfilController:editProfil",
+    "/api/default/(:)":{
+        "GET":"DefaultController:getByValue"
     },
-    "/api/users/(:)":{
-        "GET":"UserController:getUser",
-        "PUT":"UserController:updateUser",
-        "DELETE":"UserController:deleteUser"
+    "/api/mp/(:)":{
+        "GET":"ProfilController:getMp"
+    },
+    "/api/edit/(:)":{
+        "PUT":"ProfilController:editProfil"
     }
 }
