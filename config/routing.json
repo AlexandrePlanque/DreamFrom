@@ -7,9 +7,10 @@
     "/membres/test": "UserController:getUsersOrder",
     "/projets": "ProjetController:getProjet",    
     "/test2":"CreateProjetController:test",
-    "/createProjet": "CreateProjetController:test",
     "/creationProjet":"CreateProjetController:createProj",
-        "/api/users":{
+    "/createProjet": "CreateProjetController:getview",
+    "/test": "CreateProjetController:getThemes",
+    "/api/users":{
         "GET":"UserController:getAll",
         "DELETE":"UserController:deleteAll",
         "POST":"UserController:test"

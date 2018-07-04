@@ -1,3 +1,14 @@
+@font-face {
+    font-family: marck;
+    src : url(../fonts/Marck_Script/MarckScript-Regular.ttf);
+}
+
+body{
+}
+
+h1{
+    margin : 60px 0;
+}
 .details_projet{
     margin-left: auto;
 }
@@ -6,6 +17,7 @@ btn-custom{
     vertical-align:  auto;
 }
 
-.projet_title{
+.projet_title label{
+   font-family: marck; 
     
 }

@@ -177,28 +177,28 @@ class DAOUser extends DAO {
 		return $entities;
 	}
         
-//        public function verifUser() {
-//
-//        $bdd = $this->getPdo();
-//        if (isset($_POST['pseudo']) && isset($_POST['password'])) {
-//
-//            // Récupération des variables du formulaire
-//            $pseudo = ($_POST['pseudo']);
-//            $password = ($_POST['password']);
-//
-//            // on récupère en BDD les données
-//            $sql = $bdd->prepare('SELECT * FROM user WHERE pseudo = \'' . $pseudo . '\' AND password = \'' . $password . '\';');
-//            $sql->execute(array('.$pseudo.' => $_POST['pseudo'], '.password.' => $_POST['.password.']));
-//            $res = $sql->fetchAll();
-//
-//            // vérification
-//            if ($res) {
-//                return true;
-//            } else {
-//                return false;
-//            }
-//        }
-//    }
+        public function verifUser() {
+
+        $bdd = $this->getPdo();
+        if (isset($_POST['pseudo']) && isset($_POST['password'])) {
+
+            // Récupération des variables du formulaire
+            $pseudo = ($_POST['pseudo']);
+            $password = ($_POST['password']);
+
+            // on récupère en BDD les données
+            $sql = $bdd->prepare('SELECT * FROM user WHERE pseudo = \'' . $pseudo . '\' AND password = \'' . $password . '\';');
+            $sql->execute(array('.$pseudo.' => $_POST['pseudo'], '.password.' => $_POST['.password.']));
+            $res = $sql->fetchAll();
+
+            // vérification
+            if ($res) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
     public function getIdByPseudo($pseudo) {
 
         $request = $this->getPdo();

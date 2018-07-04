@@ -15,11 +15,7 @@
          */
         include "template/header.php";
         include "template/navbar.php";
-        echo 'theme';
-        var_dump($themes);
-        echo '------------';
-        echo 'id';
-        var_dump($user_id);
+
         ?>
         <br>
         <section class="container-fluid details_projet">
@@ -40,25 +36,20 @@
                             <label for="exampleFormControlSelect2">Thème</label>
                             <select multiple class="form-control" name="theme"  id="exampleFormControlSelect2">
                                 <?php foreach($themes as $theme) : ?>
-                                <option value="<?= $theme->getIntitule()?>"<?= ($this->inputGet()['intitule'] === $theme->getIntitule())? "selected='true'": ""; ?>><?= ucfirst(implode(' ',explode('_',$theme->getIntitule())))?></option>
+                                <option value="<?= $theme->getId(); ?>"><?= ucfirst(implode(' ',explode('_',($theme->getIntitule())))); ?></option>
+                                
                                 <?php endforeach;?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlInput2">Image du projet</label>
-                            <input type="text" name="image" placeholder="Image" class="form-control" id="nomprojet" placeholder="Url image du projet">
+                            <input type="text" name="image" placeholder="URL de l'image" class="form-control" id="imageprojet" placeholder="Url image du projet">
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput2">1ère Feature</label>
-                            <input type="text" name="nomFeature" placeholder="Nom Fonctionnalité" class="form-control" id="nomprojet" placeholder="Url image du projet">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Détails</label>
-                            <textarea class="form-control" name="details" accesskey=""id="exampleFormControlTextarea1" placeholder="Informtaions" rows="3"></textarea>
-                        </div>
+                      
                         <div class="btn-group btn-custom offset-5" role="group" aria-label="Basic example">
                          <button type="submit" class="btn btn-info">Valider</button>
-                         <button type="submit" class="btn btn-secondary">Annuler</button>
+                         <button TYPE='button' value='Annuler' onclick='location.href="createProjet"' class="btn btn-secondary">Annuler</button>
+                      
                         </div>
                     </form>
                 </div>

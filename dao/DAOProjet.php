@@ -19,22 +19,26 @@ class DAOProjet extends DAO {
 
     public function create($entity) {
         
+        // requete sql permettant de remplir la bdd "projet" avec les données récupérées du formulaire
         $sql = "INSERT INTO projet (titre,description,date_creation,date_modif,theme_id,image) "
                 . "VALUES('" . $entity->getTitre() . "',' ". $entity->getDescription() ." ',' ". $entity->getDate_creation() ." ',' ". $entity->getDate_modif() ." ',". $entity->getTheme_id() .",'" . $entity->getImage() . "')";
         $ok= $this->getPdo()->exec($sql);
+
+        //si $ok est egal a 1 alors récupère l'id du projet qui vient d'etre créé.
+        if($ok === 1){
+            $idProjet= $this->getPdo()->lastInsertId();
+
+        // création d'un doauser pour intégrer la relation entre le user et le projet
         
-//        //si $ok est egal a 1 alors recuperer l'id du projet qui vient d'etre créé.
-//        if($ok === 1){
-//            $idProjet->lastInsertId();
-//        
-//        // ajouter dans la table projet_user les id du projet  + celui de l'utilisateur courant ( dans entity) 
-//        $dao = new DAOUserProjet();
-//        $user_id = $dao ->getIdByPseudo();
-//            $projUser = "INSERT INTO user_projet (user_id,projet_id,droit_projet)"
-//                ."VALUES('".$user_id."','".$idProjet."',1)";
-//        //echo "nb ligne done ".$ok;
-//        $this->getPdo()->exec($projUser);
-//        }
+        $dao = new DAOUser();
+        // récupération de l'id du user courant en récupérant son id à partir du cookie
+        $id = $dao->getIdByPseudo($_COOKIE['cookie']);
+
+        // ajoute dans la table projet_user les id du projet  + celui de l'utilisateur courant 
+        $projUser = "INSERT INTO user_projet (user_id,projet_id,droit_projet)"
+                ."VALUES('".$id."','".$idProjet."',1)";
+        $this->getPdo()->exec($projUser);
+        }
     }
 
     public function retrieve($id) {
