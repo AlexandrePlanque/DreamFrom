@@ -1,6 +1,7 @@
 <?php
 namespace BWB\Framework\mvc\dao;
 use BWB\Framework\mvc\DAO;
+use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\models\Mp;
 
 /* 
@@ -78,6 +79,26 @@ class DAOMp extends DAO {
 		return $entities;
 	}
 
+        //dédié à récuperer tout les mp concernant un utilisateur
+	public function getAllFor ($id){
+		$sql = "SELECT * FROM mp order by date_creation";
+		$statement = $this->getPdo()->query($sql);
+		$results = $statement->fetchAll();
+		$entities = array();
+		foreach($results as $result){
+			if(($result["user_id"] === (string)$id) || ($result['destinataire'] === (string)$id)){
+//                            echo "<hr>";
+//                            var_dump(((new DAOUser())->getAvatar($result['destinataire'])['avatar']));
+//                            echo "<hr>";
+                            $entity = array( "sujet" => $result['sujet'], "message" => $result['message'], 
+                                "date_creation" => $result['date_creation'], "destinataire" => $result['destinataire'], 
+                                "avatarD" => ((new DAOUser())->getAvatar($result['destinataire'])['avatar']),"expediteur" => $result['user_id'],
+                                "avatarE" => ((new DAOUser())->getAvatar($result['user_id'])['avatar']));
+                            array_push($entities,$entity);
+                        }
+		}
+		return $entities;
+	}
 
 	public function getAllBy ($filter){
 		$sql = "SELECT * FROM mp";

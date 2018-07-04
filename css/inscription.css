@@ -1,0 +1,36 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+#team {
+    background: #eee !important;
+}
+
+@font-face {
+    font-family : days;
+    src : url(../fonts/Days.ttf);
+}
+
+@font-face {
+    font-family : testicule;
+    src : url(../fonts/Futura.ttc);
+}
+
+.card .card-header{
+    background-color: #91bbd8 !important;
+}
+.btninscription{
+    background-color: #006699!important;
+    border-color: #003366!important;
+   display: block!important;
+   margin : auto!important;
+}
+h4{
+    font-family : days;
+}
+
+.active-cyan-4 input:focus:not([readonly]) {
+   border: 1px solid #4dd0e1!important;
+   box-shadow: 0 0 0 1px #4dd0e1!important;
+}
+
+.formulaire{
+    margin-top: -50px;
+}
