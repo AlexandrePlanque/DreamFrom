@@ -115,7 +115,7 @@ class DAOProjet extends DAO {
 //				$sql .= " AND ";
 //			}
 //			$sql .= $key . " = " . $value . "'";
-<<<<<<< HEAD
+
             $sql .= $value;
             $i++;
         }
@@ -138,44 +138,11 @@ class DAOProjet extends DAO {
         return $entities;
     }
 
-    // cette fonction récupère le nombre de participants d'un projet pour l'afficher dans la card
-    public function getNbParticipants($id) {
-        // req sql pour compter dans la table user_projet les particpants selon l'id du projet
-        $sql = "SELECT COUNT(*) as participants FROM user_projet WHERE projet_id = " . $id;
-        $statement = $this->getPdo()->query($sql);
-        $results = $statement->fetch();
-        // return à partir du tableau $results de la donnée égale à la clef "participants"
-        return $results["participants"];
-    }
 
-    // cette fonction récupère le nom du chef de projet pour l'afficher dans la card.
-    public function getNomLeader($id) {
-        //req sql qui joint les tables user et projet
-        // si l'id du user correspond à l'id dans projet.chef_projet, affichage du pseudo selon l'id du projet
-        $sql = "SELECT user.pseudo from user INNER JOIN projet where user.id = projet.chef_projet AND projet.id = " . $id;
-        $statement = $this->getPdo()->query($sql);
-        $results = $statement->fetch();
-        return $results['pseudo'];
-    }
 
-    // cette fonction récupère les features pour afficher le %age achevé
-    public function featureProgress($id) {
-        //req sql qui recupére le nombre de features selon l id du projet
-        $sql = "SELECT *  FROM projet_feature WHERE projet_id = " . $id;
-        $statement = $this->getPdo()->query($sql);
-        $results = $statement->fetchAll();
-        $finies = 0;
-        foreach ($results as $result) {
-            if ($result['fini'] === "1") {
-                $finies .= 1;
-                $pourcentage = floor($finies * 100 / count($results));
-            } else {
-                $pourcentage = "0";
-            }
-        }
-        //traitement de results pour en obtenir un %age 
-        return $pourcentage . "%";
-    }
+ 
+
+
 
     // fonction qui va vérifier si le projet existe déja dans la BDD
     public function verifProjet() {
@@ -209,29 +176,29 @@ class DAOProjet extends DAO {
         }
     }
 
-}
-=======
-                    $sql .= $value;
-			$i++;
-		}
-                echo $sql;
-		$entities = array();
-		$statement = $this->getPdo()->query($sql);
-		$results = $statement->fetchAll();
-		foreach($results as $result){
-			$entity = new Projet;
-			$entity->setId($result['id']);
-			$entity->setTitre($result['titre']);
-			$entity->setDescription($result['description']);
-			$entity->setChef_projet($result['chef_projet']);
-			$entity->setDate_creation($result['date_creation']);
-			$entity->setDate_modif($result['date_modif']);
-			$entity->setTheme_id($result['theme_id']);
-			$entity->setImage($result['image']);
-			array_push($entities,$entity);
-		}
-		return $entities;
-	}
+
+
+//                    $sql .= $value;
+//			$i++;
+//		}
+//                echo $sql;
+//		$entities = array();
+//		$statement = $this->getPdo()->query($sql);
+//		$results = $statement->fetchAll();
+//		foreach($results as $result){
+//			$entity = new Projet;
+//			$entity->setId($result['id']);
+//			$entity->setTitre($result['titre']);
+//			$entity->setDescription($result['description']);
+//			$entity->setChef_projet($result['chef_projet']);
+//			$entity->setDate_creation($result['date_creation']);
+//			$entity->setDate_modif($result['date_modif']);
+//			$entity->setTheme_id($result['theme_id']);
+//			$entity->setImage($result['image']);
+//			array_push($entities,$entity);
+//		}
+//		return $entities;
+//	}
 
         // cette fonction récupère le nombre de participants d'un projet pour l'afficher dans la card
         public function  getNbParticipants($id) {
@@ -243,6 +210,8 @@ class DAOProjet extends DAO {
                 return $results["participants"];
         }
         
+
+        
         // cette fonction récupère le nom du chef de projet pour l'afficher dans la card.
         public function getNomLeader($id){
             //req sql qui joint les tables user et projet
@@ -253,6 +222,7 @@ class DAOProjet extends DAO {
 		$results = $statement->fetch();
                 return $results['pseudo'];
         }
+
         
         // cette fonction récupère les features pour afficher le %age achevé
         public function featureProgress($id){
@@ -304,4 +274,4 @@ class DAOProjet extends DAO {
             
         }
 }
->>>>>>> ea0c4cbcd637c0cc9e4c9d68c59574821002f5f7
+

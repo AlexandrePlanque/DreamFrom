@@ -5,19 +5,19 @@
     "/token": "UserController:testMail",
     "/membres": "UserController:getUsers",
     "/projets": "ProjetController:getProjet",    
-<<<<<<< HEAD
+
     "/test2":"CreateProjetController:test",
     "/creationProjet":"CreateProjetController:createProj",
     "/createProjet": "CreateProjetController:getview",
     "/test": "CreateProjetController:getThemes",
-=======
+
     "/inscription": "UserController:register",
     "/register": "UserController:createUser",
     "/validation": "UserController:activation",
     "/connexion": "UserController:modalConnexion",
     "/signin": "UserController:login",
     "/logout": "UserController:logout",
->>>>>>> ea0c4cbcd637c0cc9e4c9d68c59574821002f5f7
+
     "/api/users":{
         "GET":"UserController:getAll",
         "DELETE":"UserController:deleteAll",

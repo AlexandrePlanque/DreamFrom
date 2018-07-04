@@ -95,3 +95,4 @@ class DAOTheme extends DAO {
 		return $entities;
 	}
 }
+
