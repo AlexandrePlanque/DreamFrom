@@ -17,7 +17,7 @@ class DAOUserProjet extends DAO {
 /* ____________________Crud methods____________________*/
 
 
-	public function create ($array){
+	public function create ($entity){
 
 		$sql = "INSERT INTO user_projet (user_id,projet_id,droit_projet_id) VALUES('" . $entity->getUser_id() . ',' . $entity->getProjet_id() . ',' . $entity->getDroit_projet_id() . "')";
 		$this->getPdo()->query($sql);
@@ -37,7 +37,7 @@ class DAOUserProjet extends DAO {
 	}
 
 
-	public function update ($array){
+	public function update ($entity){
 
 		$sql = "UPDATE user_projet SET user_id = '" . $entity->getUser_id() ."',projet_id = '" . $entity->getProjet_id() ."',droit_projet_id = '" . $entity->getDroit_projet_id() ." WHERE id = ". $entity->getId();
 		if ($this->getPdo()->exec($sql) !== 0){
@@ -98,4 +98,18 @@ class DAOUserProjet extends DAO {
 		}
 		return $entities;
 	}
+        // invoquée lorsqu'un user décide de rejoindre un projet
+        	public function createAsJoiner ($entity){
+		$sql = "INSERT INTO user_projet (user_id,projet_id,droit_projet) VALUES('" . $entity->getUser_id() . "','" . $entity->getProjet_id() . "','0')";
+		echo "<hr>".$sql;
+                $this->getPdo()->query($sql);
+	}
+        
+        // invoquée lorsqu'un user est invité à rejoindre un projet
+        	public function createAsInvited ($entity){
+		$sql = "INSERT INTO user_projet (user_id,projet_id,droit_projet_id) VALUES('" . $entity->getUser_id() . ',' . $entity->getProjet_id() . "',0)";
+		$this->getPdo()->query($sql);
+	}
+
+
 }

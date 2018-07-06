@@ -130,7 +130,7 @@ class DAOProjet extends DAO {
         }
         return $entities;
     }
-
+    
     // cette fonction récupère le nombre de participants d'un projet pour l'afficher dans la card
     public function getNbParticipants($id) {
         // req sql pour compter dans la table user_projet les particpants selon l'id du projet
@@ -226,7 +226,7 @@ class DAOProjet extends DAO {
                 $projet->setFeatProgress($this->getProjetFeature($projet->getId()));
                 array_push($retour,$projet->JsonSerialize());
             }
-//            var_dump($projets);
+            
 		return $retour;
             }
 

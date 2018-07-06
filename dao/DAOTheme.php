@@ -94,4 +94,12 @@ class DAOTheme extends DAO {
 		}
 		return $entities;
 	}
+        public function getThemeid (){
+		$sql = "SELECT id FROM theme WHERE id=" . $id;
+		$statement = $this->getPdo()->query($sql);
+		$result = $statement->fetch(PDO::FETCH_ASSOC);
+		$entity = new Theme();
+		$entity->setIntitule();
+		return $entity;
+	}
 }

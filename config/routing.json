@@ -4,7 +4,9 @@
     "/membres": "UserController:getUsers",
     "/creationProjet":"CreateProjetController:createProj",
     "/createProjet": "CreateProjetController:getview",
-
+    "/projet/join":{
+        "POST":"JoinProjetController:joinProject"
+    },
     "/projets": "ProjetController:getProjet",
     "/projet": "ProjetController:ficheProjet",
     "/inscription": "UserController:register",
