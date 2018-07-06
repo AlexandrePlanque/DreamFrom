@@ -34,3 +34,6 @@ include "template/navbar.php";
                     </div>
     </div>-->
 
+<?php 
+include "template/footer.php"; 
+?>

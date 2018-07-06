@@ -33,8 +33,9 @@
             </div>
         </div>
         </div>
+<!--<div class="footertest">
 	<section id="footer" class=" container-fluid bot">
-            <div class="row flex-container">
+            <div class="row flex-container footcontainer">
                 <div class="footlogo col-md-3 col-sm-4 col-xs-6 mt-4 ">
                     <img class="img-fluid footlogo" src="http://<?= $_SERVER['SERVER_NAME']?>/image/logo.png">
                 </div>  
@@ -49,6 +50,7 @@
                 </div>
             </div>
 	</section>
+    </div>-->
 <script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/script.js"></script>
 <script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/profilscript.js"></script>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

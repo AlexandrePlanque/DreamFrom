@@ -3,11 +3,11 @@
 <div class="container-fluid select_home " id="secondpart">
     <div class="row">
         <ul class="content_width">
-                <li class="one col-md-3 col-sm-6 col-xs-12"><a href="#">Sélection</a></li><!--
-              --><li class="two col-md-3 col-sm-6 col-xs-12"><a href="#">Projets</a></li><!--
-              --><li class="three col-md-3 col-sm-6 col-xs-12"><a href="#">Membres</a></li><!--
-              --><li class="four col-md-3 col-sm-6 col-xs-12"><a href="#">Evenements</a></li>
-              <hr/>
+                <li class="one col-md-3 col-sm-6 col-xs-12"><a class="hvr-underline-from-center" href="#">Sélection</a></li><!--
+              --><li class="two col-md-3 col-sm-6 col-xs-12"><a class="hvr-underline-from-center" href="#">Projets</a></li><!--
+              --><li class="three col-md-3 col-sm-6 col-xs-12"><a class="hvr-underline-from-center" href="#">Membres</a></li><!--
+              --><li class="four col-md-3 col-sm-6 col-xs-12"><a class="hvr-underline-from-center" href="#">Evenements</a></li>
+              <!--<hr/>-->
         </ul>    
     </div>
 </div>

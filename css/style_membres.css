@@ -252,21 +252,8 @@ padding: 14px 1px;
     background-position-y: 0px;
 }
 
-.footer {
-    position: static;
-    bottom: 0;
-    width: 100%;
-    background-color: #2a5d95;
-    max-height: 150px;
-}
 
-.footlogo {
-    height: 70%;
-}
-.bot {
-        margin-bottom: -500px;
-        padding-bottom: -50px;
-}
+
 
 .top{
     background-image: url('../image/cadre.png')!important;

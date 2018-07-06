@@ -319,10 +319,13 @@ height:50px;
 }
 
 .footlogo {
-    height: 80%;
+    height: 10%;
 }
 
-
+#footer{
+    position: relative;
+        margin-top:150px;
+}
 .bot {    
     background-color: #2a5d95!important;
 }
@@ -370,9 +373,9 @@ a{
     
 }
 
-.flex-container{
+.footcontainer{
     display: flex;
     align-items: center;
-    height: 150px;
+    min-height: 50px;
     
 }

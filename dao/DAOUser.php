@@ -23,10 +23,10 @@ class DAOUser extends DAO {
     public function create($entity) {
 
 
-		$sql = "INSERT INTO user (pseudo,password,nom,prenom,email,civilite,tel,date_creation,privilege_id,adresse_id,actif_id,theme_id,avatar,contact) VALUES('" 
+		$sql = "INSERT INTO user (pseudo,password,nom,prenom,email,tel,date_creation,privilege_id,adresse_id,actif_id,theme_id,avatar,contact) VALUES('" 
                         . $entity->getPseudo() . '\',\'' . $entity->getPassword() 
                         . '\',\'' . $entity->getNom() . '\',\'' . $entity->getPrenom() 
-                        . '\',\'' . $entity->getEmail() . '\',\'' . $entity->getCivilite() . '\',\'' . $entity->getTel() . '\',\'' 
+                        . '\',\'' . $entity->getEmail() . '\',\'' . $entity->getTel() . '\',\'' 
                         . $entity->getDate_creation() . '\',\'' . $entity->getPrivilege_id() . '\',\'' 
                         . $entity->getAdresse_id() . '\',\'' . $entity->getActif_id() 
                         . '\',\'' . $entity->getTheme_id() . '\',\'' . $entity->getAvatar() . '\',\'' . $entity->getContact() . "')";
@@ -186,12 +186,14 @@ class DAOUser extends DAO {
     public function createAdresse($entity) {
         $sql = "INSERT INTO adresse (rue,numero,code_postal,ville) VALUES('" . $entity->getRue() . '\',\'' . $entity->getNumero() . '\',\'' . $entity->getCode_postal() . '\',\'' . $entity->getVille() . "')";
 
-
+        echo $sql;
         // Utilisation de la methode getPdo du DAO pour connexion à la BDD et insertion
         $this->getPdo()->query($sql);
-
+        echo "<hr>";
         // retourne le dernier ID créé en BDD
         $entity->setId($this->getPdo()->lastInsertId());
+        var_dump($entity->getId());
+        echo "<hr>";
 
         return $entity->getId();
     }

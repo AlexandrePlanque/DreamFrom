@@ -31,7 +31,7 @@ class ProfilController extends Controller{
     public function getProfil(){
         $dao = (new DaoUser())->retrieve(json_decode($_COOKIE['cookie'],true)['id']);
         $dao->setAdresse((new DAOAdresse())->retrieve($dao->getAdresse_id()));
-//        $this->getMp(1);
+
         $data = array("user" => $dao, "themes" => $this->getTheme(), "projets" => $this->getProjet(), "users" => ((new DAOUser())->getAll()));
 
         $this->render("profil", $data);
@@ -48,7 +48,7 @@ class ProfilController extends Controller{
     }
     
     public function getProjetJson($id){
-//        $id=1;
+
         header("Content-Type:Application/json");
         echo json_encode((new DAOProjet())->getProfilProjetJson(1));
     }
@@ -102,8 +102,6 @@ class ProfilController extends Controller{
     }
     
     public function postMp(){
-//                echo "ok"
-//                var_dump(($data['message']));
         header("Content-Type:text/plain");
         $data = $this->inputPost();
         $mpObj = new Mp();
@@ -111,13 +109,7 @@ class ProfilController extends Controller{
         $mpObj->setDestinataire($data['destinataire']);
         $mpObj->setUser_id(json_decode($_COOKIE['cookie'],true)['id']);
         $mpObj->setDate_creation(date("Y-m-d H:i:s"));
-        var_dump($mpObj);
-        echo date("Y-m-d H:i:s");
-//        var_dump($this->inputPost());
-////        $mpObj->setDestinataire($this->inputPost()['destinataire']);
-//        echo "alert(". $data['message'] .");";
-//        var_dump($mpObj);
-//        
+      
         (new DAOMp())->create($mpObj);
         
     }
