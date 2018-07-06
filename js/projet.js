@@ -3,7 +3,7 @@
 
 
 function get_projet_id(){
-   // var theme_Id = $("#join_projet").val();
+   // var projet_Id = $("#join_projet").val();
     
     var projet_Id = {
             projetId : 36};
