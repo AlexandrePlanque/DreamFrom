@@ -16,5 +16,6 @@
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/connexion.css" rel="stylesheet" type="text/css"/>
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/style.css" rel="stylesheet" type="text/css"/>
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/message.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/projet.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>

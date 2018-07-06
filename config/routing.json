@@ -9,8 +9,7 @@
     
     "/creationProjet":"CreateProjetController:createProj",
     "/createProjet": "CreateProjetController:getview",
-    "/Fab": "JoinProjetController:test",
-    "/testFab": "JoinProjetController:joinProject",
+    "/projet/joining": "JoinProjetController:showView",
     "/projet/join":{
         "POST":"JoinProjetController:joinProject"
     },

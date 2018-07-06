@@ -1,7 +1,25 @@
+
+@media only screen and (max-width: 768px) {
+    .testo{
+        display: inline;
+        margin-bottom: 20px;
+    }
+    .data1{
+        padding-right: 5%;
+    }
+    .data2{
+        padding-right: 5%;
+    }
+}
+
+
 body {
-  /*background-image: url("../image/background_fiche_projet.png");*/
-  
-  
+    /*background-image: url("../image/background_fiche_projet.png");*/
+
+
+}
+html{
+    overflow-x: hidden;
 }
 
 
@@ -27,10 +45,17 @@ body {
     min-height: 90px;
 
 }
+.card_title2{
+    float: left !important;
+    vertical-align: middle;
+    max-height: 100px;
+    min-height: 90px;
+
+}
 
 .card_global{
     border: 1px solid black;
- 
+
 }
 
 .card_detail{
@@ -38,7 +63,7 @@ body {
 }
 
 .creat_proj{
-    
+
     background-color: #4dd0e1;
     box-shadow: 0 0 0 1px black;
 }
@@ -48,10 +73,112 @@ body {
     max-width: 100px!important;
 }
 
-progress{
-     padding-right: 20px;
+.progress_opti1{
+    margin-top: -10px;
+    width: 70% !important;
+    border: 1px solid grey;
+    background: linear-gradient(to bottom,  #f2f2f2 , #dbdbdb)!important;
+    border-radius: 15px!important
+}
+.progress_opti2{
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+    width: 50% !important;
+    margin: auto;
+    border: 1px solid grey;
+    background: linear-gradient(to bottom,  #f2f2f2 , #dbdbdb)!important;
+    border-radius: 15px!important
+}
+
+.progress_opti{
+    margin-bottom: 10px
+}
+
+.progress-bar{
+    width: 50%;
 }
 
 a{
     text-decoration: none;
 }
+
+.background{
+    background-image: url('../image/background_fiche_projet.png') !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover!important;
+    min-height: 50%;
+    height: 100%;
+}
+
+.title-color{
+    color: #ffffff;
+}
+
+.fond{
+    position: relative;
+    height: 90px;
+    width: auto;
+    background-color: #ffffff;
+    opacity : 0.7;
+    filter:alpha(opacity=70);
+    margin-bottom: 15px;
+
+}
+
+.accordion .card-header:after {
+    font-family: 'FontAwesome';  
+    content: "\f068";
+    float: right; 
+}
+.accordion .card-header.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\f067"; 
+}
+
+.avatar{
+    width: 25%;
+}
+
+.info{
+    text-align: left;
+    margin-top: 20px;
+
+}
+
+.select_home2 {
+  margin: 50px 0 0 0;
+  border-top: 2px solid #91bbd8;
+  border-bottom :2px solid #91bbd8;
+  font-weight: bold;  
+}
+
+.contain-feature{
+    padding-top: 3% !important;
+}
+
+#description{
+     padding-top: 2% !important;
+}
+
+.btn-custom00{
+    display: inline-block !important;
+}
+
+.btn-custom01{
+    padding-top: 2%;
+}
+
+/*.select_home2 a {
+  color: #333;
+}*/
+
+
+
+
+
+
+
+
+
+

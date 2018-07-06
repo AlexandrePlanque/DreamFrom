@@ -24,12 +24,13 @@ class JoinProjetController extends Controller{
     public function getUser() {
         
     // initialisation du DAO user 
-        setcookie("cookie","Aziraphale",time()+3600*24,"/");
+        setcookie("cookie","jacksparrow",time()+3600*24,"/");
         $infoUser = new DAOUser;
         
    // récupère l'id du user en cours
         $userId = $infoUser->getIdByPseudo($_COOKIE['cookie']);
-    
+        echo "<hr>". "userid";
+        var_dump($userId);
         return $userId;
     }
     
@@ -40,49 +41,37 @@ class JoinProjetController extends Controller{
     public function getProject(){
        // $projetId= $this->inputPost();
         $id = $_POST["projetId"];
+        echo '<hr>'." id du proj";
+        var_dump($id);
         return $id;
     }
     // cette fonction permet à un membre connecté de rejoindre un projet
     
     public function joinProject(){
-    
+    // récupératon des données dynamiques nécessaires
         $userid=  $this->getUser();
+        //var_dump($userid);
         $projetid = $this->getProject();
-        
         $datas = array(
             "user"=>$userid,
             "projet"=>$projetid
         );
-//        var_dump($datas);        
-           //     echo json_encode($datas);
+        echo "<hr>"."datas";
+        var_dump($datas);
+    // création du models et mise en place des setters
         $newPlayer = new UserProjet();
-        
         $newPlayer->setProjet_id($datas["projet"]);
         $newPlayer->setUser_id($datas["user"]);
         $newPlayer->setDroit_projet_id(0);
-//        echo'yolo ?';
-        
+
+    // création du dao
         $dao = new DAOUserProjet;
         $dao->createAsJoiner($newPlayer);
-//        var_dump($newPlayer);
+         echo "<hr>"."newPlayer";
+        var_dump($newPlayer);
     }
-    public function  test(){
+    public function  showView(){
         $this->joinProject();
-        $this->render("testFabien");
-    }
-
-
-    // cette fonction permet au leader du projet de rajouter un membre en ayant  
-    // fait la demande via MP ou tchat
-    
-    public function addUserToProject() {
-        
-    
-    // récupère l'id du user ayant émis la demande 
-    
-    // récupère l'id du projet
-    
-    //
-    }
-    
+        $this->render("ficheprojet");
+    }    
 }

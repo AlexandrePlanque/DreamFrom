@@ -6,7 +6,7 @@ function get_projet_id(){
    // var projet_Id = $("#join_projet").val();
     
     var projet_Id = {
-            projetId : 36};
+            projetId : 20};
     console.log(projet_Id);
     
 //    console.log(data);
