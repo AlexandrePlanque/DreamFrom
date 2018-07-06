@@ -6,10 +6,14 @@
     "/membres": "UserController:getUsers",
     "/projets": "ProjetController:getProjet",    
 
-    "/test2":"CreateProjetController:test",
+    
     "/creationProjet":"CreateProjetController:createProj",
     "/createProjet": "CreateProjetController:getview",
-    "/test": "CreateProjetController:getThemes",
+    "/Fab": "JoinProjetController:test",
+    "/testFab": "JoinProjetController:joinProject",
+    "/projet/join":{
+        "POST":"JoinProjetController:joinProject"
+    },
 
     "/inscription": "UserController:register",
     "/register": "UserController:createUser",

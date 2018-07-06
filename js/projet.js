@@ -1,38 +1,27 @@
-myBar = $('#demo').progressbarManager({      
-  totalValue : 100
-});
+// installer l'id="join_projet" au bouton d'inscription au projet
+// et le name=<?= id du projet selon la bdd ?>
 
-myBar = $('#demo').progressbarManager({      
 
-  // whether to log to console
-  debug : false ,
+function get_projet_id(){
+   // var theme_Id = $("#join_projet").val();
+    
+    var projet_Id = {
+            projetId : 36};
+    console.log(projet_Id);
+    
+//    console.log(data);
+    $.ajax({
+        type: "POST",
+      // dataType : 'json',
+        url : "http://dreamfrom/projet/join",
+        data : projet_Id,
+        success : function(retour){
+            alert(retour);
+//            window.location.href = "http://administration.restologue.bwb/";
+        },
+        error : function(){
+           alert('Erreur d\'authentification, veuillez réessayer');
+        }
 
-  // for the default bar 
-  currentValue : 0,
-
-  // for the default bar 
-  totalValue : 100 ,
-
-  // for the default bar 
-  style : 'primary' ,
-
-  // for default bar
-  animate : true ,
-
-  // for default bar
-  stripe : true ,
-
-  // Progress element id
-  id : 'pbm-bootsrap-progress-' +  $.fn.progressbarManager.GUID ,
-
-  // prefix for the genrated bar id
-  barIdPrefix : 'pbm-progress-bar-' ,
-
-  // This option is for stacked progress bar. the total value of the progress
-  total : opts.totalValue ,
-
-  // Whether to create default bar
-  addDefaultBar : true
-
-});
-
+    });
+}

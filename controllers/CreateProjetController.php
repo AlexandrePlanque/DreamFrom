@@ -28,7 +28,7 @@ class CreateProjetController extends Controller {
         //setcookie("cookie", "Aziraphale", time() + 3600 * 24, "/");
         
         // recuperation de la liste des themes en creant le dao et 
-        // y applicant la methode getAll
+        // y appliquant la methode getAll
         $themes= (new DAOTheme())->getAll();
         // insertion dans l'affichage des themes, sous forme d'un tableau
         // dont la clef est la string "themes" et la value est la variable $themes
@@ -67,7 +67,8 @@ class CreateProjetController extends Controller {
     public function getThemes() {
         
         $themesListe= (new DAOTheme())->getAll();
-        var_dump($themesListe);
+        //var_dump($themesListe);
+        return $themesListe;
     }
 
 }
