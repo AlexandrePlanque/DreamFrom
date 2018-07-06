@@ -18,5 +18,6 @@
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/message.css" rel="stylesheet" type="text/css"/>
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/projet.css" rel="stylesheet" type="text/css"/>
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/hover-min.css" rel="stylesheet" type="text/css"/>
+        <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/animate.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>

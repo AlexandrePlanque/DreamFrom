@@ -87,7 +87,6 @@ class DAOProjet extends DAO {
             $entity->setId($result['id']);
             $entity->setTitre($result['titre']);
             $entity->setDescription($result['description']);
-            $entity->setChef_projet($result['chef_projet']);
             $entity->setDate_creation($result['date_creation']);
             $entity->setDate_modif($result['date_modif']);
             $entity->setTheme_id($result['theme_id']);
@@ -112,7 +111,7 @@ class DAOProjet extends DAO {
             $sql .= $value;
             $i++;
         }
-        echo $sql;
+
         $entities = array();
         $statement = $this->getPdo()->query($sql);
         $results = $statement->fetchAll();
