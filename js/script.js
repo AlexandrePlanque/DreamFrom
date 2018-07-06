@@ -1,6 +1,42 @@
+//window.onload = function() {
+//    alert(getWindowHeight())
+//setFooter();
+//}
+//window.onresize = function() {
+//setFooter();
+//}
+
+$( document).ready(function(){
+    var url = $(location).attr('href');
+    switch (url.split('?')[0]) {
+            
+        case ("http://dreamfrom/") :
+            cleanUp()
+            $('#home').addClass('active')
+            break;
+        case("http://dreamfrom/projets") :
+            cleanUp()
+            $('#projet').addClass('active')
+            break;
+        case("http://dreamfrom/membres") :
+            cleanUp()
+            $('#membre').addClass('active')
+            break;
+        case("http://dreamfrom/bar") :
+            cleanUp()
+            $('#bar').addClass('active')
+            break;
+        case("http://dreamfrom/profil/") :
+            cleanUp()
+            $('#profil').addClass('active')
+            break;
+    }
+            
+    
+
+})
+
 function search(){
-
-
 var yourSelect = document.getElementById( "theme" );
 var test = yourSelect.options[ yourSelect.selectedIndex ].value;
 
@@ -56,3 +92,48 @@ function disconnect(){
 
 }
 
+function cleanUp(){
+    $('#home').removeClass('active')
+    $('#projet').removeClass('active')
+    $('#membre').removeClass('active')
+    $('#profil').removeClass('active')
+}
+
+function getWindowHeight() {
+    var windowHeight=0;
+    if (typeof(window.innerHeight)=='number') {
+        windowHeight=window.innerHeight;
+    }
+    else {
+     if (document.documentElement&&
+       document.documentElement.clientHeight) {
+         windowHeight = document.documentElement.clientHeight;
+    }
+    else {
+     if (document.body&&document.body.clientHeight) {
+         windowHeight=document.body.clientHeight;
+      }
+     }
+    }
+    return windowHeight;
+}
+
+function setFooter() {
+    if (document.getElementById) {
+        var windowHeight=getWindowHeight();
+        if (windowHeight>0) {
+            var contentHeight=
+            document.getElementById('content').offsetHeight;
+            var footerElement=document.getElementById('footer');
+            var footerHeight=footerElement.offsetHeight;
+        if (windowHeight-(contentHeight+footerHeight)>=0) {
+            footerElement.style.position='relative';
+            footerElement.style.top=
+            (windowHeight-(contentHeight+footerHeight))+'px';
+        }
+        else {
+            footerElement.style.position='static';
+        }
+       }
+      }
+}

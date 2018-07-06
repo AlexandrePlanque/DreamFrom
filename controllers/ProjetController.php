@@ -65,9 +65,11 @@ class ProjetController extends Controller{
         }
         return $retour;
     }
-    
-    
-    
+        
+    public function ficheProjet(){
+        $this->render('ficheprojet');
+    }
+
 }       
 
  

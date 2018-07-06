@@ -15,7 +15,6 @@ use BWB\Framework\mvc\Controller;
  * @author fabien
  */
 class HomeController extends Controller {
-    
     public function GetHome(){
     $this->render("getHome");
     }

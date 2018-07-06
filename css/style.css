@@ -20,8 +20,27 @@
     src : url(../fonts/Marck_Script/MarckScript-Regular.ttf);
 }
 
+.navbar-dark .navbar-nav .nav-link:hover{
+    color: #414141 !important;
+}
+
+.navbar-dark .active > .nav-link{
+    color: #414141 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: #ffffff
+}
+
+.news{
+    height: 200px;      
+}
+
+.titreN{
+      margin: auto;
+}
 html, body {
-    height: 100%;
+    min-height: 100% !important;
     scroll-behavior: smooth;
 }
 
@@ -202,9 +221,10 @@ html, body {
 }
 
 .down-arrowimg {
-    position: absolute;
+    position: relative;
     left :48%;
-    top: 83%;
+    top: 350px;
+    outline-style: none !important ;
 }
 
 
@@ -214,9 +234,9 @@ html, body {
 }
 
 .select_home {
-  font: 300 100% days;
-  margin: 50px 0 0 0;
-  border-top: 2px solid #91bbd8;
+/*  font: 300 100% days;
+  margin: 50px 0 0 0;*/
+  border-top: 0px solid #91bbd8;
   border-bottom :2px solid #91bbd8;
   vertical-align: middle;
   font-weight: bold;  
@@ -263,7 +283,7 @@ select_home container-fluid {
   margin: 0;
   background: #91bbd8   ;
   border: none;
-  transition: 1s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .select_result{
@@ -284,29 +304,40 @@ select_home container-fluid {
 
 
 .footer {
-    position: absolute;
+/*    position: absolute;
     width: 100%;
-    max-height: 150px;
-    
+    max-height: 150px;*/
+    position:absolute;
+
+bottom:0;
+
+width:100%;
+
+padding-top:50px;
+
+height:50px;
 }
 
 .footlogo {
-    height: 80%;
+    height: 10%;
 }
 
-
+#footer{
+    position: relative;
+        margin-top:150px;
+}
 .bot {    
     background-color: #2a5d95!important;
 }
 /* à modifier */
-h1{
+.titreprez{
     font-weight: bold;
     margin-left: 40px;
     font-stretch:  expanded;
 
 }
 
-h2{
+.soustitre{
     color: orange;
     margin-left: 40px;
     font-family: marck;
@@ -317,7 +348,7 @@ a{
    line-height: 2;
 }
 .content_width{
-    width: 100%;
+    width: 300%;
 }
 
 .content_width>li{
@@ -342,9 +373,9 @@ a{
     
 }
 
-.flex-container{
+.footcontainer{
     display: flex;
     align-items: center;
-    height: 150px;
+    min-height: 50px;
     
 }

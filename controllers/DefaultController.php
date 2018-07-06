@@ -105,6 +105,7 @@ class DefaultController extends Controller {
      * @example /api/default ajouter dans le corps de la requete des données au format : x-www-form-urlencoded
      */
     public function getDatasFromPUT(){
+        echo "coco";
         var_dump($this->inputPut());
     }
     

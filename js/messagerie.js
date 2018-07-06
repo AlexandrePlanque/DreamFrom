@@ -28,15 +28,14 @@ $.ajax({
         dataType: 'json',
 
         success: function (data) {
-            console.log(data);
-            alert('ya bon bb');
+            prepareSendBtn(id)
             if(data.length > 0){
               msg(data, id);
           }else{noMsg()}
 
         },
         error: function (param1, param2) {
-            alert('ya PAS bon');
+            alert('Une erreur est survenue.')
             
         }
         });
@@ -49,10 +48,10 @@ $.ajax({
 
 function msg(data, id){
     $('#msgbox').empty();
+
     for(var i = 0 ; i < data.length ; i++){
-        console.log(data[i]);
-        if(id === parseInt(data[i].destinataire)){
-$('#msgbox').append($('<div>').addClass("incoming_msg").append($('<div>').addClass('incoming_msg_img').append($('<img>').attr("src", data[i].avatarD))).append($('<div>').addClass("received_msg").append($('<div>').addClass("received_withd_msg").append($('<p>').text(data[i].message)).append($('<span>').addClass('time_date').text(testmsg())))))
+        if((parseInt(id)) === (parseInt(data[i].expediteur))){
+$('#msgbox').append($('<div>').addClass("incoming_msg").append($('<div>').addClass('incoming_msg_img').append($('<img>').attr("src", data[i].avatarE))).append($('<div>').addClass("received_msg").append($('<div>').addClass("received_withd_msg").append($('<p>').text(data[i].message)).append($('<span>').addClass('time_date').text(testmsg(data[i].date_creation))))))
         }else{
             $('#msgbox').append($('<div>').addClass("outgoing_msg").append($('<div>').addClass('sent_msg').append($('<p>').text(data[i].message))))
         }
@@ -60,13 +59,42 @@ $('#msgbox').append($('<div>').addClass("incoming_msg").append($('<div>').addCla
 }
     
     
-function testmsg(){
-   data = "2018-06-19 00:00:00";
+function testmsg(data){
+    "2018-08-14"
     var heure =data.substr(11,5);
     var month = getMonth(data.substr(5,2));
-    var retour = heure + "|" + month
+    var retour = heure + "  |  " + data.substr(8,2) + " " + month
+
     return retour;
     
+}
+function prepareSendBtn(id){
+        $('#sendbtn').attr('onclick','sendmsg(' + id + ')')
+}
+
+function sendmsg(id){
+        var message = {message : $('#inputMsg').val()};
+        var destinataire = {destinataire : id}
+                    
+        var mp = {
+            message: $('#inputMsg').val(),
+            destinataire: id
+        }
+
+        console.log(mp);
+    $.ajax({
+        url : "http://dreamfrom/api/mp/"+id,
+        type: "POST",
+        data : mp,
+        success : function(e){
+            console.log(e);
+            getMessage(id);
+        },
+        error : function(e){
+           alert('Transmission échouée');
+        }
+
+    })
 }
 
 function getMonth(x){
