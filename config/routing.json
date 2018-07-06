@@ -1,7 +1,5 @@
 {
     "/": "HomeController:getHome",
-    "/login": "DefaultController:login",
-    "/logout": "DefaultController:logout",
     "/token": "UserController:testMail",
     "/membres": "UserController:getUsers",
     "/projets": "ProjetController:getProjet",    
@@ -11,20 +9,25 @@
     "/connexion": "UserController:modalConnexion",
     "/signin": "UserController:login",
     "/logout": "UserController:logout",
-    "/api/users":{
-        "GET":"UserController:getAll",
-        "DELETE":"UserController:deleteAll",
-        "POST":"UserController:test"
-    },
     "/profil": "ProfilController:getProfil",
-    "/edit": "ProfilController:editProfil",
     "/api/default/(:)":{
         "GET":"DefaultController:getByValue"
     },
     "/api/mp/(:)":{
-        "GET":"ProfilController:getMp"
+        "GET":"ProfilController:getMp",
+        "POST":"ProfilController:postMp"
     },
     "/api/edit/(:)":{
-        "PUT":"ProfilController:editProfil"
-    }
+        "POST":"ProfilController:editProfil"
+    },
+    "/api/projet/(:)":{
+        "GET":"ProfilController:getProjetJson"
+    },
+    "/api/default":{
+        "GET":"DefaultController:getDatasFromGET",
+        "POST":"DefaultController:getDatasFromPOST",
+        "PUT":"DefaultController:getDatasFromPUT",
+        "DELETE":"DefaultController:delete"
+    },
+    "/login": "DefaultController:login"
 }

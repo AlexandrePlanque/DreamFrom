@@ -198,21 +198,21 @@ html, body {
     font-family : testicule;
 }
 
-.down-arrow {
+/*.down-arrow {
     z-index: 1;
     min-height: 50px;
     min-width: 50px;
     background-position: center;
     background-repeat: no-repeat;
     padding-bottom: 75%;
-/*    background-size: cover;*/
+    background-size: cover;
 }
 
 .down-arrowimg {
     position: absolute;
     left :48%;
     top: 83%;
-}
+}*/
 
 .coeursurtoname {
     max-height: 30px;

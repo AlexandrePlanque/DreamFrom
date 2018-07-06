@@ -1,6 +1,35 @@
+$( document).ready(function(){
+    var url = $(location).attr('href');
+    switch (url.split('?')[0]) {
+            
+        case ("http://dreamfrom/") :
+            cleanUp()
+            $('#home').addClass('active')
+            break;
+        case("http://dreamfrom/projets") :
+            cleanUp()
+            $('#projet').addClass('active')
+            break;
+        case("http://dreamfrom/membres") :
+            cleanUp()
+            $('#membre').addClass('active')
+            break;
+        case("http://dreamfrom/bar") :
+            cleanUp()
+            $('#bar').addClass('active')
+            break;
+        case("http://dreamfrom/profil/") :
+            cleanUp()
+            $('#profil').addClass('active')
+            break;
+            
+    }
+            
+    
+
+})
+
 function search(){
-
-
 var yourSelect = document.getElementById( "theme" );
 var test = yourSelect.options[ yourSelect.selectedIndex ].value;
 
@@ -56,3 +85,9 @@ function disconnect(){
 
 }
 
+function cleanUp(){
+    $('#home').removeClass('active')
+    $('#projet').removeClass('active')
+    $('#membre').removeClass('active')
+    $('#profil').removeClass('active')
+}

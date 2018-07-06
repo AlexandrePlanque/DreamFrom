@@ -30,8 +30,6 @@ class DAOUser extends DAO {
                         . $entity->getDate_creation() . '\',\'' . $entity->getPrivilege_id() . '\',\'' 
                         . $entity->getAdresse_id() . '\',\'' . $entity->getActif_id() 
                         . '\',\'' . $entity->getTheme_id() . '\',\'' . $entity->getAvatar() . '\',\'' . $entity->getContact() . "')";
-//		echo $sql;
-
         $this->getPdo()->query($sql);
     }
 
@@ -43,7 +41,6 @@ class DAOUser extends DAO {
 
 		$sql = "SELECT *,theme.intitule as theme from user inner join theme on user.theme_id = theme.id WHERE user.id=". $id;
 		$statement = $this->getPdo()->query($sql);
-//                $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\User");
                 $result = $statement->fetch();
                 $entity = new User();
                 $entity->setId($result['0']);
@@ -61,28 +58,24 @@ class DAOUser extends DAO {
                 $entity->setTheme_id($result['theme_id']);
                 $entity->setTheme($result['intitule']);
                 $entity->setAvatar($result['avatar']);
-//                var_dump($entity);
 		return $entity;
 
 	}
 
-//        $sql = "UPDATE user SET pseudo = '" . $entity->getPseudo() . "',password = '" . $entity->getPassword() . "',nom = '" . $entity->getNom() . "',prenom = '" . $entity->getPrenom() . "',email = '" . $entity->getEmail() . "',civilite = '" . $entity->getCivilite() . "',tel = '" . $entity->getTel() . "',date_creation = '" . $entity->getDate_creation() . "',privilege_id = '" . $entity->getPrivilege_id() . "',adresse_id = '" . $entity->getAdresse_id() . "',actif_id = '" . $entity->getActif_id() . "',theme_id = '" . $entity->getTheme_id() . "',avatar = '" . $entity->getAvatar() . " WHERE id = " . $entity->getId();
-//        if ($this->getPdo()->exec($sql) !== 0) {
-//            echo "Updated";
-//        } else {
-//            echo "Failed";
-//        }
-//    }
-
+//$array est un tableau associatif qui permet la création dynamique de la requête SQL
 	public function update ($array){
-                var_dump($array);
-		$sql = "UPDATE user SET ".(isset($array['pseudo'])?"pseudo = '" . $entity->getPseudo() ."',password = '" : ""); //."pseudo = '" . $entity->getPseudo() ."',password = '" . $entity->getPassword() ."',nom = '" . $entity->getNom() ."',prenom = '" . $entity->getPrenom() ."',email = '" . $entity->getEmail() ."',civilite = '" . $entity->getCivilite() ."',tel = '" . $entity->getTel() ."',date_creation = '" . $entity->getDate_creation() ."',privilege_id = '" . $entity->getPrivilege_id() ."',adresse_id = '" . $entity->getAdresse_id() ."',actif_id = '" . $entity->getActif_id() ."',theme_id = '" . $entity->getTheme_id() ."',avatar = '" . $entity->getAvatar() ." WHERE id = ". $entity->getId();
-//		if ($this->getPdo()->exec($sql) !== 0){
-//			echo "Updated";
-//		} else {
-//			echo "Failed";
-//		}
-                echo $sql;
+		$sql = "UPDATE user SET ";
+                foreach($array as $key){
+                    if(key($array) !== "id"){
+                    $sql.= key($array) . " = '" . $key . "',"; 
+                    }
+                    next($array);
+                }
+
+                $sql = substr($sql,  0, -1)." WHERE id = ".$array['id'];
+
+                $this->getPdo()->exec($sql);
+
 	}
     public function delete($id) {
 
@@ -93,47 +86,11 @@ class DAOUser extends DAO {
     /* ____________________Repository methods____________________ */
 
     public function getAll() {
-//        $uri = explode('/', $_SERVER['REQUEST_URI']);
-//        $uris = $uri[(count($uri) - 1)];
-//        $argq = str_replace("?", "", $uris);
-//        $argu = array();
-//        $arg = explode("&", $argq);
-//        foreach ($arg as $a) {
-//            $b = explode("=", $a);
-//            array_push($argu, $b);
-//        };
-
-//        $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id";
-//        $statement = $this->getPdo()->query($sql);
-//        $results = $statement->fetchAll();
-//        $entities = array();
-//
-//        foreach ($results as $result) {
-//            $entity = new User();
-//            $entity->setId($result['id']);
-//            $entity->setPseudo($result['pseudo']);
-//            $entity->setPassword($result['password']);
-//            $entity->setNom($result['nom']);
-//            $entity->setPrenom($result['prenom']);
-//            $entity->setEmail($result['email']);
-//            $entity->setCivilite($result['civilite']);
-//            $entity->setTel($result['tel']);
-//            $entity->setDate_creation($result['date_creation']);
-//            $entity->setPrivilege_id($result['privilege_id']);
-//            $entity->setAdresse_id($result['adresse_id']);
-//            $entity->setActif_id($result['actif_id']);
-//            $entity->setTheme_id($result['intitule']);
-//            $entity->setAvatar($result['avatar']);
-//            array_push($entities, $entity);
-//        }
-//        return $entities;
                 $sql = "select * from user inner join theme on user.theme_id = theme.id order by date_creation asc";
 		$statement = $this->getPdo()->query($sql);
 		$results = $statement->fetchAll();
 		$entities = array();
-
 		foreach($results as $result){
-//                    var_dump($result);
 			$entity = new User();
 			$entity->setId($result['0']);
 			$entity->setPseudo($result['pseudo']);
@@ -149,9 +106,9 @@ class DAOUser extends DAO {
 			$entity->setActif_id($result['actif_id']);
 			$entity->setTheme_id($result['intitule']);
 			$entity->setAvatar($result['avatar']);
+			$entity->setContact($result['contact']);
 			array_push($entities,$entity);
 		}
-//                var_dump($entities);
 		return $entities;
     }
 
@@ -325,7 +282,7 @@ class DAOUser extends DAO {
     // methode qui permet de récupérer le rang privilége d'un utilisateur en fonction du Pseudo
     public function getRang($pseudo){
         
-        $sql = "SELECT privilege.rang FROM user INNER JOIN privilege WHERE user.privilege_id = privilege.id AND user.pseudo ='" .$pseudo."'";
+        $sql = "SELECT privilege.rang, user.id FROM user INNER JOIN privilege WHERE user.privilege_id = privilege.id AND user.pseudo ='" .$pseudo."'";
         $statement = $this->getPdo()->query($sql);
         $results = $statement->fetch();
         return $results;

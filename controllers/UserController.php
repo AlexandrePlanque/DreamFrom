@@ -241,6 +241,8 @@ class UserController extends Controller{
         // et on génère le Cookie
         if($dao->verifUser()){
             $user->setPrivilege_id($dao->getRang($_POST['pseudo'])['rang']);
+            $user->setId($dao->getRang($_POST['pseudo'])['id']);
+//            var_dump($user);
             $secu->generateCookie($user);
             
             echo "connexion réussie";

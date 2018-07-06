@@ -4,8 +4,8 @@ include "template/navbar.php";
 ?>
 
 
-<div class="row formulaire">
-                <div class="col-md-6 offset-md-3">
+<!--<div class="row formulaire">-->
+                <div class="col-md-6 offset-md-3 formulaire">
                    <div class="card card-outline-secondary">
                         <div class="card-header">
                             <h4 class="mb-0 text-center">Créer un compte</h3>
@@ -51,7 +51,7 @@ include "template/navbar.php";
                         </div>
                     </div>
                     </div>
-    </div>
+    <!--</div>-->
 
 <?php
 include "template/footer.php";

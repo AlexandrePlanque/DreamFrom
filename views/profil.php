@@ -2,26 +2,26 @@
 include "template/header.php";
 include "template/navbar.php";
 ?>
-<div class="container ">
+<div class="container containerdebug">
     <div class="row profilcont">
-        <div class="col-12 input-group profilpage">
+        <div class="col-12 input-group profilpage" id="contenuProfil">
 		<div class="col-3 ">
 			<div class="profile-sidebar">
 
 				<div class="profile-userbuttons">
-                                    <button type="button" class="btn custombtn activebtn" id="btnprofil">Mon Profil</button>
-                                    <button type="button" class="btn custombtn middlebtn" id="btnprojet">Mes Projets</button>
-                                    <button type="button lastone" class="btn custombtn" id="btnmsg">Mes Messages</button>
+                                    <button type="button" class="btn custombtn" id="btnprofil" onclick="displayProfil()">Mon Profil</button>
+                                    <button type="button" class="btn custombtn middlebtn" id="btnprojet" onclick="displayProjet()">Mes Projets</button>
+                                    <button type="button" class="btn custombtn" id="btnmsg" onclick="displayMessage()">Mes Messages</button>
 				</div>
                             
 			</div>
 		</div>
 
-<div class="col-6 mt-4 profil mb-4" id="toggleprofil">
-                   <div class="card-outline-secondary mt-2 debugprofil" id="">                        
+<div class="col-6 profil hide" id="toggleprofil">
+                   <div class="card-outline-secondary debugprofil" id="">                        
                        <div class="card-img-top">
                            <!--<img class="img-fluid profilavatar offset-1" src="http://<?= $_SERVER['SERVER_NAME']?>/image/User_Avatar_2.png">-->
-                           <img class="img-fluid profilavatar offset-1 mt-5" src="http://www.mag-ma.org/files/design/avatar_default.png">
+                           <img class="img-fluid profilavatar offset-1 mt-5" src="<?= $user->getAvatar() ?>">
                                     <button type="button" class="btn mt-3 avatarbtn">Modifier l'avatar</button>
                         </div>
                         <div class="card-body">
@@ -31,15 +31,17 @@ include "template/navbar.php";
                                     <!--<div class="form-group col-md-4 active-cyan-4">-->
                                 <div class="input-group mb-2 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
-                                       <div class="input-group-text"><i class="fas fa-user-circle"></i></div>
+                                       <div class="input-group-text">
+                                           <i class="fas fa-user-circle"></i>
+                                       </div>
                                    </div>
-                                        <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom" value='<?= $user->getNom() ?>'>
-                                    </div>
+                                    <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom" value='<?= $user->getNom() ?>'>
+                                </div>
                                 <div class="input-group mb-2 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-user-circle"></i></div>
                                    </div>
-                                        <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Prénom" value='<?= $user->getPrenom() ?>'>
+                                    <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Prénom" value='<?= $user->getPrenom() ?>'>
                                     </div>
                                 <div class="input-group mb-2 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
@@ -93,27 +95,30 @@ include "template/navbar.php";
 
                                      <div class="form-row mt-3 container-fluid">
                                 <div class="form-group col">
-                                    <button type="button" class="btn validbtn  float-right" id="btnedit" onclick="preparePut(<?= $user->getId() ?>, <?= $user->getAdresse_id() ?>)">Modifier le profil</button>
+                                    <button type="button" class="btn validbtn  float-right" data-toggle="modal" data-target="#validProfil" id="lateteafabien">Modifier le profil</button>
                                 </div>
                                      </div>
+                                
+
+                                
                             </form>
                             
                     </div>
                     </div>
 </div>
 <!--</div>-->
-<div class="col-6 mt-4 projetshow projetprofil hide" id="toggleprojet">
-    <div class='row' >
+<div class="col-6 projetshow hide" id="toggleprojet">
+    <div class='row' id="cardprojet">
         <?php foreach($projets as $projet) : ?>
         
-                            <div class="card card-outline-secondary text-center  mt-2  cardprojet">
+<div class="card card-outline-secondary text-center cardprojet">
   <div class="card-header">
-      <h4><?= $projet->getTitre()?></h4>
+      <h4 class="mt-1"><?= $projet->getTitre()?></h4>
   </div>
   <div class="card-body">
       <img class="card-img projetimg " src=" <?= $projet->getImage()?>">
     <p class="card-text">Progression</p>
-        <div class="progress custombgprogress mb-3">
+<div class="progress custombgprogress mb-3">
   <div class="progress-bar customprogress" style="width:<?= $projet->getFeatProgress()?>"></div>
 </div> 
 
@@ -129,7 +134,7 @@ include "template/navbar.php";
         <?php  endforeach; ?>
 </div>
                     </div>
-    </div>
+    <!--</div>-->
                             <!--                 Partie Message                      -->
                             
                             
@@ -139,7 +144,7 @@ include "template/navbar.php";
     <!--</div>-->
 <!--<div class="container">-->
                             <!--<h3 class=" text-center">Messaging</h3>-->
-<div class="messaging col-6 mt-4 " id="togglemsg">
+<div class="messaging col-7 hide" id="togglemsg">
       <div class="inbox_msg">
         <div class="inbox_people">
           <div class="headind_srch">
@@ -156,6 +161,7 @@ include "template/navbar.php";
           </div>
           <div class="inbox_chat">
             <?php foreach($users as $plouc) : ?>
+              <?php if($user->getId() !== $plouc->getId() && $plouc->getContact() !== "0") : ?>
             <div class="chat_list active_chat">
               <div class="chat_people">
                   <div class="chat_img"> <img src="<?= $plouc->getAvatar() ?>" alt="sunil"> </div>
@@ -164,13 +170,14 @@ include "template/navbar.php";
                 </div>
               </div>
             </div>
+              <?php endif; ?>
               <?php endforeach;?>
           </div>
         </div>
           <div class="inbox_chat">
             <div class="chat_list active_chat">
             <div class="msg_history" id="msgbox">
-            <div class="incoming_msg">
+<!--            <div class="incoming_msg">
               <div class="incoming_msg_img"> 
                   <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> 
               </div>
@@ -222,19 +229,22 @@ include "template/navbar.php";
                   <p>Test, which is a new approach to have</p>
                   <span class="time_date"> 11:01 AM    |    Yesterday</span></div>
               </div>
-            </div>
+            </div>-->
           </div>
         </div>
       </div>
               <div class="type_msg offset-5">
             <div class="input_msg_write">
-              <input type="text" class="write_msg" placeholder="Type a message" />
-              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+              <input type="text" class="write_msg" placeholder="Type a message" autocomplete="off" id="inputMsg"/>
+              <button class="msg_send_btn" type="button" id="sendbtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
             </div>
           </div>
     </div>
     </div>
     </div>
+    </div>
+    <!--</div>-->
+    <!--<div id="id"></div>-->
     </div>
 <!--        <div class="mesgs hide">
           <div class="msg_history">
@@ -284,9 +294,6 @@ include "template/navbar.php";
             </div>
           </div>
         </div>-->
-<?php
-include "template/footer.php";
-?>
 
 <!--            <div class="chat_list">
               <div class="chat_people">
@@ -348,3 +355,53 @@ include "template/footer.php";
                 </div>
               </div>
             </div>-->
+
+<div class="card card-outline-secondary text-center  cardprojet hide" id="hidden">
+  <div class="card-header">
+      <h4><?= $projet->getTitre()?></h4>
+  </div>
+  <div class="card-body">
+      <img class="card-img projetimg " src=" <?= $projet->getImage()?>">
+    <p class="card-text">Progression</p>
+<div class="progress custombgprogress mb-3">
+  <div class="progress-bar customprogress" ></div>
+</div> 
+
+<div id="bar-basic" value="100">
+   
+</div>
+    <a href="#" class="btn btn-primary">Accéder au projet</a>
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
+
+ <div class="modal fade" id="validProfil" href="javascript:;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Confirmation</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Souhaitez vous confirmer ces changements ?
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary float-right" onclick="preparePut(<?= $user->getId()?>, <?= $user->getAdresse_id()?>)" data-dismiss="modal">Confirmer</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+<?php
+include "template/footer.php";
+?>

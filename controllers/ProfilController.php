@@ -8,6 +8,7 @@ use BWB\Framework\mvc\dao\DAOProjet;
 use BWB\Framework\mvc\dao\DAOMp;
 use BWB\Framework\mvc\models\User;
 use BWB\Framework\mvc\models\Adresse;
+use BWB\Framework\mvc\models\Mp;
 use ReflectionClass;
 
 
@@ -28,7 +29,7 @@ use ReflectionClass;
 class ProfilController extends Controller{
     
     public function getProfil(){
-        $dao = (new DaoUser())->retrieve(1);
+        $dao = (new DaoUser())->retrieve(json_decode($_COOKIE['cookie'],true)['id']);
         $dao->setAdresse((new DAOAdresse())->retrieve($dao->getAdresse_id()));
 //        $this->getMp(1);
         $data = array("user" => $dao, "themes" => $this->getTheme(), "projets" => $this->getProjet(), "users" => ((new DAOUser())->getAll()));
@@ -42,8 +43,14 @@ class ProfilController extends Controller{
     }
     
     private function getProjet(){
-        return (new DAOProjet())->getProfilProjet(1);
+        return (new DAOProjet())->getProfilProjet(json_decode($_COOKIE['cookie'],true)['id']);
        
+    }
+    
+    public function getProjetJson($id){
+//        $id=1;
+        header("Content-Type:Application/json");
+        echo json_encode((new DAOProjet())->getProfilProjetJson(1));
     }
     
     public function test(){
@@ -51,7 +58,12 @@ class ProfilController extends Controller{
     }
     
     public function editProfil(){
-        var_dump($this->inputPut());
+//        header('Content-Type:application/json; charset=utf-8');
+        $data = $this->inputPost();
+        ((new DAOUser())->update($data['user']));
+        ((new DAOAdresse())->update($data['adresse']));
+//        echo json_encode($this->inputPut());
+//        var_dump($this->inputPut());
 //        var_dump( ((new User())->setNom($this->inputPost()['nom'])->setPrenom($this->inputPost()['prenom'])));
 //        (new DAOUser())->update($this->inputPost());
         $this->prepareUser();
@@ -85,7 +97,28 @@ class ProfilController extends Controller{
     
     public function getMp($value){
 
-        $mp = json_encode((new DAOMp())->getAllFor($value));
+        $mp = json_encode((new DAOMp())->getAllFor($value, json_decode($_COOKIE['cookie'],true)['id']));
         echo ($mp);
+    }
+    
+    public function postMp(){
+//                echo "ok"
+//                var_dump(($data['message']));
+        header("Content-Type:text/plain");
+        $data = $this->inputPost();
+        $mpObj = new Mp();
+        $mpObj->setMessage($data['message']);
+        $mpObj->setDestinataire($data['destinataire']);
+        $mpObj->setUser_id(json_decode($_COOKIE['cookie'],true)['id']);
+        $mpObj->setDate_creation(date("Y-m-d H:i:s"));
+        var_dump($mpObj);
+        echo date("Y-m-d H:i:s");
+//        var_dump($this->inputPost());
+////        $mpObj->setDestinataire($this->inputPost()['destinataire']);
+//        echo "alert(". $data['message'] .");";
+//        var_dump($mpObj);
+//        
+        (new DAOMp())->create($mpObj);
+        
     }
 }

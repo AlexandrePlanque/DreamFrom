@@ -1,3 +1,5 @@
+.
+
 .custombtn{
     border-left: 15px solid #0B59D0;
     /*border-width: 10px!important;*/ 
@@ -7,23 +9,17 @@
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
-        border-top-width: 0px!important;
-        border-bottom-width: 0px!important;
+    border-top-width: 0px!important;
+    border-bottom-width: 0px!important;
 }
 
 .middlebtn{
     margin-bottom: 1px;
     margin-top: 1px;
-    
-    
 }
-
-
-
 
 .profile-userbuttons{
     border: 1px solid #b1dafb;
-    margin-top: 30px;
 }
 .profile-userbuttons button{
     display: block;
@@ -64,7 +60,8 @@
 }
 
 .projetimg{
-    width: 40%!important;
+    width: 80%!important;
+    height: 50% !important;
 }
 
 .cardprojet{
@@ -104,7 +101,24 @@
 .projetshow{
     padding-bottom: 200px;
 }
-.profilpage{
-    min-height:700px!important;
+
+/*.profilcont{
+    margin-bottom: 30%;
+}*/
+
+.containerdebug{
+    padding: 60px 0;
+    max-width:1280px;
+    min-height:100%;
+    margin:0 auto;
+    position:relative;
+
 }
 
+body.modal-open {
+    overflow: visible;
+    position: absolute;
+    /*overflow-x:  auto;*/
+    width: 101%;
+    height:101%;
+}

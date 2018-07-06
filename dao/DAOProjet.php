@@ -180,6 +180,22 @@ class DAOProjet extends DAO {
 		return $projets;
             }
             
+        public function getProfilProjetJson($id){
+            $sql = "select * from projet inner join user_projet on projet.id = user_projet.projet_id where user_projet.user_id =".$id;
+            $statement = $this->getPdo()->query($sql);
+            $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Projet");
+            $projets = $statement->fetchAll();
+            $retour = array();
+            foreach($projets as $projet){
+                $projet->setFeatProgress($this->getProjetFeature($projet->getId()));
+                array_push($retour,$projet->JsonSerialize());
+            }
+//            var_dump($projets);
+		return $retour;
+            }
+
+            
+            
         public function getProjetFeature($idp){
             $sql = "select * from projet_feature where projet_id =" . $idp;
             $statement = $this->getPdo()->query($sql);
