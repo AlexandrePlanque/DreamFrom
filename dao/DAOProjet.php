@@ -109,13 +109,6 @@ class DAOProjet extends DAO {
         $sql = "SELECT *, theme.intitule FROM projet inner join theme on projet.theme_id = theme.id";
         $i = 0;
         foreach ($filter as $key => $value) {
-//			if($i===0){
-//				$sql .= " WHERE ";
-//			} else {
-//				$sql .= " AND ";
-//			}
-//			$sql .= $key . " = " . $value . "'";
-
             $sql .= $value;
             $i++;
         }
@@ -137,11 +130,16 @@ class DAOProjet extends DAO {
         }
         return $entities;
     }
-
-
-
- 
-
+    
+    // cette fonction récupère le nombre de participants d'un projet pour l'afficher dans la card
+    public function getNbParticipants($id) {
+        // req sql pour compter dans la table user_projet les particpants selon l'id du projet
+        $sql = "SELECT COUNT(*) as participants FROM user_projet WHERE projet_id = " . $id;
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetch();
+        // return à partir du tableau $results de la donnée égale à la clef "participants"
+        return $results["participants"];
+    }
 
 
     // fonction qui va vérifier si le projet existe déja dans la BDD
@@ -177,41 +175,6 @@ class DAOProjet extends DAO {
     }
 
 
-
-//                    $sql .= $value;
-//			$i++;
-//		}
-//                echo $sql;
-//		$entities = array();
-//		$statement = $this->getPdo()->query($sql);
-//		$results = $statement->fetchAll();
-//		foreach($results as $result){
-//			$entity = new Projet;
-//			$entity->setId($result['id']);
-//			$entity->setTitre($result['titre']);
-//			$entity->setDescription($result['description']);
-//			$entity->setChef_projet($result['chef_projet']);
-//			$entity->setDate_creation($result['date_creation']);
-//			$entity->setDate_modif($result['date_modif']);
-//			$entity->setTheme_id($result['theme_id']);
-//			$entity->setImage($result['image']);
-//			array_push($entities,$entity);
-//		}
-//		return $entities;
-//	}
-
-        // cette fonction récupère le nombre de participants d'un projet pour l'afficher dans la card
-        public function  getNbParticipants($id) {
-            // req sql pour compter dans la table user_projet les particpants selon l'id du projet
-            $sql = "SELECT COUNT(*) as participants FROM user_projet WHERE projet_id = ".$id;
-            $statement = $this->getPdo()->query($sql);
-		$results = $statement->fetch();
-            // return à partir du tableau $results de la donnée égale à la clef "participants"
-                return $results["participants"];
-        }
-        
-
-        
         // cette fonction récupère le nom du chef de projet pour l'afficher dans la card.
         public function getNomLeader($id){
             //req sql qui joint les tables user et projet
@@ -222,7 +185,6 @@ class DAOProjet extends DAO {
 		$results = $statement->fetch();
                 return $results['pseudo'];
         }
-
         
         // cette fonction récupère les features pour afficher le %age achevé
         public function featureProgress($id){
@@ -242,8 +204,6 @@ class DAOProjet extends DAO {
             //traitement de results pour en obtenir un %age 
             return $pourcentage."%";
         }
-         
-         
 
         public function getProfilProjet($id){
             $sql = "select * from projet inner join user_projet on projet.id = user_projet.projet_id where user_projet.user_id =".$id;
@@ -255,6 +215,22 @@ class DAOProjet extends DAO {
             }
 		return $projets;
             }
+            
+        public function getProfilProjetJson($id){
+            $sql = "select * from projet inner join user_projet on projet.id = user_projet.projet_id where user_projet.user_id =".$id;
+            $statement = $this->getPdo()->query($sql);
+            $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Projet");
+            $projets = $statement->fetchAll();
+            $retour = array();
+            foreach($projets as $projet){
+                $projet->setFeatProgress($this->getProjetFeature($projet->getId()));
+                array_push($retour,$projet->JsonSerialize());
+            }
+            
+		return $retour;
+            }
+
+            
             
         public function getProjetFeature($idp){
             $sql = "select * from projet_feature where projet_id =" . $idp;
@@ -274,4 +250,3 @@ class DAOProjet extends DAO {
             
         }
 }
-

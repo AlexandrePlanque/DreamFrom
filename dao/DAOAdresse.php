@@ -32,19 +32,21 @@ class DAOAdresse extends DAO {
 		$statement = $this->getPdo()->query($sql);
                 $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Adresse");
                 $test = $statement->fetch();
-//                var_dump($test);
 		return $test;
 	}
 
 
 	public function update ($array){
 
-		$sql = "UPDATE adresse SET rue = '" . $entity->getRue() ."',numero = '" . $entity->getNumero() ."',code_postal = '" . $entity->getCode_postal() ."',ville = '" . $entity->getVille() ." WHERE id = ". $entity->getId();
-		if ($this->getPdo()->exec($sql) !== 0){
-			echo "Updated";
-		} else {
-			echo "Failed";
-		}
+		$sql = "UPDATE adresse SET ";
+                foreach($array as $key){
+                    if(key($array) !== "id"){
+                    $sql.= key($array) . " = '" . $key . "',"; 
+                    }
+                    next($array);
+                }
+                $sql = substr($sql,  0, -1)." WHERE id = ".$array['id'];
+                $this->getPdo()->exec($sql);
 	}
 
 

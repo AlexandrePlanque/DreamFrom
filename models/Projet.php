@@ -1,13 +1,15 @@
 <?php
 namespace BWB\Framework\mvc\models;
+
+use JsonSerializable;
 /* 
 *creer avec l'objet issue de la classe CreateEntity Class 
 */
 
 
-Class Projet {
+Class Projet implements JsonSerializable {
 
-		private $id;
+    private $id;
 
 		private $titre;
 
@@ -134,7 +136,21 @@ Class Projet {
 		return $this->featProgress;
 	}
 
-	public function setFeatProgress ($val){
+    public function setFeatProgress ($val){
 		$this->featProgress = $val;
 	}   
+        
+    public function jsonSerialize() {
+          return ([
+                'id' => $this->getId(),
+                'titre' => $this->getTitre(),
+                'description' => $this->getDescription(),
+                'date_creation' => $this->getDate_creation(),
+                'date_modif' => $this->getDate_modif(),
+                'theme_id' => $this->getTheme_id(),
+                'image' => $this->getImage(),
+                'leader' => $this->getLeader(),
+                'featProgress' => $this->getFeatProgress(),
+                ]);
+    }
 }

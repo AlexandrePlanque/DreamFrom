@@ -114,9 +114,11 @@ class UserController extends Controller{
         $user = new User();
         $dao = new DAOUser();
         $secu = new MySecu();
-
-
-
+        
+        $adresse->setCode_postal(0);
+        $adresse->setRue(0);
+        $adresse->setVille("null");
+        $adresse->setNumero(0);
 
         // création d'une variable pour stocker la date actuelle au bon format
         $datetime = date("Y-m-d");
@@ -140,7 +142,7 @@ class UserController extends Controller{
         $user->setTheme_id("1");
         $user->setAvatar("");
         $user->setContact(1);
-
+        var_dump($user);
         // on fait appel a la methode create du DAOUser 
         // on génère un token JWT et on vérifie si les données correspondent au POST du formulaire
 
@@ -241,6 +243,8 @@ class UserController extends Controller{
         // et on génère le Cookie
         if($dao->verifUser()){
             $user->setPrivilege_id($dao->getRang($_POST['pseudo'])['rang']);
+            $user->setId($dao->getRang($_POST['pseudo'])['id']);
+
             $secu->generateCookie($user);
             
             echo "connexion réussie";

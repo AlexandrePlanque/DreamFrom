@@ -96,22 +96,19 @@ class MySecu extends SecurityMiddleware{
         // on stocke dans un tableau le Pseudo et le Privilege de l'utilisateur
         $info = array(
             "pseudo" => $user->getPseudo(),
-            "privilege" => $user->getPrivilege_id()
+            "privilege" => $user->getPrivilege_id(),
+            "id" => $user->getId()
         );
         
         // on encode le tableau au format Json pour pouvoir le stocker dans le Cookie
         $data = json_encode($info);
 
         // on insère les données dans le Cookie et sa durée
-        
-//        setcookie("cookie",$data,time()-3600,"/");
-        
+
         setcookie("cookie",$data,time()+3600*24,"/");
-//        echo "yeah";
+        
         header('location: http://'.$_SERVER['SERVER_NAME'].'/');
-        var_dump($_COOKIE["cookie"]);
-        
-        
+        die;
         
     }
     

@@ -18,9 +18,10 @@ class DAOMp extends DAO {
 /* ____________________Crud methods____________________*/
 
 
-	public function create ($array){
+	public function create ($entity){
 
-		$sql = "INSERT INTO mp (sujet,destinataire,message,date_creation,user_id) VALUES('" . $entity->getSujet() . ',' . $entity->getDestinataire() . ',' . $entity->getMessage() . ',' . $entity->getDate_creation() . ',' . $entity->getUser_id() . "')";
+		$sql = "INSERT INTO mp (destinataire,message,date_creation,user_id, vu) VALUES('" . $entity->getDestinataire() . "','" . $entity->getMessage() . "','" . $entity->getDate_creation() . "','" . $entity->getUser_id() . "','" . 0 . "')";
+                echo $sql;
 		$this->getPdo()->query($sql);
 	}
 
@@ -80,16 +81,15 @@ class DAOMp extends DAO {
 	}
 
         //dédié à récuperer tout les mp concernant un utilisateur
-	public function getAllFor ($id){
-		$sql = "SELECT * FROM mp order by date_creation";
+	public function getAllFor ($id, $ide){
+		$sql = "SELECT * FROM mp order by date_creation DESC";
 		$statement = $this->getPdo()->query($sql);
 		$results = $statement->fetchAll();
 		$entities = array();
+
 		foreach($results as $result){
-			if(($result["user_id"] === (string)$id) || ($result['destinataire'] === (string)$id)){
-//                            echo "<hr>";
-//                            var_dump(((new DAOUser())->getAvatar($result['destinataire'])['avatar']));
-//                            echo "<hr>";
+
+			if(($result["user_id"] === (string)$id )&& ($result["destinataire"] === (string)$ide) || ($result["user_id"] === (string)$ide )&& ($result["destinataire"] === (string)$id)){
                             $entity = array( "sujet" => $result['sujet'], "message" => $result['message'], 
                                 "date_creation" => $result['date_creation'], "destinataire" => $result['destinataire'], 
                                 "avatarD" => ((new DAOUser())->getAvatar($result['destinataire'])['avatar']),"expediteur" => $result['user_id'],
@@ -97,6 +97,7 @@ class DAOMp extends DAO {
                             array_push($entities,$entity);
                         }
 		}
+
 		return $entities;
 	}
 
