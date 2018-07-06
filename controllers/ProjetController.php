@@ -13,7 +13,7 @@ use BWB\Framework\mvc\models\Theme;
 use BWB\Framework\mvc\dao\DAOProjet;
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\dao\DAOTheme;
-
+use BWB\Framework\mvc\dao\DAOFeature;
 
 /**
  *
@@ -65,9 +65,11 @@ class ProjetController extends Controller{
         }
         return $retour;
     }
-    
+        
     public function ficheProjet(){
         $this->render('ficheprojet');
     }
+
 }       
 
+ 

@@ -10,6 +10,8 @@ Class Feature {
 		private $id;
 
 		private $nom;
+                
+                private $etat;
 
 
 /* ____________________ Getter and Setter Part ____________________ */
@@ -34,4 +36,12 @@ Class Feature {
 		$this->nom = $val;
 	}
 
+        public function getEtat (){
+		return $this->etat;
+	}
+
+
+	public function setEtat ($val){
+		$this->etat = $val;
+	}
 }

@@ -2,6 +2,9 @@
     "/": "HomeController:getHome",
     "/token": "UserController:testMail",
     "/membres": "UserController:getUsers",
+    "/creationProjet":"CreateProjetController:createProj",
+    "/createProjet": "CreateProjetController:getview",
+
     "/projets": "ProjetController:getProjet",
     "/projet": "ProjetController:ficheProjet",
     "/inscription": "UserController:register",
