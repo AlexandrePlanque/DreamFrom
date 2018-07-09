@@ -1,12 +1,3 @@
-<html>
-    <head>
-        <script src="http://<?= $_SERVER['SERVER_NAME'] ?>/css/bootstrap/js/bootstrap.min.js"></script>
-        <link href="http://<?= $_SERVER['SERVER_NAME'] ?>/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="http://<?= $_SERVER['SERVER_NAME'] ?>/css/style.css">
-        <link rel="stylesheet" type="text/css" href="http://<?= $_SERVER['SERVER_NAME'] ?>/css/createproj.css">
-    </head>
-    <body>
 
         <?php
         /**
@@ -18,7 +9,7 @@
 
         ?>
         <br>
-        <section class="container-fluid details_projet">
+        <section class="container-fluid details_projet background_projet">
             <div class="row">
                 <div class="projet_form col-xs-12 col-sm-10 col-md-8 offset-2">
                     <h1 class="projet_title text-center">Créez votre projet !</h1>
@@ -48,7 +39,7 @@
                       
                         <div class="btn-group btn-custom offset-5" role="group" aria-label="Basic example">
                          <button type="submit" class="btn btn-info">Valider</button>
-                         <button TYPE='button' value='Annuler' onclick='location.href="createProjet"' class="btn btn-secondary">Annuler</button>
+                         <button TYPE='button' value='Annuler' onclick='location.href="/"' class="btn btn-secondary">Annuler</button>
                       
                         </div>
                     </form>
@@ -58,5 +49,3 @@
         <?php
         include "template/footer.php";
         ?>
-    </body>
-</html>

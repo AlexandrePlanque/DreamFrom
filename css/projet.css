@@ -140,6 +140,10 @@ a{
     width: 25%;
 }
 
+.imgProjet{
+    max-height: 392px!important;
+}
+
 .info{
     text-align: left;
     margin-top: 20px;
@@ -173,12 +177,28 @@ a{
   color: #333;
 }*/
 
+.ficheprojetparti{
+    background-color:#ececec;
+}
 
+.participantContain{
+    margin-left:25px;
 
+    /*margin-right:25px;*/
+}
+.optiFooterCard{
+    background-color: #ececec;
+}
 
+.background_projet{
+    background-image: url('../image/background_projets.png') !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover!important;
+    min-height: 50%;
+    height: 100%;
+}
 
-
-
-
-
-
+.fichproj{
+    margin-bottom: 50px;
+}

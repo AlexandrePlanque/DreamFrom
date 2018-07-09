@@ -21,3 +21,13 @@
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/animate.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <a name="haut" id="haut"></a>
+        <div><a id="cRetour" class="cInvisible" href="#haut"></a></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                window.onscroll = function (ev) {
+                    document.getElementById("cRetour").className = (window.pageYOffset > 500) ? "cVisible" : "cInvisible";
+                };
+            });
+        </script>
+

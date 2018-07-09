@@ -24,7 +24,7 @@ class JoinProjetController extends Controller{
     public function getUser() {
         
     // initialisation du DAO user 
-        setcookie("cookie","jacksparrow",time()+3600*24,"/");
+        
         $infoUser = new DAOUser;
         
    // récupère l'id du user en cours

@@ -48,13 +48,22 @@ class DAOProjet extends DAO {
         $statement = $this->getPdo()->query($sql);
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         $entity = new Projet();
-        $entity->setTitre();
-        $entity->setDescription();
-        $entity->setChef_projet();
-        $entity->setDate_creation();
-        $entity->setDate_modif();
-        $entity->setTheme_id();
-        $entity->setImage();
+        $entity->setId($result['id']);
+        $entity->setTitre($result['titre']);
+        $entity->setDescription($result['description']);
+        $entity->setParticipants($this->getNbParticipants($id));
+        $entity->setDate_creation($result['date_creation']);
+        $entity->setDate_modif($result['date_modif']);
+        $entity->setTheme_id($result['theme_id']);
+        $entity->setLeader($this->getNomLeader($id));
+        $entity->setImage($result['image']);
+        $entity->setFeatProgress($this->featureProgress($id));
+        $entity->setTheme($this->getTheme($result['theme_id']));
+        $entity->setLeader($this->getLeader($id));
+        $entity->setFeature($this->getFeature($id));
+//        var_dump($this->getProjetFeature($id));
+//        var_dump($this->featureProgress($id));
+//        var_dump($this->getFeature($id));
         return $entity;
     }
 
@@ -140,6 +149,25 @@ class DAOProjet extends DAO {
         return $results["participants"];
     }
 
+    public function getTheme($id){
+        $sql = "Select intitule from theme where id =". $id;
+//        echo $sql;
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetch();
+        return $results["intitule"];
+        
+    }
+    
+    public function getInfoParti($id){
+        $sql = "select id from user inner join user_projet on user_projet.user_id = user.id where user_projet.projet_id = ". $id;
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetchAll();
+        $users = array();
+        foreach($results as $result){
+            array_push($users, (new DAOUser())->retrieve($result['id']));
+        }
+            return $users;
+    }
 
     // fonction qui va vérifier si le projet existe déja dans la BDD
     public function verifProjet() {
@@ -183,6 +211,15 @@ class DAOProjet extends DAO {
             $statement = $this->getPdo()->query($sql);
 		$results = $statement->fetch();
                 return $results['pseudo'];
+        }
+        
+        public function getLeader($id){
+            $sql = "SELECT user.* from user INNER JOIN user_projet where user.id = user_projet.user_id AND user_projet.projet_id = ".$id." AND user_projet.droit_projet = 1";    
+            $statement = $this->getPdo()->query($sql);
+            $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\User");
+            $leader = $statement->fetch();
+            return $leader;
+            
         }
         
         // cette fonction récupère les features pour afficher le %age achevé
@@ -244,8 +281,16 @@ class DAOProjet extends DAO {
                 $testi =0;
                     }
             }
-
             return $testi."%";
+            
+        }
+        
+        public function getFeature($id){
+            $sql = "select feature.*, projet_feature.etat from feature inner join projet_feature on feature.id = projet_feature.feature_id where projet_feature.projet_id =".$id;
+            $statement = $this->getPdo()->query($sql);
+            $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Feature");
+            $features = $statement->fetchAll();
+            return $features;
             
         }
 }

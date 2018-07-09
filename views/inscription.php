@@ -4,7 +4,7 @@ include "template/navbar.php";
 ?>
 
 
-<!--<div class="row formulaire">-->
+<div class="team">
                 <div class="col-md-6 offset-md-3 formulaire">
                    <div class="card card-outline-secondary">
                         <div class="card-header">
@@ -51,7 +51,8 @@ include "template/navbar.php";
                         </div>
                     </div>
                     </div>
-    <!--</div>-->
 
+    </div>
 <?php
 include "template/footer.php";
+?>

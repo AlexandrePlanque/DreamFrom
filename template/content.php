@@ -1,23 +1,21 @@
-
-
-<div class="container-fluid select_home " id="secondpart">
-    <div class="row">
-        <ul class="content_width">
-                <li class="one col-md-3 col-sm-6 col-xs-12"><a class="hvr-underline-from-center" href="#">Sélection</a></li><!--
-              --><li class="two col-md-3 col-sm-6 col-xs-12"><a class="hvr-underline-from-center" href="#">Projets</a></li><!--
-              --><li class="three col-md-3 col-sm-6 col-xs-12"><a class="hvr-underline-from-center" href="#">Membres</a></li><!--
-              --><li class="four col-md-3 col-sm-6 col-xs-12"><a class="hvr-underline-from-center" href="#">Evenements</a></li>
-              <!--<hr/>-->
-        </ul>    
-    </div>
-</div>
-
-<div class="select_result container-fluid">
-    <div class="row news">
-        <p class="titreN">Bloc des News</p>
-    </div>
-</div>
-<section class="content-home">
+<ul class="nav select_home3" id="secondpart">
+                <li class="nav-item ">
+                    <a class="hvr-underline-from-center nav-link" data-toggle="tab" href="#selection" role="tab">Selection</a>
+                    <div class="underline"></div>
+                </li>
+                <li class="nav-item">
+                    <a class="hvr-underline-from-center nav-link" data-toggle="tab" href="#projets" role="tab">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="hvr-underline-from-center nav-link" data-toggle="tab" href="#membres" role="tab">Membres</a>
+                </li>
+            </ul>
+            <div class="tab-content select_result">
+                <div class="tab-pane" id="selection" role="tabpanel">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
+                <div class="tab-pane" id="projets" role="tabpanel">Lorem Ipsum has been the industry's standard dummy</div>
+                    <div class="tab-pane" id="membres" role="tabpanel">En construction 1</div>
+            </div>
+<div class="content-home">
  <!--       <img src="../image/background_description_home.png">-->
     <div class="container-fluid">
         <div class="row">
@@ -30,6 +28,27 @@
                 </a>
             </div>
         </div>
-    </div>    
-</section>    
-
+    </div>   
+    <div class="container-fluid">
+        <div class="row">
+          <div class="fx3 custom_prez">
+            <a href="/projets">
+                <div class="item col4 mr-3">
+                    <img class="transition img-responsive" src="../image/projets2.jpg">
+                    <h4>Liste des Projets</h4>
+                    <p>Consultez les projets et devenez collaborateur</p>
+                </div>
+            </a>
+            <a href="/membres">
+                <div class="item col4">
+                    <img class="transition img-responsive" src="../image/membres.jpg">
+                    <h4>Liste des Membres</h4>
+                    <p>Consultez les membres et invitez les sur votre projet</p>
+                </div>
+            </a>
+        
+            
+        </div> 
+    </div>
+    </div>
+</div> 

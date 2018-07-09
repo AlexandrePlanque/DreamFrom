@@ -1,13 +1,3 @@
-<html>
-    <head>
-        <script src="http://<?= $_SERVER['SERVER_NAME']?>/css/bootstrap/js/bootstrap.min.js"></script>
-        <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="http://<?= $_SERVER['SERVER_NAME']?>/css/style.css">
-        <link rel="stylesheet" type="text/css" href="http://<?= $_SERVER['SERVER_NAME']?>/css/projet.css">
-    </head>
-    <body>
-        
     <?php
 /**
  * cette page présente la page des projets
@@ -17,8 +7,9 @@ include "template/header.php";
 include "template/navbar.php";
 
 ?>
-        <div class="container-fluid">
-            <div class="row">
+        <div class="background_projet">
+        <div class="container">
+            <div class="row col-12">
                 <select class="form-control col-3 mr-5" id="theme">
                     <option value="">Tous les themes</option>
                         <?php foreach($themes as $theme) : ?>
@@ -45,14 +36,14 @@ include "template/navbar.php";
             <div class="row">
                 <a href="/createProjet" class="btn btn-info creat_proj offset-10" role="button">Créer un projet</a>
             </div>
-            </br>
+    
         <div class="row">
 <?php foreach($projets as $projet) : ?>
     
         <div class="col-xs-12 col-sm-4 col-md-3" >
             <div class="card_global">
                 <a class="card_detail" href="http://dreamfrom/projets/<?= $projet->getID() ?>">
-                    <p><img class=" img-fluid projet_image" src="<?= $projet->getImage() ?>" alt="projet image"></p>
+                    <img class=" img-fluid projet_image" src="<?= $projet->getImage() ?>" alt="projet image">
                         <div >
                             <h4 class="card_title"><?= $projet->getTitre() ?></h4>
                                 <div class="card_bottom">
@@ -75,13 +66,7 @@ include "template/navbar.php";
             </div>
 <?php
 endforeach;?>
+<?php include "template/footer.php";?>
         </div>
 
         </div>
-    
-</section>
-<?php
-include "template/footer.php";
-?>
-</body>
-</html>
