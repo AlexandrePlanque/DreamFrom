@@ -7,7 +7,7 @@ function get_projet_id(){
     
 //    var projet_Id = {
 //            projetId : 21};
-    console.log(projet_Id);
+//    console.log(projet_Id);
     
 //    console.log(data);
     $.ajax({
@@ -24,4 +24,18 @@ function get_projet_id(){
         }
 
     });
+}
+
+function not_yet(){
+    
+    $.ajax({
+        type: "GET",
+            
+    });
+    var user_projet = "";
+    if ((user_projet !==0) ||(user_projet !==1)){
+        $("#notyetmember").show;
+    }else{
+        $("#notyetmember").hidden;
+    }
 }

@@ -166,7 +166,16 @@ a{
 .btn-custom01{
     padding-top: 2%;
 }
-
+.notyetmember{
+    /*visibility: visible;*/
+    /*visibility: hidden;*/
+    display : none;
+}
+.ifmember{
+    text-align: left;
+    margin-bottom: 20px;
+    /*visibility: hidden;*/
+}
 /*.select_home2 a {
   color: #333;
 }*/

@@ -31,11 +31,16 @@ include "template/navbar.php";
                     <p class="info d-none d-md-block">15 Participants</p>
                     <p class="info d-none d-md-block">jeux video</p>
                     <div class="info">
-                        <button type="button" class="btn btn-info d-none d-md-block">Rejoindre le Projet</button>
+                        <button id="notyetmember" type="button" class="btn btn-info d-none d-md-block notyetmember">Rejoindre le Projet</button>
+                    </div>
+                    <div id="ifmember" class="info ">    
+                            <button type="button" class="ifmember btn btn-info d-none d-md-block">Créer une fonctionnalité</button>
+                            <button type="button" class="btn btn-info d-none d-md-block">Quitter le projet</button>                        
                     </div>
                 </div>
 
             </div>
+            
         </div>
         <div class="animated fadeInRight">
             <div class="row">
