@@ -67,7 +67,7 @@ class ProjetController extends Controller{
     }
         
     public function ficheProjet($id){
-//       var_dump((new DAOProjet())->getFeature($id));
+
         $this->render('ficheprojet', array("projet" => (new DAOProjet())->retrieve($id), "participants" => (new DAOProjet())->getInfoParti($id), "features" => (new DAOProjet())->getFeature($id)));
     }
 

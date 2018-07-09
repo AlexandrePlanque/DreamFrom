@@ -43,7 +43,7 @@ class DAOProjet extends DAO {
     }
 
     public function retrieve($id) {
-
+        
         $sql = "SELECT * FROM projet WHERE id=" . $id;
         $statement = $this->getPdo()->query($sql);
         $result = $statement->fetch(PDO::FETCH_ASSOC);
@@ -61,9 +61,10 @@ class DAOProjet extends DAO {
         $entity->setTheme($this->getTheme($result['theme_id']));
         $entity->setLeader($this->getLeader($id));
         $entity->setFeature($this->getFeature($id));
-//        var_dump($this->getProjetFeature($id));
-//        var_dump($this->featureProgress($id));
-//        var_dump($this->getFeature($id));
+        //On utilise ce setter uniquement si un utilisateur est connecter sinon il n'y a pas lieu d'utiliser ce setter dédié à une vérif de participation
+        //sur le projet courant
+        (isset($_COOKIE['cookie']))?$entity->setCurrentUserIn($this->CheckCurrentUser(json_decode($_COOKIE["cookie"],true)['id'],$id)):"";
+
         return $entity;
     }
 
@@ -292,5 +293,16 @@ class DAOProjet extends DAO {
             $features = $statement->fetchAll();
             return $features;
             
+        }
+        
+        public function checkCurrentUser($id,$idp){
+            $sql = "select user_id from user_projet where user_id = ".$id." AND projet_id = ".$idp;
+            $statement = $this->getPdo()->query($sql);
+            $result = $statement->fetch();
+            if((int)$result['user_id'] === (int)$id){
+                return true;
+            }else{
+                return false;
+            }
         }
 }

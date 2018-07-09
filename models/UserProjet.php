@@ -11,7 +11,7 @@ Class UserProjet {
 
 		private $projet_id;
 
-		private $droit_projet_id;
+		private $droit_projet;
 
 
 /* ____________________ Getter and Setter Part ____________________ */
@@ -37,13 +37,13 @@ Class UserProjet {
 	}
 
 
-	public function getDroit_projet_id (){
-		return $this->droit_projet_id;
+	public function getDroit_projet (){
+		return $this->droit_projet;
 	}
 
 
-	public function setDroit_projet_id ($val){
-		$this->droit_projet_id = $val;
+	public function setDroit_projet ($val){
+		$this->droit_projet = $val;
 	}
 
 }

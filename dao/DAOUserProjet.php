@@ -19,8 +19,8 @@ class DAOUserProjet extends DAO {
 
 	public function create ($entity){
 
-		$sql = "INSERT INTO user_projet (user_id,projet_id,droit_projet_id) VALUES('" . $entity->getUser_id() . ',' . $entity->getProjet_id() . ',' . $entity->getDroit_projet_id() . "')";
-		$this->getPdo()->query($sql);
+		$sql = "INSERT INTO user_projet (user_id,projet_id,droit_projet) VALUES('" . $entity->getUser_id() . "','" . $entity->getProjet_id() . "','" . $entity->getDroit_projet() . "')";
+                $this->getPdo()->query($sql);
 	}
 
 
@@ -48,9 +48,9 @@ class DAOUserProjet extends DAO {
 	}
 
 
-	public function delete ($id){
+	public function delete ($array){
 
-		$sql = "DELETE FROM user_projet WHERE id= " . $id;
+		$sql = "DELETE FROM user_projet WHERE user_id= ". $array['id']." AND projet_id = ".$array['idp'];
 		$this->getPdo()->query($sql);
 	}
 

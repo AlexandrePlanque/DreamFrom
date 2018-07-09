@@ -34,7 +34,9 @@ include "template/navbar.php";
                     <p class="info d-none d-md-block"><?= ucfirst($projet->getTheme())?></p>
                     <div class="info">
                         <!--<button type="button" class="btn btn-info d-none d-md-block" oncl>Rejoindre le Projet</button>-->
-                    <button  id="join_projet" type="button" onclick="get_projet_id(<?= $projet->getId()?>)" value="60" class="btn btn-info d-md-block">Rejoindre le Projet</button>
+                    <?= (!$projet->getCurrentUserIn())?
+                    '<button  id="join_projet" type="button" onclick="addingToProject('.$projet->getId().')" value="60" class="btn btn-info d-md-block">Rejoindre le Projet</button>':
+                                                    '<button type="button" onclick="leaveProject('.$projet->getId().')" class="btn btn-danger d-md-block">Abandonner le Projet</button>'; ?>
                     </div>
                 </div>
 
@@ -54,7 +56,11 @@ include "template/navbar.php";
                 </div>
 
                 <div class="col-12">
-                    <button  id="join_projet" type="button" onclick="get_projet_id(<?= $projet->getId()?>)" value="60" class="btn btn-info d-md-none">Rejoindre le Projet</button>
+                                           <?php foreach($participants as $participant) : ?>
+                    <?= ($participant->getId() === json_decode($_COOKIE["cookie"],true)['id'])?
+                    '<button  id="join_projet" type="button" onclick="addingToProject('.$projet->getId().')" value="60" class="btn btn-info d-md-none">Rejoindre le Projet</button>':
+                                                    '<button type="button" onclick="leaveProject('.$projet->getId().')" class="btn btn-danger d-md-none">Abandonner le Projet</button>'; break;?>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
@@ -252,6 +258,7 @@ include "template/navbar.php";
                 <a class="card-title">
                   Fonctionnalité 3
                 </a>
+                    <button  id="join_projet" type="button" onclick="addingToProject(<?= $projet->getId()?>)" value="60" class="btn btn-info d-md-block">Rejoindre le Projet</button>
             </div>
             <div id="collapseThree" class="collapse" data-parent="#accordion" >
                 <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt

@@ -4,8 +4,11 @@
     "/membres": "UserController:getUsers",
     "/creationProjet":"CreateProjetController:createProj",
     "/createProjet": "CreateProjetController:getview",
-    "/projet/joining": "JoinProjetController:showView",
-    "/projet/join":{
+    "/projet/join/(:)":{
+        "GET": "JoinProjetController:addToProject",
+        "DELETE": "JoinProjetController:leaveTheProject"
+    },
+    "/projet/joinqsdqss":{
         "POST":"JoinProjetController:joinProject"
     },
     "/projets": "ProjetController:getProjet",

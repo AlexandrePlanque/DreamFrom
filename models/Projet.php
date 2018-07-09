@@ -32,6 +32,8 @@ Class Projet implements JsonSerializable {
         private $theme;
         
         private $feature;
+        
+        private $currentUserIn;
 
 
 /* ____________________ Getter and Setter Part ____________________ */
@@ -144,6 +146,14 @@ Class Projet implements JsonSerializable {
         
     public function setFeature($val){
         $this->feature = $val;
+    }
+        
+    public function getCurrentUserIn(){
+        return $this->currentUserIn;
+    }
+        
+    public function setCurrentUserIn($val){
+        $this->currentUserIn = $val;
     }
     
     public function jsonSerialize() {
