@@ -51,7 +51,7 @@ include "template/navbar.php";
                 </div>
 
                 <div class="col-12">
-                    <button type="button" class="btn btn-info d-md-none">Rejoindre le Projet</button>
+                    <button  id="join_projet" type="button" onclick="get_projet_id()" value="60" class="btn btn-info d-md-none">Rejoindre le Projet</button>
                 </div>
             </div>
 
@@ -236,4 +236,4 @@ include "template/navbar.php";
 
 
 
-                    <button  id="join_projet" type="button" onclick="get_projet_id()" value="60" class="btn btn-info d-md-none">Rejoindre le Projet</button>
+                    

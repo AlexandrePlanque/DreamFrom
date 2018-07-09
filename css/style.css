@@ -1,9 +1,6 @@
 /* FontAwesome for working BootSnippet :> */
 
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-#team {
-    background: #eee !important;
-}
 
 @font-face {
     font-family : days;
@@ -20,8 +17,38 @@
     src : url(../fonts/Marck_Script/MarckScript-Regular.ttf);
 }
 
-html, body {
+.team {
+
+    background-image: url('../image/background_fiche_projet.png') !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover!important;
+    min-height: 50%;
     height: 100%;
+
+}
+.navbar-dark .navbar-nav .nav-link:hover{
+    color: #414141 !important;
+}
+
+.navbar-dark .active > .nav-link{
+    color: #414141 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: #ffffff
+}
+
+.news{
+    height: 200px;      
+}
+
+.bloc_news{
+      height: 200px;
+      margin: auto;
+}
+html, body {
+    min-height: 100% !important;
     scroll-behavior: smooth;
 }
 
@@ -153,6 +180,7 @@ html, body {
 
 .bg-perso {
     background-color: #91bbd8!important;
+    z-index: 20;
 }
 
 .photo {
@@ -197,14 +225,14 @@ html, body {
     min-width: 50px;
     background-position: center;
     background-repeat: no-repeat;
-    padding-bottom: 75%;
 /*    background-size: cover;*/
 }
 
 .down-arrowimg {
     position: absolute;
     left :48%;
-    top: 83%;
+    top : 70%;
+    outline-style: none !important ;
 }
 
 
@@ -214,9 +242,9 @@ html, body {
 }
 
 .select_home {
-  font: 300 100% days;
-  margin: 50px 0 0 0;
-  border-top: 2px solid #91bbd8;
+/*  font: 300 100% days;
+  margin: 50px 0 0 0;*/
+  border-top: 0px solid #91bbd8;
   border-bottom :2px solid #91bbd8;
   vertical-align: middle;
   font-weight: bold;  
@@ -263,12 +291,12 @@ select_home container-fluid {
   margin: 0;
   background: #91bbd8   ;
   border: none;
-  transition: 1s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .select_result{
   border-bottom :2px solid #91bbd8;  
-  margin-top: 0;
+  height: 200px;
 }
 .coeursurtoname {
     max-height: 30px;
@@ -284,29 +312,31 @@ select_home container-fluid {
 
 
 .footer {
-    position: absolute;
-    width: 100%;
-    max-height: 150px;
-    
+    background:#2a5d95 !important;
+
+   
 }
 
 .footlogo {
-    height: 80%;
+    height: 10%;
 }
 
-
+#footer{
+    position: relative;
+    margin-top:150px;
+}
 .bot {    
     background-color: #2a5d95!important;
 }
 /* à modifier */
-h1{
+.titreprez{
     font-weight: bold;
     margin-left: 40px;
     font-stretch:  expanded;
 
 }
 
-h2{
+.soustitre{
     color: orange;
     margin-left: 40px;
     font-family: marck;
@@ -317,7 +347,7 @@ a{
    line-height: 2;
 }
 .content_width{
-    width: 100%;
+    width: 300%;
 }
 
 .content_width>li{
@@ -335,16 +365,26 @@ a{
     background-size: cover;
 }
 
-.test1>li {
+.test1{
     display: inline;
-    margin: 0 20px;
     color: white;
+
+    margin-left: 10px;
+    margin-right: 10px;
+
     
 }
 
-.flex-container{
+.footcontainer{
     display: flex;
     align-items: center;
-    height: 150px;
+    min-height: 50px;
     
+}
+
+.select_home3 {
+    background-color:#ececec;
+
+  border-bottom :2px solid #91bbd8;
+  font-weight: bold;  
 }
