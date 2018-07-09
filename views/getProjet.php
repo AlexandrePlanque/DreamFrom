@@ -47,41 +47,38 @@ include "template/navbar.php";
             </div>
             </br>
         <div class="row">
-<?php foreach($projets as $projet) : ?>
     
-        <div class="col-xs-12 col-sm-4 col-md-3" >
-            <div class="card_global">
-                <a class="card_detail" href="http://dreamfrom/projets/<?= $projet->getID() ?>">
-                    <p><img class=" img-fluid projet_image" src="<?= $projet->getImage() ?>" alt="projet image"></p>
-                        <div >
-                            <h4 class="card_title"><?= $projet->getTitre() ?></h4>
-                                <div class="card_bottom">
-                                    <p>Chef de projet : <?= $projet->getLeader() ?></p>
-                                    <div class="progress mb-3">
-  <div class="progress-bar customprogress" style="width:<?= $projet->getFeatProgress()?>"></div>
-</div> 
+<?php foreach($projets as $projet) : ?>
+            <div class="col-xs-12 col-sm-4 col-md-3" >
+                <div class="card_global">
+                    <a href="http://dreamfrom/projets/<?= $projet->getID() ?>">
+                        <img class=" img-fluid projet_image" src="<?= $projet->getImage() ?>" alt="projet image">       
+                        <h4 class="card_title"><?= $projet->getTitre() ?></h4>
+                    </a>  
+                    <div class="card_bottom">
+                        <p>Chef de projet : <?= $projet->getLeader() ?></p>
+                        <div class="progress mb-3">
+                            <div class="progress-bar customprogress" style="width:<?= $projet->getFeatProgress()?>"></div>
+                        </div> 
 <!--                                    <div class="progress">
                                         <div class="progress-bar prog_bar progress-bar-striped " role="progressbar"
                                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:<?=$projet->getFeatProgress() ?>"></div>
                                     </div>-->
-                                    <p><?=$projet->getFeatProgress() ?> terminés</p>
-                                    <p><?= $projet->getParticipants()?> collaborateurs</p>
-                                    <p>crée le <?= $projet->getDate_creation() ?></p>
-                                </div>
-                            </div>    
-                        </div>
-                    </a>    
-                </div>
+                        <p><?=$projet->getFeatProgress() ?> terminés</p>
+                        <p><?= $projet->getParticipants()?> collaborateurs</p>
+                        <p>crée le <?= $projet->getDate_creation() ?></p>
+                    </div>
+                </div>                     
             </div>
 <?php
 endforeach;?>
+<?php
+        
+include "template/footer.php";
+?>
         </div>
 
         </div>
     
-</section>
-<?php
-include "template/footer.php";
-?>
-</body>
-</html>
+
+

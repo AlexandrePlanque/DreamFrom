@@ -67,7 +67,7 @@ class ProjetController extends Controller{
     }
         
     public function ficheProjet($id){
-        (new DAOProjet())->retrieve($id);
+        //(new DAOProjet())->retrieve($id);
         $this->render('ficheprojet');
     }
 

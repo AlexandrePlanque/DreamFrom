@@ -13,38 +13,24 @@
 }
 
 
-body {
-    /*background-image: url("../image/background_fiche_projet.png");*/
+/*body {
+   background-image: url("../image/background_projets.png");
+   background-repeat: no-repeat; 
 
-
-}
+}*/
 html{
     overflow-x: hidden;
 }
 
 
-.projet_image{
-    border: 6px black solid;
-    margin-bottom: 0;
-}
 
-.card_bottom{
-    text-align:  left;
-    padding-left: 20px;
-}
 
 .active-cyan-4 input[type=search]:focus:not([readonly]) {
     border: 1px solid #4dd0e1!important;
     box-shadow: 0 0 0 1px #4dd0e1!important;
 }
 
-.card_title{
-    text-align: center;
-    vertical-align: middle;
-    max-height: 100px;
-    min-height: 90px;
 
-}
 .card_title2{
     float: left !important;
     vertical-align: middle;
@@ -55,13 +41,25 @@ html{
 
 .card_global{
     border: 1px solid black;
-
 }
-
-.card_detail{
-
+.projet_image{
+    border: 6px black solid;
+    margin-bottom: 0;
+    width: 306px;
+    height: 200px
+    
+     
 }
-
+.card_title{
+    text-align: center;
+    vertical-align: middle;
+    max-height: 100px;
+    min-height: 90px;
+}
+.card_bottom{
+    text-align:  left;
+    padding-left: 20px;
+}
 .creat_proj{
 
     background-color: #4dd0e1;
