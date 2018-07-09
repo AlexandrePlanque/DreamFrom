@@ -43,6 +43,7 @@
 .profilavatar{
     background-color: white!important;
     width: 30%;
+    vertical-align: bottom !important;
 }
 
 .avatarbtn{

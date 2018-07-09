@@ -26,6 +26,9 @@
     "/api/edit/(:)":{
         "POST":"ProfilController:editProfil"
     },
+    "/api/edit/avatar/(:)":{
+        "POST":"ProfilController:editAvatar"
+    },
     "/api/projet/(:)":{
         "GET":"ProfilController:getProjetJson"
     },

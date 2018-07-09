@@ -20,9 +20,8 @@ include "template/navbar.php";
 <div class="col-6 profil hide" id="toggleprofil">
                    <div class="card-outline-secondary debugprofil" id="">                        
                        <div class="card-img-top">
-                           <!--<img class="img-fluid profilavatar offset-1" src="http://<?= $_SERVER['SERVER_NAME']?>/image/User_Avatar_2.png">-->
-                           <img class="img-fluid profilavatar offset-1 mt-5" src="<?= $user->getAvatar() ?>">
-                                    <button type="button" class="btn mt-3 avatarbtn">Modifier l'avatar</button>
+                           <img class="img-fluid profilavatar offset-1 mt-5" id="avatarUtilisateur" src="<?= $user->getAvatar() ?>">
+                                    <button type="button" class="btn mt-3 avatarbtn" data-toggle="modal" data-target="#modalContactForm">Modifier l'avatar</button>
                         </div>
                         <div class="card-body">
                             <form class="form" role="form" autocomplete="off" id="formprofils">
@@ -402,6 +401,37 @@ include "template/navbar.php";
     </div>
   </div>
 
+<div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Modification de votre avatar</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <img class="img-fluid" id="imgAvatarPro">
+                </div>
+
+                <div class="md-form">
+                    <i class="fa fa-pencil prefix grey-text"></i>
+                    <input type="text" id="form8" class="md-textarea form-control" autocomplete="off" placeholder="L'url de votre image"></textarea>
+
+                </div>
+
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-unique" onclick='putAvatar(<?= $user->getId()?>)'>Modifier</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Launch Modal Contact Form</a>
+</div>
 <?php
 include "template/footer.php";
 ?>

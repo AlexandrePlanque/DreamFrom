@@ -24,6 +24,13 @@ $( document ).ready(function() {
     
 });
 
+    $("#form8").keyup(function(){
+//        alert($("#form8").val())
+//    alert("data");
+    var data = $("#form8").val();
+    $("#imgAvatarPro").attr('src', data);
+    })
+
 
 //$( "#btnprofil" ).click(function
 function displayProfil() {
@@ -227,4 +234,28 @@ function showProjet(data){
                 return sParameterName[1];
             }
         }
+    }
+    
+    function putAvatar(id){
+        
+        var urlImg = $("#form8").val();
+    var data = {
+        avatar : urlImg,
+        id : id
+    };
+    
+    $.ajax({
+//        dataType : 'json',
+        url : "http://dreamfrom/api/edit/avatar/"+id,
+        type: "POST",
+        data : data,
+        success : function(e){
+            console.log(e)
+            $("#avatarUtilisateur").attr('src', urlImg);
+        },
+        error : function(e){
+           alert('Transmission échouée');
+        }
+
+    });
     }

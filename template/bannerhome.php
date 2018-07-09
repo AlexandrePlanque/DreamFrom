@@ -51,9 +51,9 @@
 
                 </div>
             </nav>
-            <div class="down-arrow" href="">
+            <div class="down-arrow text-center" href="">
                 <a href="#secondpart">
-                    <img class="down-arrowimg" src="../image/down-arrow-in-small-circle.png">
+                    <img class="down-arrowimg img-fluid" src="../image/down-arrow-in-small-circle.png">
                 </a>
             </div>
             

@@ -216,14 +216,11 @@ html, body {
     min-width: 50px;
     background-position: center;
     background-repeat: no-repeat;
-    padding-bottom: 75%;
-/*    background-size: cover;*/
 }
 
 .down-arrowimg {
-    position: relative;
-    left :48%;
-    top: 350px;
+    position: absolute;
+    top: 70%;
     outline-style: none !important ;
 }
 

@@ -62,11 +62,15 @@ class ProfilController extends Controller{
         $data = $this->inputPost();
         ((new DAOUser())->update($data['user']));
         ((new DAOAdresse())->update($data['adresse']));
-//        echo json_encode($this->inputPut());
-//        var_dump($this->inputPut());
-//        var_dump( ((new User())->setNom($this->inputPost()['nom'])->setPrenom($this->inputPost()['prenom'])));
-//        (new DAOUser())->update($this->inputPost());
         $this->prepareUser();
+    }
+    
+    public function editAvatar(){
+        $data = $this->inputPost();
+        ((new DAOUser())->update($data));
+
+//        echo $data['avatar'];
+//        echo $data['id'];
     }
     private function prepareUser(){
         $reflex = new ReflectionClass("BWB\\Framework\\mvc\\models\\User");
