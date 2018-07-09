@@ -235,3 +235,5 @@ include "template/navbar.php";
 </div>-->
 
 
+
+                    <button  id="join_projet" type="button" onclick="get_projet_id()" value="60" class="btn btn-info d-md-none">Rejoindre le Projet</button>

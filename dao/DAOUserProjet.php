@@ -101,15 +101,14 @@ class DAOUserProjet extends DAO {
         // invoquée lorsqu'un user décide de rejoindre un projet
         	public function createAsJoiner ($entity){
 		$sql = "INSERT INTO user_projet (user_id,projet_id,droit_projet) VALUES('" . $entity->getUser_id() . "','" . $entity->getProjet_id() . "','0')";
-		echo "<hr>".$sql;
                 $this->getPdo()->query($sql);
 	}
         
         // invoquée lorsqu'un user est invité à rejoindre un projet
-        	public function createAsInvited ($entity){
-		$sql = "INSERT INTO user_projet (user_id,projet_id,droit_projet_id) VALUES('" . $entity->getUser_id() . ',' . $entity->getProjet_id() . "',0)";
-		$this->getPdo()->query($sql);
-	}
+//        	public function createAsInvited ($entity){
+//		$sql = "INSERT INTO user_projet (user_id,projet_id,droit_projet_id) VALUES('" . $entity->getUser_id() . ',' . $entity->getProjet_id() . "',0)";
+//		$this->getPdo()->query($sql);
+//	}
 
 
 }
