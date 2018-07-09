@@ -3,10 +3,10 @@
 
 
 function get_projet_id(){
-   // var projet_Id = $("#join_projet").val();
+    var projet_Id = $("#join_projet").val();
     
-    var projet_Id = {
-            projetId : 20};
+//    var projet_Id = {
+//            projetId : 21};
     console.log(projet_Id);
     
 //    console.log(data);
@@ -16,7 +16,7 @@ function get_projet_id(){
         url : "http://dreamfrom/projet/join",
         data : projet_Id,
         success : function(retour){
-            alert(retour);
+           // alert(retour);
 //            window.location.href = "http://administration.restologue.bwb/";
         },
         error : function(){
