@@ -8,8 +8,10 @@
 
 namespace BWB\Framework\mvc\controllers;
 use BWB\Framework\mvc\models\UserProjet;
+use BWB\Framework\mvc\models\ProjetFeature;
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\dao\DAOUserProjet;
+use BWB\Framework\mvc\dao\DAOProjetFeature;
 use BWB\Framework\mvc\dao\DAOUser;
 
 /**
@@ -85,6 +87,30 @@ class JoinProjetController extends Controller{
         (new DAOUserProjet())->delete(array("id" => json_decode($_COOKIE['cookie'],true)['id'], "idp"=>$id));
         echo "http://dreamfrom/projets/".$id;
     }
+    
+    public function addToFeature($id,$idf){
+        $ProjetFeat = new ProjetFeature();
+        $ProjetFeat->setProjet_id((int)$id);
+        $ProjetFeat->setUser_id((int)json_decode($_COOKIE['cookie'],true)['id']);
+        $ProjetFeat->setFeature_id($idf);
+        $ProjetFeat->setEtat(0);
+        (new DAOProjetFeature())->create($ProjetFeat);
+//        var_dump($ProjetFeat);
+//        echo "http://dreamfrom/projets/".$id;
+    }
+    
+    public function quitFeature($id,$idf){
+        (new DAOProjetFeature())->delete(array("idPro" => $id, "idFeat" => $idf, "idUser" => json_decode($_COOKIE['cookie'],true)['id']));
+    }
+    
+    public function finishFeature($id,$idf){
+        $entity = new ProjetFeature();
+        $entity->setProjet_id($id);
+        $entity->setFeature_id($idf);
+        
+        (new DAOProjetFeature())->endFeature($entity);
+    }
+            
     public function  showView(){
         $this->joinProject();
         $this->render("ficheprojet");

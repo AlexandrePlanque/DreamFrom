@@ -247,6 +247,10 @@ class DAOProjet extends DAO {
             $statement = $this->getPdo()->query($sql);
             $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Projet");
             $projets = $statement->fetchAll();
+            if(count($projets) === 0){
+                return false;
+            }
+            
             foreach($projets as $projet){
                 $projet->setFeatProgress($this->getProjetFeature($projet->getId()));
             }
@@ -287,7 +291,8 @@ class DAOProjet extends DAO {
         }
         
         public function getFeature($id){
-            $sql = "select feature.*, projet_feature.etat from feature inner join projet_feature on feature.id = projet_feature.feature_id where projet_feature.projet_id =".$id;
+        //ANY_VALUE permet de palier à des soucis lié au GROUP BY et utilisation de l'alias etat pour remplir les objet automatiquement
+            $sql = "select feature.*, ANY_VALUE(projet_feature.etat) as etat from feature inner join projet_feature on feature.id = projet_feature.feature_id where projet_feature.projet_id = ".$id." group by feature.id";
             $statement = $this->getPdo()->query($sql);
             $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Feature");
             $features = $statement->fetchAll();

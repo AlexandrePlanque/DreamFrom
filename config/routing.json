@@ -8,6 +8,11 @@
         "GET": "JoinProjetController:addToProject",
         "DELETE": "JoinProjetController:leaveTheProject"
     },
+    "/projet/(:)/feature/(:)":{
+        "GET": "JoinProjetController:addToFeature",
+        "POST": "JoinProjetController:finishFeature",
+        "DELETE": "JoinProjetController:quitFeature"
+    },
     "/projet/joinqsdqss":{
         "POST":"JoinProjetController:joinProject"
     },

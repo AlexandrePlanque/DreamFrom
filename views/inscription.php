@@ -16,15 +16,15 @@ include "template/navbar.php";
                                  
                                     <div class="form-group col-md-4 active-cyan-4">
                                         <label for="inputName">Nom</label>
-                                        <input type="text" name="nom" class="form-control" placeholder="">
+                                        <input type="text" name="nom" maxlength="45" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group col-md-4 active-cyan-4">
                                         <label for="inputName">Prénom</label>
-                                        <input type="text" name="prenom" class="form-control" placeholder="">
+                                        <input type="text" name="prenom" maxlength="45" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group col-md-4 active-cyan-4">
                                         <label for="inputName">Pseudo</label>
-                                        <input type="text" name="pseudo" class="form-control" placeholder="">
+                                        <input type="text" name="pseudo" maxlength="45" class="form-control" placeholder="">
                                     </div>
                                 </div>
 <!--                                 <div class="form-group">
@@ -37,12 +37,12 @@ include "template/navbar.php";
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">@</div>
                                     </div>
-                                    <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="" required="">
+                                    <input type="email" name="email" maxlength="45" class="form-control" id="inputEmail3" placeholder="" required="">
                                 </div>
                                 </div>
                                 <div class="form-group active-cyan-4">
                                     <label for="inputPassword3">Mot de Passe</label>
-                                    <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="" required="">
+                                    <input type="password" name="password" maxlength="45" class="form-control" id="inputPassword3" placeholder="45 caractères maximum" required="">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success btninscription">Créer votre compte DreamFrom</button>

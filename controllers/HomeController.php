@@ -8,6 +8,8 @@
 
 namespace BWB\Framework\mvc\controllers;
 use BWB\Framework\mvc\Controller;
+use BWB\Framework\mvc\dao\DAOEvent;
+
 
 /**
  * Description of HomeController
@@ -15,7 +17,20 @@ use BWB\Framework\mvc\Controller;
  * @author fabien
  */
 class HomeController extends Controller {
+    
     public function GetHome(){
-    $this->render("getHome");
+//        var_dump(json_decode($_COOKIE['cookie'],true)['pseudo']);
+        $this->render("getHome", array("news" => $this->getNews(), "projets" => $this->getNewsProjet(),"membres" => $this->getNewsMembre()));
+    }
+    
+    public function getNews(){
+       return (new DAOEvent())->getAll();
+    }
+    
+    public function getNewsProjet(){
+        return (new DAOEvent())->getAllBy(array('nom' => "projet"));
+    }
+    public function getNewsMembre(){
+       return (new DAOEvent())->getAllBy(array('nom' => "membre"));
     }
 }

@@ -10,7 +10,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fas fa-envelope"></i></div>
                                         </div>
-                                        <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo">
+                                        <input type="text" maxlength="45" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo">
                                     </div>
                                 </div>
                                 <div class="form-group active-cyan-4">
@@ -18,7 +18,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fas fa-lock"></i></div>
                                         </div>
-                                        <input type="password" class="form-control" id="pws" name="password" placeholder="Mot de passe">
+                                        <input type="password" maxlength="45" class="form-control" id="pws" name="password" placeholder="Mot de passe">
                                     </div>
                                 </div>
                                 <div class="form-group">

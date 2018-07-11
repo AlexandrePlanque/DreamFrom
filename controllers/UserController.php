@@ -129,6 +129,7 @@ class UserController extends Controller{
         $user->setPseudo($_POST["pseudo"]);
         $user->setEmail($_POST["email"]);
         $user->setPassword($_POST["password"]);
+        $user->setAvatar('https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png');
 
         // on utilise la methode createAdresse du DAOUser pour remplir la table Adresse
         $user->setAdresse_id($dao->createAdresse($adresse));
@@ -142,7 +143,6 @@ class UserController extends Controller{
         $user->setTheme_id("1");
         $user->setAvatar("");
         $user->setContact(1);
-        var_dump($user);
         // on fait appel a la methode create du DAOUser 
         // on génère un token JWT et on vérifie si les données correspondent au POST du formulaire
 
@@ -219,6 +219,14 @@ class UserController extends Controller{
       
       // transformation du token en tableau associatif et on applique la fonction verifTokenMail() pour la comparaison avec les données en BDD
       $dao->verifTokenMail(json_decode(json_encode($recup),true));
+      
+      //création d'un event lié à l'inscription de l'utilisateur
+      $data = json_decode(json_encode($recup),true);
+      $event = new Event();
+      $event->setNom('membre');
+      $event->setDate_creation(date("Y-m-d H:i:s"));
+      $event->setDescription($data['pseudo']." vient de nous rejoindre, bienvenue à lui");
+      (new DAOEvent())->create($event);
       
         $this->render("emailconfirmation");
     }

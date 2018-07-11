@@ -51,7 +51,7 @@ class CreateProjetController extends Controller {
         // récupération des données à partir des infos du $_POST
         $projet->setTitre($_POST['titre']);
         $projet->setDescription($_POST['description']);
-        $projet->setTheme_id(2);
+        $projet->setTheme_id($_POST['theme']);
         $projet->setImage($_POST['image']);
         $projet->setDate_modif("NULL");
         $projet->setLeader("Aziraphale");

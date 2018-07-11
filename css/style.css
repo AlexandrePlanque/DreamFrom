@@ -296,26 +296,13 @@ select_home container-fluid {
 
 .select_result{
   border-bottom :2px solid #91bbd8;  
-  height: 200px;
+  height: 247px;
 }
-.coeursurtoname {
-    max-height: 30px;
-}
-
-.notebook {
-    max-height: 30px;
-}
-
-
-
-
-
 
 .footer {
-    background:#2a5d95 !important;
-
-   
+    background:#2a5d95 !important;   
 }
+
 .test1{
     display: inline;
     color: white;

@@ -107,31 +107,8 @@ include "template/navbar.php";
 </div>
 <!--</div>-->
 <div class="col-6 projetshow hide" id="toggleprojet">
-    <div class='row' id="cardprojet">
-        <?php foreach($projets as $projet) : ?>
-        
-<div class="card card-outline-secondary text-center cardprojet">
-  <div class="card-header">
-      <h4 class="mt-1"><?= $projet->getTitre()?></h4>
-  </div>
-  <div class="card-body">
-      <img class="card-img projetimg " src=" <?= $projet->getImage()?>">
-    <p class="card-text">Progression</p>
-<div class="progress custombgprogress mb-3">
-  <div class="progress-bar customprogress" style="width:<?= $projet->getFeatProgress()?>"></div>
-</div> 
-
-<div id="bar-basic" value="100">
-   
-</div>
-    <a href="#" class="btn btn-primary">Accéder au projet</a>
-  </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
-</div>
-        <?php  endforeach; ?>
-</div>
+    
+<?php (isset($projets))? include 'views/profilProjet.php': include 'views/profilProjetEmpty.php' ?>
                     </div>
     <!--</div>-->
                             <!--                 Partie Message                      -->
@@ -355,26 +332,7 @@ include "template/navbar.php";
               </div>
             </div>-->
 
-<div class="card card-outline-secondary text-center  cardprojet hide" id="hidden">
-  <div class="card-header">
-      <h4><?= $projet->getTitre()?></h4>
-  </div>
-  <div class="card-body">
-      <img class="card-img projetimg " src=" <?= $projet->getImage()?>">
-    <p class="card-text">Progression</p>
-<div class="progress custombgprogress mb-3">
-  <div class="progress-bar customprogress" ></div>
-</div> 
 
-<div id="bar-basic" value="100">
-   
-</div>
-    <a href="#" class="btn btn-primary">Accéder au projet</a>
-  </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
-</div>
 
  <div class="modal fade" id="validProfil" href="javascript:;">
     <div class="modal-dialog modal-dialog-centered">
@@ -423,7 +381,7 @@ include "template/navbar.php";
 
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-unique" onclick='putAvatar(<?= $user->getId()?>)'>Modifier</button>
+                <button class="btn btn-unique" onclick='putAvatar(<?= $user->getId()?>)' data-toggle="modal" data-target="#modalContactForm">Modifier</button>
             </div>
         </div>
     </div>

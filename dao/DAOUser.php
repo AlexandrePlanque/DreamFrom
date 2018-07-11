@@ -41,7 +41,9 @@ class DAOUser extends DAO {
 
 		$sql = "SELECT *,theme.intitule as theme from user inner join theme on user.theme_id = theme.id WHERE user.id=". $id;
 		$statement = $this->getPdo()->query($sql);
+//                var_dump($statement);
                 $result = $statement->fetch();
+//                var_dump($result);
                 $entity = new User();
                 $entity->setId($result['0']);
                 $entity->setPseudo($result['pseudo']);
