@@ -1,13 +1,3 @@
-<html>
-    <head>
-        <script src="http://<?= $_SERVER['SERVER_NAME']?>/css/bootstrap/js/bootstrap.min.js"></script>
-        <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="http://<?= $_SERVER['SERVER_NAME']?>/css/style.css">
-        <link rel="stylesheet" type="text/css" href="http://<?= $_SERVER['SERVER_NAME']?>/css/projet.css">
-    </head>
-    <body>
-        
     <?php
 /**
  * cette page présente la page des projets
@@ -17,8 +7,9 @@ include "template/header.php";
 include "template/navbar.php";
 
 ?>
+    <div class="background_projet">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row col-12">
                 <select class="form-control col-3 mr-5" id="theme">
                     <option value="">Tous les themes</option>
                         <?php foreach($themes as $theme) : ?>
@@ -45,40 +36,46 @@ include "template/navbar.php";
             <div class="row">
                 <a href="/createProjet" class="btn btn-info creat_proj offset-10" role="button">Créer un projet</a>
             </div>
-            </br>
-        <div class="row">
+        </br>
     
-<?php foreach($projets as $projet) : ?>
-            <div class="col-xs-12 col-sm-4 col-md-3" >
-                <div class="card_global">
-                    <a href="http://dreamfrom/projets/<?= $projet->getID() ?>">
-                        <img class=" img-fluid projet_image" src="<?= $projet->getImage() ?>" alt="projet image">       
-                        <h4 class="card_title"><?= $projet->getTitre() ?></h4>
-                    </a>  
-                    <div class="card_bottom">
-                        <p>Chef de projet : <?= $projet->getLeader() ?></p>
-                        <div class="progress mb-3">
-                            <div class="progress-bar customprogress" style="width:<?= $projet->getFeatProgress()?>"></div>
-                        </div> 
-<!--                                    <div class="progress">
-                                        <div class="progress-bar prog_bar progress-bar-striped " role="progressbar"
-                                        aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:<?=$projet->getFeatProgress() ?>"></div>
-                                    </div>-->
-                        <p><?=$projet->getFeatProgress() ?> terminés</p>
-                        <p><?= $projet->getParticipants()?> collaborateurs</p>
-                        <p>crée le <?= $projet->getDate_creation() ?></p>
-                    </div>
-                </div>                     
-            </div>
-<?php
-endforeach;?>
-<?php
+       
         
-include "template/footer.php";
+        <div class="row">
+        <?php foreach($projets as $projet) : ?> 
+            <div class="col-xs-12 col-sm-4 col-md-3" > 
+                <div class="card_global"> 
+                    <a class="" href="http://dreamfrom/projets/<?= $projet->getID() ?>"> 
+                        
+                        <?php
+                        if(($projet->getImage()) !== ""):
+                            echo '<img class="img-fluid projet_image" src="'. $projet->getImage().'" alt="projet image">'; 
+                        else:
+                           echo '<img class=" img-fluid projet_image" src="../image/default.jpg" alt="default image">'  ; 
+                        
+                        endif;    
+                        ?>
+                                <h4 class="card_title"><?= $projet->getTitre() ?></h4> 
+                    </a>   
+                        <div class=" progress progbar progress_opti1">
+                            <div class="progress-bar " style="width:<?= $projet->getFeatProgress()?>%"></div>
+                        </div>
+                     
+                        <p class="chef">Chef de projet : <?= $projet->getLeader() ?></p> 
+                        <p><?=$projet->getFeatProgress() ?>% terminés</p> 
+                        <p><?= $projet->getParticipants()?> collaborateurs</p> 
+                        <p>créé le <?= $projet->getDate_creation() ?></p> 
+                     
+                </div>                      
+            </div> 
+<?php       
+endforeach;
 ?>
-        </div>
-
-        </div>
-    
-
-
+        </div>    
+<?php
+include "template/footer.php"; 
+?> 
+    </div>
+</div>
+                                    
+ 
+ 

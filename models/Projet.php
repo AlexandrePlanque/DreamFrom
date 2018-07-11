@@ -9,27 +9,31 @@ use JsonSerializable;
 
 Class Projet implements JsonSerializable {
 
-    private $id;
+        private $id;
 
-		private $titre;
+        private $titre;
 
-		private $description;
+        private $description;
 
-		//private $chef_projet;
+        private $date_creation;
 
-		private $date_creation;
+        private $date_modif;
 
-		private $date_modif;
+        private $theme_id;
 
-		private $theme_id;
-
-		private $image;
+        private $image;
                 
         private $participants;
                 
         private $leader;
                 
         private $featProgress;
+        
+        private $theme;
+        
+        private $feature;
+        
+        private $currentUserIn;
 
 
 /* ____________________ Getter and Setter Part ____________________ */
@@ -63,17 +67,6 @@ Class Projet implements JsonSerializable {
 	public function setDescription ($val){
 		$this->description = $val;
 	}
-
-
-//	public function getChef_projet (){
-//		return $this->chef_projet;
-//	}
-//
-//
-//	public function setChef_projet ($val){
-//		$this->chef_projet = $val;
-//	}
-
 
 	public function getDate_creation (){
 		return $this->date_creation;
@@ -120,9 +113,8 @@ Class Projet implements JsonSerializable {
 
 	public function setParticipants ($val){
 		$this->participants = $val;
-    }   
+        }   
 
-        
     public function getLeader (){
 		return $this->leader;
 	}
@@ -140,6 +132,30 @@ Class Projet implements JsonSerializable {
 		$this->featProgress = $val;
 	}   
         
+    public function getTheme(){
+        return $this->theme;
+    }
+        
+    public function setTheme($val){
+        $this->theme = $val;
+    }
+        
+    public function getFeature(){
+        return $this->feature;
+    }
+        
+    public function setFeature($val){
+        $this->feature = $val;
+    }
+        
+    public function getCurrentUserIn(){
+        return $this->currentUserIn;
+    }
+        
+    public function setCurrentUserIn($val){
+        $this->currentUserIn = $val;
+    }
+    
     public function jsonSerialize() {
           return ([
                 'id' => $this->getId(),

@@ -1,6 +1,35 @@
 // installer l'id="join_projet" au bouton d'inscription au projet
 // et le name=<?= id du projet selon la bdd ?>
 
+function addingToProject(id){
+
+        $.ajax({
+        type: "GET",
+        url : "http://dreamfrom/projet/join/"+id,
+        success : function(e){
+            window.location.href = e;
+        },
+        error : function(e){
+           alert('Transmission échouée');
+        }
+
+    });
+}
+
+function leaveProject(id){
+        $.ajax({
+        type: "DELETE",
+        url : "http://dreamfrom/projet/join/"+id,
+        success : function(e){
+            window.location.href = e;
+        },
+        error : function(e){
+           alert('Transmission échouée');
+        }
+
+    });
+    
+}
 
 function get_projet_id(){
     var projet_Id = $("#join_projet").val();

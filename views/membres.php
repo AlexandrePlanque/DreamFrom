@@ -1,7 +1,8 @@
 <?php include "template/header.php";
 include "template/navbar.php";
 ?>
-<section id="team" class="pb-5 membre">    <div class="container">
+<div class="team pb-5 membre">    
+    <div class="container">
         <!--<h5 class="section-title h1">Liste des membres</h5>-->
         <div class="row col-12">
             
@@ -62,5 +63,5 @@ include "template/navbar.php";
 <?php
 endforeach;?>
         </div>
-    </section>
+    </div>
 <?php include "template/footer.php"; ?>

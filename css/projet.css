@@ -41,23 +41,33 @@ html{
 
 .card_global{
     border: 1px solid black;
+    margin-bottom: 20px;
 }
 .projet_image{
-    border: 6px black solid;
+    border: 6px white solid;
     margin-bottom: 0;
-    width: 306px;
-    height: 200px
+    width: 306px!important;
+    height: 200px!important;
     
      
 }
 .card_title{
     text-align: center;
     vertical-align: middle;
-    max-height: 100px;
-    min-height: 90px;
+    overflow-wrap: break-word;
+    height: 40px;  
+    
 }
 .card_bottom{
     text-align:  left;
+    padding-left: 20px;
+}
+
+.chef{
+    font-weight: bold;
+}
+
+div p{
     padding-left: 20px;
 }
 .creat_proj{
@@ -70,7 +80,10 @@ html{
     color:#4dd0e1;
     max-width: 100px!important;
 }
-
+.progbar{
+    margin: 20px auto !important;
+    width: 100%;
+}
 .progress_opti1{
     margin-top: -10px;
     width: 70% !important;
@@ -138,6 +151,10 @@ a{
     width: 25%;
 }
 
+.imgProjet{
+    max-height: 392px!important;
+}
+
 .info{
     text-align: left;
     margin-top: 20px;
@@ -180,12 +197,29 @@ a{
   color: #333;
 }*/
 
+.ficheprojetparti{
+    background-color:#ececec;
+}
 
+.participantContain{
+    margin-left:25px;
 
+    /*margin-right:25px;*/
+}
+.optiFooterCard{
+    background-color: #ececec;
+}
 
+.background_projet{
+    background-image: url('../image/background_projets.png') !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover!important;
+    min-height: 50%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+}
 
-
-
-
-
-
+.fichproj{
+    margin-bottom: 50px;
+}

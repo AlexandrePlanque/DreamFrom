@@ -24,7 +24,7 @@ class JoinProjetController extends Controller{
     public function getUser() {
         
     // initialisation du DAO user 
-        setcookie("cookie","jacksparrow",time()+3600*24,"/");
+        
         $infoUser = new DAOUser;
         
    // récupère l'id du user en cours
@@ -69,6 +69,21 @@ class JoinProjetController extends Controller{
         $dao->createAsJoiner($newPlayer);
          echo "<hr>"."newPlayer";
         var_dump($newPlayer);
+    }
+    
+    public function addToProject($id){
+        $ProjetJoiner = new UserProjet();
+        $ProjetJoiner->setProjet_id((int)$id);
+        $ProjetJoiner->setUser_id((int)json_decode($_COOKIE['cookie'],true)['id']);
+        $ProjetJoiner->setDroit_projet(0);
+        (new DAOUserProjet())->create($ProjetJoiner);
+        
+        echo "http://dreamfrom/projets/".$id;
+    }
+    
+    public function leaveTheProject($id){
+        (new DAOUserProjet())->delete(array("id" => json_decode($_COOKIE['cookie'],true)['id'], "idp"=>$id));
+        echo "http://dreamfrom/projets/".$id;
     }
     public function  showView(){
         $this->joinProject();

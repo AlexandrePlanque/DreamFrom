@@ -43,18 +43,28 @@ class DAOProjet extends DAO {
     }
 
     public function retrieve($id) {
-
+        
         $sql = "SELECT * FROM projet WHERE id=" . $id;
         $statement = $this->getPdo()->query($sql);
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         $entity = new Projet();
-        $entity->setTitre();
-        $entity->setDescription();
-        $entity->setChef_projet();
-        $entity->setDate_creation();
-        $entity->setDate_modif();
-        $entity->setTheme_id();
-        $entity->setImage();
+        $entity->setId($result['id']);
+        $entity->setTitre($result['titre']);
+        $entity->setDescription($result['description']);
+        $entity->setParticipants($this->getNbParticipants($id));
+        $entity->setDate_creation($result['date_creation']);
+        $entity->setDate_modif($result['date_modif']);
+        $entity->setTheme_id($result['theme_id']);
+        $entity->setLeader($this->getNomLeader($id));
+        $entity->setImage($result['image']);
+        $entity->setFeatProgress($this->featureProgress($id));
+        $entity->setTheme($this->getTheme($result['theme_id']));
+        $entity->setLeader($this->getLeader($id));
+        $entity->setFeature($this->getFeature($id));
+        //On utilise ce setter uniquement si un utilisateur est connecter sinon il n'y a pas lieu d'utiliser ce setter dédié à une vérif de participation
+        //sur le projet courant
+        (isset($_COOKIE['cookie']))?$entity->setCurrentUserIn($this->CheckCurrentUser(json_decode($_COOKIE["cookie"],true)['id'],$id)):"";
+
         return $entity;
     }
 
@@ -140,6 +150,25 @@ class DAOProjet extends DAO {
         return $results["participants"];
     }
 
+    public function getTheme($id){
+        $sql = "Select intitule from theme where id =". $id;
+//        echo $sql;
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetch();
+        return $results["intitule"];
+        
+    }
+    
+    public function getInfoParti($id){
+        $sql = "select id from user inner join user_projet on user_projet.user_id = user.id where user_projet.projet_id = ". $id;
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetchAll();
+        $users = array();
+        foreach($results as $result){
+            array_push($users, (new DAOUser())->retrieve($result['id']));
+        }
+            return $users;
+    }
 
     // fonction qui va vérifier si le projet existe déja dans la BDD
     public function verifProjet() {
@@ -185,23 +214,36 @@ class DAOProjet extends DAO {
                 return $results['pseudo'];
         }
         
+        public function getLeader($id){
+            $sql = "SELECT user.* from user INNER JOIN user_projet where user.id = user_projet.user_id AND user_projet.projet_id = ".$id." AND user_projet.droit_projet = 1";    
+            $statement = $this->getPdo()->query($sql);
+            $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\User");
+            $leader = $statement->fetch();
+            return $leader;
+            
+        }
+        
         // cette fonction récupère les features pour afficher le %age achevé
         public function featureProgress($id){
             //req sql qui recupére le nombre de features selon l id du projet
-            $sql = "SELECT *  FROM projet_feature WHERE projet_id = ".$id;
+            $sql = "SELECT AVG(etat) as pourcentage  FROM projet_feature WHERE projet_id = ".$id;
+//            $sql = "SELECT *  FROM projet_feature WHERE projet_id = ".$id;
             $statement = $this->getPdo()->query($sql);
-		$results = $statement->fetchAll();
-                $finies = 0; 
-            foreach($results as $result){
-                if($result['etat'] === "1"){
-                        $finies++;
-                    $pourcentage = floor($finies * 100/count($results));
-                }else {
-                    $pourcentage = "0";
-                }
-            }  
-            //traitement de results pour en obtenir un %age 
-            return $pourcentage."%";
+		$results = $statement->fetch();
+//                $finies = 0; 
+//            foreach($results as $result){
+//                if($result['etat'] === "1"){
+//                        $finies++;
+//                    $pourcentage = floor($finies * 100/count($results));
+//                }else {
+//                    $pourcentage = "0";
+//                }
+//            }  
+//            //traitement de results pour en obtenir un %age 
+            
+            return $results['pourcentage']*100;
+                
+                
         }
 
         public function getProfilProjet($id){
@@ -244,8 +286,27 @@ class DAOProjet extends DAO {
                 $testi =0;
                     }
             }
-
             return $testi."%";
             
+        }
+        
+        public function getFeature($id){
+            $sql = "select feature.*, projet_feature.etat from feature inner join projet_feature on feature.id = projet_feature.feature_id where projet_feature.projet_id =".$id;
+            $statement = $this->getPdo()->query($sql);
+            $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Feature");
+            $features = $statement->fetchAll();
+            return $features;
+            
+        }
+        
+        public function checkCurrentUser($id,$idp){
+            $sql = "select user_id from user_projet where user_id = ".$id." AND projet_id = ".$idp;
+            $statement = $this->getPdo()->query($sql);
+            $result = $statement->fetch();
+            if((int)$result['user_id'] === (int)$id){
+                return true;
+            }else{
+                return false;
+            }
         }
 }

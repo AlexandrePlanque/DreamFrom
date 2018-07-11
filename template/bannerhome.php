@@ -39,12 +39,12 @@
                        ) ?>
                         <li class="nav-item mt-2">
                             <a class="social-icon text-center" target="_blank" href="#">
-                                <i class="fa fa-twitter mt-2"></i>
+                                <i class="fa fa-twitter mt-2 fb"></i>
                             </a>
                         </li>
                         <li class="nav-item mt-2">
                             <a class="social-icon text-center" target="_blank" href="#">
-                                <i class="fa fa-facebook mt-2"></i>
+                                <i class="fa fa-facebook mt-2 fb"></i>
                             </a>
                         </li>
                     </ul>
