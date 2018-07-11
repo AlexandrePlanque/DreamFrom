@@ -226,20 +226,24 @@ class DAOProjet extends DAO {
         // cette fonction récupère les features pour afficher le %age achevé
         public function featureProgress($id){
             //req sql qui recupére le nombre de features selon l id du projet
-            $sql = "SELECT *  FROM projet_feature WHERE projet_id = ".$id;
+            $sql = "SELECT AVG(etat) as pourcentage  FROM projet_feature WHERE projet_id = ".$id;
+//            $sql = "SELECT *  FROM projet_feature WHERE projet_id = ".$id;
             $statement = $this->getPdo()->query($sql);
-		$results = $statement->fetchAll();
-                $finies = 0; 
-            foreach($results as $result){
-                if($result['etat'] === "1"){
-                        $finies++;
-                    $pourcentage = floor($finies * 100/count($results));
-                }else {
-                    $pourcentage = "0";
-                }
-            }  
-            //traitement de results pour en obtenir un %age 
-            return $pourcentage."%";
+		$results = $statement->fetch();
+//                $finies = 0; 
+//            foreach($results as $result){
+//                if($result['etat'] === "1"){
+//                        $finies++;
+//                    $pourcentage = floor($finies * 100/count($results));
+//                }else {
+//                    $pourcentage = "0";
+//                }
+//            }  
+//            //traitement de results pour en obtenir un %age 
+            
+            return $results['pourcentage']*100;
+                
+                
         }
 
         public function getProfilProjet($id){
