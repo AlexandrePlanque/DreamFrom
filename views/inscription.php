@@ -27,10 +27,6 @@ include "template/navbar.php";
                                         <input type="text" required="" name="pseudo" maxlength="45" class="form-control" placeholder="">
                                     </div>
                                 </div>
-<!--                                 <div class="form-group">
-                                    <label for="inputName">Adresse</label>
-                                    <input type="text" name="adresse"class="form-control" id="inputName" placeholder="">
-                                </div>-->
                                 <div class="form-group active-cyan-4">
                                     <label for="inputEmail3">Email</label>
                                     <div class="input-group mb-2">
