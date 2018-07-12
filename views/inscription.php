@@ -16,15 +16,18 @@ include "template/navbar.php";
                                  
                                     <div class="form-group col-md-4 active-cyan-4">
                                         <label for="inputName">Nom</label>
-                                        <input type="text" name="nom" maxlength="45" class="form-control" placeholder="">
+                                        <input type="text" id="nom"name="nom" maxlength="45" class="form-control" placeholder="" required="" required oninvalid="this.setCustomValidity('Nom incorrect')"oninput="setCustomValidity('')">
+                                        <script>
+
+                                       </script>
                                     </div>
                                     <div class="form-group col-md-4 active-cyan-4">
                                         <label for="inputName">Prénom</label>
-                                        <input type="text" name="prenom" maxlength="45" class="form-control" placeholder="">
+                                        <input type="text" name="prenom" maxlength="45" class="form-control" placeholder="" required="" required oninvalid="this.setCustomValidity('Prénom incorrect')"oninput="setCustomValidity('')">
                                     </div>
                                     <div class="form-group col-md-4 active-cyan-4">
                                         <label for="inputName">Pseudo</label>
-                                        <input type="text" name="pseudo" maxlength="45" class="form-control" placeholder="">
+                                        <input type="text" name="pseudo" maxlength="45" class="form-control" placeholder="" required=""required oninvalid="this.setCustomValidity('Pseudo incorrect')"oninput="setCustomValidity('')">
                                     </div>
                                 </div>
 <!--                                 <div class="form-group">
@@ -37,12 +40,12 @@ include "template/navbar.php";
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">@</div>
                                     </div>
-                                    <input type="email" name="email" maxlength="45" class="form-control" id="inputEmail3" placeholder="" required="">
+                                    <input type="email" name="email" maxlength="45" class="form-control" id="inputEmail3" placeholder="" required=""required oninvalid="this.setCustomValidity('Adresse email incorrect')"oninput="setCustomValidity('')">
                                 </div>
                                 </div>
                                 <div class="form-group active-cyan-4">
                                     <label for="inputPassword3">Mot de Passe</label>
-                                    <input type="password" name="password" maxlength="45" class="form-control" id="inputPassword3" placeholder="45 caractères maximum" required="">
+                                    <input type="password" name="password" maxlength="45" class="form-control" id="inputPassword3" placeholder="" required=""required oninvalid="this.setCustomValidity('Mot de passe incorrect')"oninput="setCustomValidity('')">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success btninscription">Créer votre compte DreamFrom</button>

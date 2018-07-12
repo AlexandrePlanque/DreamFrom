@@ -59,39 +59,3 @@
             
                 
         </div>
-
-<div class="row">
-       <div cclass="col-xs-12 col-md-4 offset-md-4">
-            <div class="modal fade" id="myModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <form role="form" autocomplete="off" method="POST" action="http://<?= $_SERVER['SERVER_NAME']?>/signin">
-                                <div class="form-group active-cyan-4">
-                                    <div class="input-group pb-modalreglog-input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text"><i class="fas fa-envelope"></i></div>
-                                        </div>
-                                        <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo">
-                                    </div>
-                                </div>
-                                <div class="form-group active-cyan-4">
-                                    <div class="input-group pb-modalreglog-input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text"><i class="fas fa-lock"></i></div>
-                                        </div>
-                                        <input type="password" class="form-control" id="pws" name="password" placeholder="Password">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="pass "><a href="#">Mot de passe oublié ?</a></div>
-                                    <div class="pass "><a href="/inscription" class="link">Nouveau Membre ?</a></div>
-                                    <button type="submit" class="btn btn-outline-info btn-sm btn_connexion">Connexion</button>                
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>

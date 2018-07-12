@@ -58,10 +58,14 @@
             <div class ="col-md-4 col-lg-6 col-sm-12 mt-5">
                 <h1 class="titreprez">DreamFrom</h1>
                 <h2 class="soustitre">découvrir... explorer... partager...</h2>
-                </hr>
-                <a>
-                e Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
-                </a>
+                <hr>
+                <p>
+                    <b>DreamFrom</b> est un site de gestion de projets qui met en relation des porteurs de projets, des personnes compétentes et des personnes qui veulent aider. 
+                Il y a d'un côté des bonnes idées abandonnées et de l'autre des personnes prettent à s'investir pour les faire aboutir. 
+                <br><br>
+                <b>DreamFrom</b> est un remède contre le gaspillage des idées et favorise la collaboration.
+                Nous créons les équipes qui vont créer les projets de demain.
+                </p>
             </div>
         </div>
     </div>   
@@ -69,7 +73,7 @@
         <div class="row">
           <div class="fx3 custom_prez">
             <a href="/projets">
-                <div class="item col4 mr-3">
+                <div id="test"class="item col4 mr-3">
                     <img class="transition img-responsive" src="../image/projets2.jpg">
                     <h4>Liste des Projets</h4>
                     <p>Consultez les projets et devenez collaborateur</p>

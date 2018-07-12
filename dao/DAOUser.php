@@ -188,14 +188,14 @@ class DAOUser extends DAO {
     public function createAdresse($entity) {
         $sql = "INSERT INTO adresse (rue,numero,code_postal,ville) VALUES('" . $entity->getRue() . '\',\'' . $entity->getNumero() . '\',\'' . $entity->getCode_postal() . '\',\'' . $entity->getVille() . "')";
 
-        echo $sql;
+//        echo $sql;
         // Utilisation de la methode getPdo du DAO pour connexion à la BDD et insertion
         $this->getPdo()->query($sql);
-        echo "<hr>";
+//        echo "<hr>";
         // retourne le dernier ID créé en BDD
         $entity->setId($this->getPdo()->lastInsertId());
-        var_dump($entity->getId());
-        echo "<hr>";
+//        var_dump($entity->getId());
+//        echo "<hr>";
 
         return $entity->getId();
     }
@@ -270,7 +270,7 @@ class DAOUser extends DAO {
             $password = ($_POST['password']);
 
             // on récupère en BDD les données
-            $sql = $bdd->prepare('SELECT * FROM user WHERE pseudo = \'' . $pseudo . '\' AND password = \'' . $password . '\';');
+            $sql = $bdd->prepare('SELECT * FROM user WHERE pseudo = \'' . $pseudo . '\' AND password = \'' . $password . '\' AND actif_id = 1');
             $sql->execute(array('.$pseudo.' => $_POST['pseudo'], '.password.' => $_POST['.password.']));
             $res = $sql->fetchAll();
 
