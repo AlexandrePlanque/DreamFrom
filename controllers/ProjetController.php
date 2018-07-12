@@ -33,7 +33,7 @@ class ProjetController extends Controller{
         $datas = array("projets" => $projet, "themes" => $themes);  
         // si la valeur du projet est remplie, le tri se fait par selon l
         }else{
-        $proj = $dao->getAllBy($this->getParams());
+        $proj = $dao->getAllOrderBy($this->getParams());
         $datas = array("projets" => $proj, "themes" => $themes);
         }
         
@@ -41,21 +41,58 @@ class ProjetController extends Controller{
     }
 
     
-    public function getParams(){
-        $para = $this->inputGet();
+//    public function getParams(){
+//        $para = $this->inputGet();
+//        
+//
+//        $retour = array();
+//        $i=0;
+//        foreach($para as $key => $value){
+//            $temp = "";
+//                if($i === 0){
+//                    if($key === "intitule"){
+//                        $temp = " WHERE theme.".$key." = '".$value."'";  
+//                    }else{
+//                        $temp = " WHERE ".$key." = '".$value."'";
+//                    }
+//                }else if($value === "asc" || $value === "desc"){
+//                    $temp = " ORDER BY ".$key." ".$value;
+//                }else{
+//                    $temp = " AND ".$key." = '".$value."'";  
+//                }
+//            array_push($retour, $temp);
+//            $i++;
+//        }
+//        return $retour;
+//    }
         
-//        echo $this->inputGet()['intitule'];
+    public function ficheProjet($id){
+
+        $this->render('ficheprojet', array("projet" => (new DAOProjet())->retrieve($id), "participants" => (new DAOProjet())->getInfoParti($id), "features" => (new DAOProjet())->getFeature($id)));
+    }
+
+    
+    
+           public function getParams(){
+        //récupération des paramètres présents dans la variable $_GET
+        $para = $this->inputGet();
+
         $retour = array();
         $i=0;
+        // pour chaque parametre présent on pointe la clé ainsi que la valeur (ex: intitule=technolige, clé = intitule et valeur = technologie
         foreach($para as $key => $value){
             $temp = "";
+            //pour le premier parametre on vérifie si il ne s'agit pas de la clé date_creation
+            //auquel cas la requête differe des autres via le ORDER BY sinon on sait qu'il s'agira du mot clé WHERE
                 if($i === 0){
-                    if($key === "intitule"){
-                        $temp = " WHERE theme.".$key." = '".$value."'";  
+                    if($key === "date_creation"){
+                    $temp = " ORDER BY ".$key." ".$value;
                     }else{
                         $temp = " WHERE ".$key." = '".$value."'";
                     }
-                }else if($value === "asc" || $value === "desc"){
+                //on effectue la même opération que précedement pour la clé date_creation sauf que cette fois ci 
+                //le mot clé sera AND si il ne s'agit pas de la clé date_creation
+                }else if($key === "date_creation"){
                     $temp = " ORDER BY ".$key." ".$value;
                 }else{
                     $temp = " AND ".$key." = '".$value."'";  
@@ -65,12 +102,6 @@ class ProjetController extends Controller{
         }
         return $retour;
     }
-        
-    public function ficheProjet($id){
-
-        $this->render('ficheprojet', array("projet" => (new DAOProjet())->retrieve($id), "participants" => (new DAOProjet())->getInfoParti($id), "features" => (new DAOProjet())->getFeature($id)));
-    }
-
 }       
 
  

@@ -305,4 +305,51 @@ class DAOProjet extends DAO {
                 return false;
             }
         }
+        
+        public function getAllOrderBy($array){
+            $sql = "select * from projet";
+                foreach($array as $ar){
+                    $sql.= $ar;
+                };
+
+		$statement = $this->getPdo()->query($sql);
+		$results = $statement->fetchAll();
+		$entities = array();
+
+            foreach ($results as $result) {
+                $entity = new Projet();
+                
+                $entity->setId($result['id']);
+                $entity->setTitre($result['titre']);
+                $entity->setDescription($result['description']);
+                $entity->setDate_creation($result['date_creation']);
+                $entity->setDate_modif($result['date_modif']);
+                $entity->setTheme_id($result['theme_id']);
+                $entity->setImage($result['image']);
+                // fait appel au setter et fonction permettant de recuperer dynamiquement le nb de participants  
+                $entity->setParticipants($this->getNbParticipants($entity->getId()));
+                // fait appel au setter et fonction permettant de recuperer dynamiquement le nom du chef de projet 
+                $entity->setLeader($this->getNomLeader($entity->getId()));
+                // fait appel au setter et fonction permettant de recuperer dynamiquement le %age de features accompli 
+                $entity->setFeatProgress($this->featureProgress($entity->getId()));
+                
+                
+//                $entity->setId($result['id']);
+//                $entity->setPseudo($result['pseudo']);
+//                $entity->setPassword($result['password']);
+//                $entity->setNom($result['nom']);
+//                $entity->setPrenom($result['prenom']);
+//                $entity->setEmail($result['email']);
+//                $entity->setCivilite($result['civilite']);
+//                $entity->setTel($result['tel']);
+//                $entity->setDate_creation($result['date_creation']);
+//                $entity->setPrivilege_id($result['privilege_id']);
+//                $entity->setAdresse_id($result['adresse_id']);
+//                $entity->setActif_id($result['actif_id']);
+//                $entity->setTheme_id($result['intitule']);
+//                $entity->setAvatar($result['avatar']);
+                array_push($entities, $entity);
+            }
+            return $entities;
+        }
 }

@@ -57,11 +57,17 @@ var valeurChoix = choix.options[ choix.selectedIndex ].value;
 
 var date = document.getElementById( "date" );
 var valeurDate = date.options[ date.selectedIndex ].value;
-//var valeurs = valeurChoix + valeurDate;
 
-//var collaborateur = document.getElementById( "" );
+var titre = document.getElementById( "titre" ).value;
+
+var uriTitre = "/?titre="+titre;
+
+var uri = (valeurChoix === ''? '': '/?theme_id='+valeurChoix)+(valeurDate !== '' && valeurChoix === ''? (valeurDate === ''? '': '/?date_creation='+valeurDate) : (valeurDate === ''? '': '&date_creation='+valeurDate));
+
+window.location.href = 'http://dreamfrom/projets'+(titre !== ''? ''+uriTitre : ''+uri);
+
 //var valeurDate = date.options[ date.selectedIndex ].value;
-window.location.href = 'http://dreamfrom/projets/?intitule='+valeurChoix+"&date_creation="+valeurDate;
+//window.location.href = 'http://dreamfrom/projets/?intitule='+valeurChoix+"&date_creation="+valeurDate;
 
 
 }

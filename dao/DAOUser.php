@@ -209,9 +209,11 @@ class DAOUser extends DAO {
 
             // Alors dans ce cas on met saisie du $_POST['pseudo'] dans la variable $pseudo
             $pseudo = ($_POST['pseudo']);
+            $email = ($_POST['email']);
 
             // On insère la variable pseudo qui correspond à la saisie de l'utilisateur dans la requête SQL
             $sql = $bdd->prepare('SELECT * FROM user WHERE pseudo = \'' . $pseudo . '\';');
+//            $sql = $bdd->prepare('SELECT * FROM user WHERE pseudo = \'' . $pseudo . '\' AND email = '.$email.'\'');
             $sql->execute(array('.$pseudo.' => $_POST['pseudo']));
 
             // recherche de résultat
