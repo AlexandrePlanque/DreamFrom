@@ -114,12 +114,11 @@ a{
 }
 
 .background{
-    background-image: url('../image/background_fiche_projet.png') !important;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover!important;
-    min-height: 50%;
-    height: 100%;
+    background-image: url('../image/background_fiche_projet.png');
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover!important;*/
+    /*min-height: 50%;*/
 }
 
 .title-color{
@@ -204,7 +203,6 @@ a{
 .participantContain{
     margin-left:25px;
 
-    /*margin-right:25px;*/
 }
 .optiFooterCard{
     background-color: #ececec;
@@ -222,4 +220,8 @@ a{
 
 .fichproj{
     margin-bottom: 50px;
+}
+
+.cleanfichepro{
+    margin-bottom: 250px;
 }

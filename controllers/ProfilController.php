@@ -27,12 +27,17 @@ use ReflectionClass;
  * @author alexandreplanque
  */
 class ProfilController extends Controller{
+
     
     public function getProfil(){
-        $dao = (new DaoUser())->retrieve(json_decode($_COOKIE['cookie'],true)['id']);
+        $id = json_decode($_COOKIE['cookie'],true)['id'];
+        $dao = (new DaoUser())->retrieve($id);
         $dao->setAdresse((new DAOAdresse())->retrieve($dao->getAdresse_id()));
-
-        $data = array("user" => $dao, "themes" => $this->getTheme(), "projets" => $this->getProjet(), "users" => ((new DAOUser())->getAll()));
+        if($this->getProjet($id)){
+            $data = array("user" => $dao, "themes" => $this->getTheme(), "projets" => $this->getProjet($id), "users" => ((new DAOUser())->getAll()));
+        }else{
+            $data = array("user" => $dao, "themes" => $this->getTheme(),"users" => ((new DAOUser())->getAll()));
+        }
 
         $this->render("profil", $data);
     }
@@ -42,8 +47,8 @@ class ProfilController extends Controller{
                 return $tata;
     }
     
-    private function getProjet(){
-        return (new DAOProjet())->getProfilProjet(json_decode($_COOKIE['cookie'],true)['id']);
+    private function getProjet($id){
+        return (new DAOProjet())->getProfilProjet($id);
        
     }
     

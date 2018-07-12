@@ -1,0 +1,8 @@
+
+tr:nth-child(odd){
+    background-color: #f0f0f0; 
+}
+
+.newNom{
+    color: #2b89f1 !important;
+}

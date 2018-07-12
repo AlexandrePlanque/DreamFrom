@@ -17,10 +17,11 @@ class DAOProjetFeature extends DAO {
 /* ____________________Crud methods____________________*/
 
 
-	public function create ($array){
+	public function create ($entity){
 
-		$sql = "INSERT INTO projet_feature (projet_id,feature_id,user_id) VALUES('" . $entity->getProjet_id() . ',' . $entity->getFeature_id() . ',' . $entity->getUser_id() . "')";
-		$this->getPdo()->query($sql);
+		$sql = "INSERT INTO projet_feature (projet_id,feature_id,user_id,etat) VALUES('" . $entity->getProjet_id() . "','" . $entity->getFeature_id() . "','" . $entity->getUser_id() . "','" . $entity->getEtat() ."')";
+//		echo $sql;
+                $this->getPdo()->query($sql);
 	}
 
 
@@ -37,21 +38,22 @@ class DAOProjetFeature extends DAO {
 	}
 
 
-	public function update ($array){
+	public function update ($entity){
 
-		$sql = "UPDATE projet_feature SET projet_id = '" . $entity->getProjet_id() ."',feature_id = '" . $entity->getFeature_id() ."',user_id = '" . $entity->getUser_id() ." WHERE id = ". $entity->getId();
-		if ($this->getPdo()->exec($sql) !== 0){
-			echo "Updated";
-		} else {
-			echo "Failed";
-		}
+		$sql = "UPDATE projet_feature SET etat = '1' WHERE projet_id = " . $entity->getProjet_id() . " AND feature_id = " . $entity->getFeature_id();
+//		if ($this->getPdo()->exec($sql) !== 0){
+//			echo "Updated";
+//		} else {
+//			echo "Failed";
+//		}
+                
 	}
 
 
-	public function delete ($id){
+	public function delete ($array){
 
-		$sql = "DELETE FROM projet_feature WHERE id= " . $id;
-		$this->getPdo()->query($sql);
+		$sql = "DELETE FROM projet_feature WHERE projet_id= " . $array['idPro'] . " AND feature_id = " . $array['idFeat'] . " AND user_id = " . $array['idUser'];
+                $this->getPdo()->query($sql);
 	}
 
 /* ____________________Repository methods____________________*/
@@ -98,4 +100,16 @@ class DAOProjetFeature extends DAO {
 		}
 		return $entities;
 	}
+        
+        	public function endFeature ($entity){
+
+		$sql = "UPDATE projet_feature SET etat = '1' WHERE projet_id = " . $entity->getProjet_id() . " AND feature_id = " . $entity->getFeature_id();
+		if ($this->getPdo()->exec($sql) !== 0){
+			echo "Updated";
+		} else {
+			echo "Failed";
+		}
+                
+	}
+        
 }

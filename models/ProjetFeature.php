@@ -12,6 +12,8 @@ Class ProjetFeature {
 		private $feature_id;
 
 		private $user_id;
+                
+                private $etat;
 
 
 /* ____________________ Getter and Setter Part ____________________ */
@@ -44,6 +46,15 @@ Class ProjetFeature {
 
 	public function setUser_id ($val){
 		$this->user_id = $val;
+	}
+
+	public function getEtat (){
+		return $this->etat;
+	}
+
+
+	public function setEtat ($val){
+		$this->etat = $val;
 	}
 
 }

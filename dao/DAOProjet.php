@@ -22,7 +22,7 @@ class DAOProjet extends DAO {
         
         // requete sql permettant de remplir la bdd "projet" avec les données récupérées du formulaire
         $sql = "INSERT INTO projet (titre,description,date_creation,date_modif,theme_id,image) "
-                . "VALUES('" . $entity->getTitre() . "',' ". $entity->getDescription() ." ',' ". $entity->getDate_creation() ." ',' ". $entity->getDate_modif() ." ',". $entity->getTheme_id() .",'" . $entity->getImage() . "')";
+                . "VALUES('" . $entity->getTitre() . "','". $entity->getDescription() ."','". $entity->getDate_creation() ."','". $entity->getDate_modif() ."','". $entity->getTheme_id() ."','" . $entity->getImage() . "')";
         $ok= $this->getPdo()->exec($sql);
 
         //si $ok est egal a 1 alors récupère l'id du projet qui vient d'etre créé.
@@ -31,14 +31,15 @@ class DAOProjet extends DAO {
 
         // création d'un doauser pour intégrer la relation entre le user et le projet
         
-        $dao = new DAOUser();
         // récupération de l'id du user courant en récupérant son id à partir du cookie
-        $id = $dao->getIdByPseudo($_COOKIE['cookie']);
+        $id = json_decode($_COOKIE['cookie'],true)['id'];
 
         // ajoute dans la table projet_user les id du projet  + celui de l'utilisateur courant 
         $projUser = "INSERT INTO user_projet (user_id,projet_id,droit_projet)"
                 ."VALUES('".$id."','".$idProjet."',1)";
+
         $this->getPdo()->exec($projUser);
+        return $idProjet;
         }
     }
 
@@ -227,23 +228,13 @@ class DAOProjet extends DAO {
         public function featureProgress($id){
             //req sql qui recupére le nombre de features selon l id du projet
             $sql = "SELECT AVG(etat) as pourcentage  FROM projet_feature WHERE projet_id = ".$id;
-//            $sql = "SELECT *  FROM projet_feature WHERE projet_id = ".$id;
+
             $statement = $this->getPdo()->query($sql);
-		$results = $statement->fetch();
-//                $finies = 0; 
-//            foreach($results as $result){
-//                if($result['etat'] === "1"){
-//                        $finies++;
-//                    $pourcentage = floor($finies * 100/count($results));
-//                }else {
-//                    $pourcentage = "0";
-//                }
-//            }  
-//            //traitement de results pour en obtenir un %age 
+            $results = $statement->fetch();
+
             
             return $results['pourcentage']*100;
-                
-                
+
         }
 
         public function getProfilProjet($id){
@@ -251,6 +242,10 @@ class DAOProjet extends DAO {
             $statement = $this->getPdo()->query($sql);
             $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Projet");
             $projets = $statement->fetchAll();
+            if(count($projets) === 0){
+                return false;
+            }
+            
             foreach($projets as $projet){
                 $projet->setFeatProgress($this->getProjetFeature($projet->getId()));
             }
@@ -291,7 +286,8 @@ class DAOProjet extends DAO {
         }
         
         public function getFeature($id){
-            $sql = "select feature.*, projet_feature.etat from feature inner join projet_feature on feature.id = projet_feature.feature_id where projet_feature.projet_id =".$id;
+        //ANY_VALUE permet de palier à des soucis lié au GROUP BY et utilisation de l'alias etat pour remplir les objet automatiquement
+            $sql = "select feature.*, ANY_VALUE(projet_feature.etat) as etat from feature inner join projet_feature on feature.id = projet_feature.feature_id where projet_feature.projet_id = ".$id." group by feature.id";
             $statement = $this->getPdo()->query($sql);
             $statement->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Feature");
             $features = $statement->fetchAll();

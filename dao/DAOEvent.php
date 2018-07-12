@@ -60,7 +60,7 @@ class DAOEvent extends DAO {
 
 
 	public function getAll (){
-		$sql = "SELECT * FROM event";
+		$sql = "SELECT * FROM `event` ORDER BY `event`.`date_creation` DESC limit 5";
 		$statement = $this->getPdo()->query($sql);
 		$results = $statement->fetchAll();
 		$entities = array();
@@ -88,9 +88,10 @@ class DAOEvent extends DAO {
 			} else {
 				$sql .= " AND ";
 			}
-			$sql .= $key . " = " . $value . "'";
+			$sql .= $key . " = '" . $value . "'";
 			$i++;
 		}
+                $sql .= " ORDER BY `event`.`date_creation` DESC limit 5";
 		$entities = array();
 		$statement = $this->getPdo()->query($sql);
 		$results = $statement->fetchAll();

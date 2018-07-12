@@ -5,10 +5,9 @@
  */
 include "template/header.php";
 include "template/navbar.php";
-
 ?>
-    <div class="background_projet">
-        <div class="container-fluid">
+
+        <div class="container debugHeight">
             <div class="row col-12">
                 <select class="form-control col-3 mr-5" id="theme">
                     <option value="">Tous les themes</option>

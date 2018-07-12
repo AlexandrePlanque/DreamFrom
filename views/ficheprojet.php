@@ -3,12 +3,12 @@ include "template/header.php";
 include "template/navbar.php";
 ?>
 
-<div class="background">
-    <div class="box fond"><h3 class="firsttitle text-center animated fadeInDown" style="padding-top: 30px;padding-bottom: 30px;"><?= $projet->getTitre()?></h3></div>
+    <div class="box fond">
+        <h3 class="firsttitle text-center animated fadeInDown" style="padding-top: 30px;padding-bottom: 30px;"><?= $projet->getTitre()?></h3>
+    </div>
     <div class="container-fluid text-center">    
         <div class="row">
             <div class="col-md-8 col-sm-12 col-12">
-                <!--<img class="animated fadeInLeft" src="http://<?= $_SERVER['SERVER_NAME'] ?>/image/drone.jpg"  style="width:80%">-->
                 <img class="animated fadeInLeft imgProjet" src="<?= $projet->getImage()?>"  style="width:80%">
 
 
@@ -27,7 +27,7 @@ include "template/navbar.php";
                     <p class="info d-none d-md-block">Progression</p>
                     <div class="d-none d-md-block">
                         <div class="progress progress_opti1">
-                            <div class="progress-bar" style="width:<?= $projet->getFeatProgress()?>"></div>
+                            <div class="progress-bar" style="width:<?= $projet->getFeatProgress()?>%"></div>
                         </div>
                     </div>
                     <p class="info d-none d-md-block"><?= $projet->getParticipants() ?> Participants</p>
@@ -35,8 +35,8 @@ include "template/navbar.php";
                     <div class="info">
                         <!--<button type="button" class="btn btn-info d-none d-md-block" oncl>Rejoindre le Projet</button>-->
                     <?= (!$projet->getCurrentUserIn())?
-                    '<button  id="join_projet" type="button" onclick="addingToProject('.$projet->getId().')" value="60" class="btn btn-info d-md-block">Rejoindre le Projet</button>':
-                                                    '<button type="button" onclick="leaveProject('.$projet->getId().')" class="btn btn-danger d-md-block">Abandonner le Projet</button>'; ?>
+                    '<button  id="join_projet" type="button" onclick="addingToProject('.$projet->getId().')" value="60" class="btn btn-info d-none d-md-block">Rejoindre le Projet</button>':
+                                                    '<button type="button" onclick="leaveProject('.$projet->getId().')" class="btn btn-danger d-none d-md-block">Abandonner le Projet</button>'; ?>
                     </div>
 
                 </div>
@@ -58,11 +58,9 @@ include "template/navbar.php";
                 </div>
 
                 <div class="col-12">
-                                           <?php foreach($participants as $participant) : ?>
-                    <?= ($participant->getId() === json_decode($_COOKIE["cookie"],true)['id'])?
-                    '<button  id="join_projet" type="button" onclick="addingToProject('.$projet->getId().')" value="60" class="btn btn-info d-md-none">Rejoindre le Projet</button>':
-                                                    '<button type="button" onclick="leaveProject('.$projet->getId().')" class="btn btn-danger d-md-none">Abandonner le Projet</button>'; break;?>
-                    <?php endforeach; ?>
+                    <?= (!$projet->getCurrentUserIn())?
+               '<button  id="join_projet" type="button" onclick="addingToProject('.$projet->getId().')" value="60" class="btn btn-info d-md-none">Rejoindre le Projet</button>':
+               '<button type="button" onclick="leaveProject('.$projet->getId().')" class="btn btn-danger d-md-none">Abandonner le Projet</button>'; ?>
                 </div>
             </div>
 
@@ -100,7 +98,7 @@ include "template/navbar.php";
                                 <?= (((int)$feat->getEtat() === 1)?'
                                 <div class="card-header collapsed card-title2" data-toggle="collapse" href="#collapse'.$i.'">
                                   <a class="card-title">
-                                      '.ucfirst($feat->getNom()).$feat->getEtat().'  - <span style="color: green;">Terminée</span>
+                                      '.ucfirst($feat->getNom()).'  - <span style="color: green;">Terminée</span>
                                     </a>
                                 </div>
                                 <div id="collapse'.$i.'" class="collapse" data-parent="#accordion" >
@@ -115,17 +113,18 @@ include "template/navbar.php";
                                 </div>
                                 <div id="collapse'.$i.'" class="collapse" data-parent="#accordion" >
                                     <div class="card-body">'. ucfirst($feat->getDescription()).'   
-                                        <div class="btn-custom01">
-                                    <button type="button" class="btn-custom00 btn btn-info d-none d-md-block" onclick="function('. (int)$feat->getId().')">Se positionner</button>
-                                    <button type="button" class="ml-3 mr-3 btn-custom00 btn btn-info d-none d-md-block" onclick="function('. (int)$feat->getId().')">Abandonner</button>
-                                    <button type="button" class="btn-custom00 btn btn-info d-none d-md-block" onclick="function('. (int)$feat->getId().')">Cloturer</button>
-                                    </div>
-                                    </div>
-                                </div>') ?>
+                                        <div class="btn-custom01">'.($projet->getCurrentUserIn()?
+                                    '<button type="button" class="btn-custom00 btn btn-info d-none d-md-block" onclick="addingToFeature('. (int)$projet->getId().",".(int)$feat->getId().')">Se positionner</button>
+                                    <button type="button" class="ml-3 mr-3 btn-custom00 btn btn-info d-none d-md-block" onclick="leaveFeature('. (int)$projet->getId().",".(int)$feat->getId().')">Abandonner</button>
+                                    <button type="button" class="btn-custom00 btn btn-info d-none d-md-block" onclick="closeFeature('. (int)$projet->getId().",".(int)$feat->getId().')">Cloturer</button></div></div></div>':'</div></div></div>')
+                                    ) ?>
               
 
              
                                 <?php endforeach; ?>
+                            <!--</div>-->
+                                    <!--</div>-->
+                                
 <!--                                <div class="card-header collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
                                     <a class="card-title">
                                         Fonctionnalité 2
@@ -167,13 +166,15 @@ include "template/navbar.php";
 <!--                    <div class="tab-pane" id="commentaire" role="tabpanel">En construction</div>-->
             </div>
         </div>
+        
 
 
 
 
 
 <?php include "template/footer.php"; ?>
-    </div>
+
+    
 
 
 

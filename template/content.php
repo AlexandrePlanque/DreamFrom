@@ -11,9 +11,45 @@
                 </li>
             </ul>
             <div class="tab-content select_result">
-                <div class="tab-pane" id="selection" role="tabpanel">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
-                <div class="tab-pane" id="projets" role="tabpanel">Lorem Ipsum has been the industry's standard dummy</div>
-                    <div class="tab-pane" id="membres" role="tabpanel">En construction 1</div>
+                <div class="tab-pane active show" id="selection" role="tabpanel">
+<table class="table table-striped-custom">
+  <tbody>
+<?php foreach($news as $new) : ?>
+    <tr>
+      <td><?= date("d/m/Y", strtotime($new->getDate_creation())); ?></td>
+      <td class="newNom"><?=ucfirst($new->getNom())?></td>
+      <td><?=ucfirst($new->getDescription())?></td>
+    </tr>
+<?php endforeach; ?>
+  </tbody>
+</table>
+                </div>
+                <div class="tab-pane" id="projets" role="tabpanel">
+                    <table class="table table-striped-custom">
+  <tbody>
+<?php foreach($projets as $projet) : ?>
+    <tr>
+      <td><?= date("d/m/Y", strtotime($projet->getDate_creation())); ?></td>
+      <td class="newNom"><?=ucfirst($projet->getNom())?></td>
+      <td><?=ucfirst($projet->getDescription())?></td>
+    </tr>
+<?php endforeach; ?>
+  </tbody>
+</table>
+                </div>
+                <div class="tab-pane" id="membres" role="tabpanel">
+                                        <table class="table table-striped-custom">
+  <tbody>
+<?php foreach($membres as $membre) : ?>
+    <tr>
+      <td><?= date("d/m/Y", strtotime($membre->getDate_creation())); ?></td>
+      <td class="newNom"><?=ucfirst($membre->getNom())?></td>
+      <td><?=ucfirst($membre->getDescription())?></td>
+    </tr>
+<?php endforeach; ?>
+  </tbody>
+</table>
+                </div>
             </div>
 <div class="content-home">
  <!--       <img src="../image/background_description_home.png">-->

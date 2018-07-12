@@ -31,6 +31,53 @@ function leaveProject(id){
     
 }
 
+function addingToFeature(id,idFeat){
+
+        $.ajax({
+        type: "GET",
+        url : "http://dreamfrom/projet/"+id+"/feature/"+idFeat,
+        success : function(e){
+            alert("http://dreamfrom/projet/"+id+"/feature/"+idFeat);
+//            window.location.href = e;
+        },
+        error : function(e){
+           alert('Transmission échouée');
+        }
+
+    });
+}
+
+function leaveFeature(id,idFeat){
+
+        $.ajax({
+        type: "DELETE",
+        url : "http://dreamfrom/projet/"+id+"/feature/"+idFeat,
+        success : function(e){
+            alert("http://dreamfrom/projet/"+id+"/feature/"+idFeat);
+//            window.location.href = e;
+        },
+        error : function(e){
+           alert('Transmission échouée');
+        }
+
+    });
+}
+
+function closeFeature(id,idFeat){
+        $.ajax({
+        type: "POST",
+        url : "http://dreamfrom/projet/"+id+"/feature/"+idFeat,
+        success : function(e){
+            alert("http://dreamfrom/projet/"+id+"/feature/"+idFeat);
+//            window.location.href = e;
+        },
+        error : function(e){
+           alert('Transmission échouée');
+        }
+
+    });
+    
+}
 function get_projet_id(){
     var projet_Id = $("#join_projet").val();
     

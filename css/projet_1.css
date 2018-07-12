@@ -102,14 +102,7 @@ a{
     text-decoration: none;
 }
 
-.background{
-    background-image: url('../image/background_fiche_projet.png') !important;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover!important;
-    min-height: 50%;
-    height: 100%;
-}
+
 
 .title-color{
     color: #ffffff;

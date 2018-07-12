@@ -10,7 +10,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fas fa-envelope"></i></div>
                                         </div>
-                                        <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo">
+                                        <input type="text" maxlength="45" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo">
                                     </div>
                                 </div>
                                 <div class="form-group active-cyan-4">
@@ -18,7 +18,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fas fa-lock"></i></div>
                                         </div>
-                                        <input type="password" class="form-control" id="pws" name="password" placeholder="Mot de passe">
+                                        <input type="password" maxlength="45" class="form-control" id="pws" name="password" placeholder="Mot de passe">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -33,7 +33,7 @@
             </div>
         </div>
         </div>
-<footer class="footer">
+<footer class="footer" id="footer">
     <div class="text-center py-3">
         <div class="test1 mt-4">
             <div class="test1">© 2018 DreamFrom - Tous droits réservés.</div>
@@ -51,6 +51,8 @@
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/messagerie.js" type="text/javascript"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="../js/projet.js" type="text/javascript"></script>
+<script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/projet.js" type="text/javascript"></script>
+<script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/jquery.hoverdir.js"></script>
+<script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/modernizr.custom.97074.js"></script>
 </body>
 </html>

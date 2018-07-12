@@ -1,12 +1,5 @@
-//window.onload = function() {
-//    alert(getWindowHeight())
-//setFooter();
-//}
-//window.onresize = function() {
-//setFooter();
-//}
-
 $( document).ready(function(){
+
     var url = $(location).attr('href');
     switch (url.split('?')[0]) {
             
@@ -31,10 +24,13 @@ $( document).ready(function(){
             $('#profil').addClass('active')
             break;
     }
-            
-    
+         
+    $(' #da-thumbs > li ').each( function() { $(this).hoverdir(); } );
 
+//    footerAlwaysInBottom();
 })
+
+
 
 function search(){
 var yourSelect = document.getElementById( "theme" );
@@ -74,23 +70,26 @@ function disconnect(){
         url: "http://dreamfrom/logout",
         dataType: 'json',
 
-//        success: function (data) {
-//            console.log(data);
-//            alert('ya bon bb');
-//            if(data.length > 0){
-//              msg(data, id);
-//          }else{noMsg()}
-//
-//        },
-//        error: function (param1, param2) {
-//            alert('ya PAS bon bb');
-//            
-//        }
         });
-
-
-
 }
+
+    function clearfixFooter(){
+        var docHeight = $(window).height();
+        var footerTop = $('#footer').position().top + $('#footer').height();
+        if (footerTop < docHeight) {
+            $('#footer').css("margin-top", (1200 - footerTop) + "px");
+        }
+    }
+
+    function footerAlwaysInBottom() {
+        var docHeight = $(document).height();
+        var footerTop = $('#footer').position().top + $('#footer').height();
+
+        if (footerTop < docHeight) {
+//            $('#footer').attr("style""margin-top", (docHeight - footerTop) + "px");
+            $('#footer').attr('style','margin-top:'+(docHeight - footerTop)+ "px");
+        }
+    }
 
 function cleanUp(){
     $('#home').removeClass('active')
