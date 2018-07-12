@@ -34,25 +34,25 @@ include "template/navbar.php";
                                            <i class="fas fa-user-circle"></i>
                                        </div>
                                    </div>
-                                    <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom" value='<?= $user->getNom() ?>'>
+                                    <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom" required="" required oninvalid="this.setCustomValidity('Nom incorrect')"oninput="setCustomValidity('')"value='<?= $user->getNom() ?>'>
                                 </div>
                                 <div class="input-group mb-2 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-user-circle"></i></div>
                                    </div>
-                                    <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Prénom" value='<?= $user->getPrenom() ?>'>
+                                    <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Prénom" required="" required oninvalid="this.setCustomValidity('Prénom incorrect')"oninput="setCustomValidity('')"value='<?= $user->getPrenom() ?>'>
                                     </div>
                                 <div class="input-group mb-2 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-phone"></i></div>
                                    </div>
-                                        <input type="text" id="tel" name="tel" class="form-control" placeholder="Téléphone" value='<?= $user->getTel() ?>'>
+                                        <input type="text" id="tel" name="tel" class="form-control" placeholder="Téléphone" required="" required oninvalid="this.setCustomValidity('Téléphone incorrect')"oninput="setCustomValidity('')"value='<?= $user->getTel() ?>'>
                                     </div>
                                 <div class="input-group mb-2 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-at"></i></div>
                                    </div>
-                                        <input type="text" id="email" name="email" class="form-control" placeholder="Email" value='<?= $user->getEmail() ?>'>
+                                        <input type="text" id="email" name="email" class="form-control" placeholder="Email" required="" required oninvalid="this.setCustomValidity('Email incorrect')"oninput="setCustomValidity('')"value='<?= $user->getEmail() ?>'>
                                     </div>
                                 <div class="input-group col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
@@ -70,25 +70,25 @@ include "template/navbar.php";
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-home"></i></div>
                                    </div>
-                                        <input type="text" id="numero" name="numero" class="form-control" placeholder="Numéro" value='<?= $user->getAdresse()->getNumero() ?>'>
+                                        <input type="text" id="numero" name="numero" class="form-control" placeholder="Numéro" required="" required oninvalid="this.setCustomValidity('Numéro incorrect')"oninput="setCustomValidity('')"value='<?= $user->getAdresse()->getNumero() ?>'>
                                     </div>
                                     <div class="input-group mt-5 mb-2 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-home"></i></div>
                                    </div>
-                                        <input type="text" name="rue" id="rue" class="form-control" placeholder="Rue"  value='<?= $user->getAdresse()->getRue()?>'>
+                                        <input type="text" name="rue" id="rue" class="form-control" placeholder="Rue"  required="" required oninvalid="this.setCustomValidity('Rue incorrecte')"oninput="setCustomValidity('')"value='<?= $user->getAdresse()->getRue()?>'>
                                     </div>
                                     <div class="input-group mb-3 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-home"></i></div>
                                    </div>
-                                        <input type="text" id="ville" name="ville" class="form-control" placeholder="Ville"  value='<?= $user->getAdresse()->getVille() ?>'>
+                                        <input type="text" id="ville" name="ville" class="form-control" placeholder="Ville"  required="" required oninvalid="this.setCustomValidity('Ville incorrecte')"oninput="setCustomValidity('')"value='<?= $user->getAdresse()->getVille() ?>'>
                                     </div>
                                     <div class="input-group mb-3 col-md-6 active-cyan-4">
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-home"></i></div>
                                    </div>
-                                        <input type="text" id="code_postal" name="code_postal" class="form-control" placeholder="Code postal"  value='<?= $user->getAdresse()->getCode_postal() ?>'>
+                                        <input type="text" id="code_postal" name="code_postal" class="form-control" placeholder="Code postal"  required="" required oninvalid="this.setCustomValidity('Code postal incorrect')"oninput="setCustomValidity('')"value='<?= $user->getAdresse()->getCode_postal() ?>'>
                                     </div>
                                 </div>
 

@@ -18,9 +18,11 @@ require 'vendor/autoload.php';
 
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\custom_core\MySecu;
+use BWB\Framework\mvc\dao\DAOEvent;
 use BWB\Framework\mvc\dao\DAOTheme;
 use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\models\Adresse;
+use BWB\Framework\mvc\models\Event;
 use BWB\Framework\mvc\models\Theme;
 use BWB\Framework\mvc\models\User;
 use PHPMailer\PHPMailer\Exception;
@@ -149,14 +151,17 @@ class UserController extends Controller{
         if ($dao->verifPseudo()) {
             $userStatus = $dao->create($user);
 //            $token = $secu->generateToken($user);
-            echo"inscription réussie";
-            echo"<hr>";
+//            echo"inscription réussie";
+//            echo"<hr>";
 //            var_dump($token);
 //            echo"<hr>";
 //            var_dump($secu->verifyToken($token));
             $sendMail = $this->registerConfirm();
+            header ("Refresh: 5; url=http://dreamfrom/");
+            $this->render("confirmInscription");
         } else {
-            echo"echec de l'inscription";
+            header ("Refresh: 5; url=http://dreamfrom/");
+            $this->render("failInscription");
         }
     }
 
@@ -181,7 +186,7 @@ class UserController extends Controller{
 
 
         //Paramètres du Serveur
-        $mail->SMTPDebug = 2;
+//        $mail->SMTPDebug = 2;
         $mail->isSMTP();                                      // Utilisation SMTP
         $mail->Host = 'smtp.gmail.com';                       // Adresse du serveur SMTP
         $mail->SMTPAuth = true;                               // Activer l'authentification SMTP
@@ -199,13 +204,13 @@ class UserController extends Controller{
         $mail->Body = 'Bonjour, merci de cliquer sur le lien suivant pour activer votre compte DreamFrom: ' . $message;
 
         if (!$mail->send()) {
-            echo "Erreur";
+//            echo "Erreur";
         } else {
-            echo "Message envoyé";
-            echo "<hr>";
-            var_dump($token);
-            echo"<hr>";
-            var_dump($secu->verifyToken($token));
+//            echo "Message envoyé";
+//            echo "<hr>";
+//            var_dump($token);
+//            echo"<hr>";
+//            var_dump($secu->verifyToken($token)); 
         }
     }
 
@@ -222,12 +227,12 @@ class UserController extends Controller{
       
       //création d'un event lié à l'inscription de l'utilisateur
       $data = json_decode(json_encode($recup),true);
-      $event = new Event();
-      $event->setNom('membre');
-      $event->setDate_creation(date("Y-m-d H:i:s"));
-      $event->setDescription($data['pseudo']." vient de nous rejoindre, bienvenue à lui");
-      (new DAOEvent())->create($event);
-      
+//      $event = new Event();
+//      $event->setNom('membre');
+//      $event->setDate_creation(date("Y-m-d H:i:s"));
+//      $event->setDescription($data['pseudo']." vient de nous rejoindre, bienvenue à lui");
+//      (new DAOEvent())->create($event);
+        header ("Refresh: 5; url=http://dreamfrom/");
         $this->render("emailconfirmation");
     }
     
@@ -255,9 +260,9 @@ class UserController extends Controller{
 
             $secu->generateCookie($user);
             
-            echo "connexion réussie";
+           
         }else{
-            echo"erreur connexion";
+          header("Location: http://dreamfrom/");
         }
         
     }

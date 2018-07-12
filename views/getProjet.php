@@ -6,6 +6,25 @@
 include "template/header.php";
 include "template/navbar.php";
 ?>
+            <div class="pb-5 pt-5"> 
+             <div class="container debugHeight">
+        <div class="row custom-choice col-md-12">
+            <select class="custom-select col-3 mr-3" id="theme">
+                <option value="">Tous les themes</option>
+                <?php foreach ($themes as $theme) : ?> 
+                    <option value="<?= $theme->getIntitule() ?>"<?= ($this->inputGet()['intitule'] === $theme->getIntitule()) ? "selected='true'" : ""; ?>><?= ucfirst(implode(' ', explode('_', $theme->getIntitule()))) ?></option>
+                <?php endforeach; ?>
+            </select>
+            <select class="custom-select col-3 " id="date">
+                <option value="">Pas de préférences</option>
+                <option value="desc" <?= ($this->inputGet()['date_creation'] === "desc") ? 'selected="true"' : ""; ?> >Les plus récents</option>
+                <option value="asc" <?= ($this->inputGet()['date_creation'] === "asc") ? 'selected="true"' : ""; ?>>Les plus anciens</option>
+                <option value="desc" <?= ($this->inputGet()['participants'] === "asc")? 'selected="true"': ""; ?>>Nombre de participants</option>
+            </select>
+            <div class="mr-1 active-cyan-4 mb-4 col-3">
+                <div class="input-group mb-3">
+                    <input class="form-control" autocomplete=off type="search" placeholder="Search" aria-label="Search" id="username">
+                    <div class="input-group-append">
 
 <div class="pb-5 pt-5"> 
     <div class="container debugHeight">
@@ -78,5 +97,4 @@ include "template/navbar.php";
 <?php
 include "template/footer.php";
 ?> 
-
 
