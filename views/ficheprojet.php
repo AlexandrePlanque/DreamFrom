@@ -38,9 +38,11 @@ include "template/navbar.php";
                     '<button  id="join_projet" type="button" onclick="addingToProject('.$projet->getId().')" value="60" class="btn btn-info d-none d-md-block">Rejoindre le Projet</button>':
                                                     '<button type="button" onclick="leaveProject('.$projet->getId().')" class="btn btn-danger d-none d-md-block">Abandonner le Projet</button>'; ?>
                     </div>
+
                 </div>
 
             </div>
+            
         </div>
         <div class="animated fadeInRight">
             <div class="row">
