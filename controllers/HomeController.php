@@ -19,7 +19,6 @@ use BWB\Framework\mvc\dao\DAOEvent;
 class HomeController extends Controller {
     
     public function GetHome(){
-//        var_dump(json_decode($_COOKIE['cookie'],true)['pseudo']);
         $this->render("getHome", array("news" => $this->getNews(), "projets" => $this->getNewsProjet(),"membres" => $this->getNewsMembre()));
     }
     

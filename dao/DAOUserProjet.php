@@ -52,6 +52,7 @@ class DAOUserProjet extends DAO {
 
 		$sql = "DELETE FROM user_projet WHERE user_id= ". $array['id']." AND projet_id = ".$array['idp'];
 		$this->getPdo()->query($sql);
+
 	}
 
 /* ____________________Repository methods____________________*/
@@ -104,11 +105,11 @@ class DAOUserProjet extends DAO {
                 $this->getPdo()->query($sql);
 	}
         
-        // invoquée lorsqu'un user est invité à rejoindre un projet
-//        	public function createAsInvited ($entity){
-//		$sql = "INSERT INTO user_projet (user_id,projet_id,droit_projet_id) VALUES('" . $entity->getUser_id() . ',' . $entity->getProjet_id() . "',0)";
-//		$this->getPdo()->query($sql);
-//	}
-
+                public function whoIsTheBoss(){
+                    $sql = "select user.id from user where privilege_id = 2";
+                    $statement = $this->getPdo()->query($sql);
+                    $results = $statement->fetch();
+                    return $results['id'];
+                }
 
 }

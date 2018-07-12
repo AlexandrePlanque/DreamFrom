@@ -11,20 +11,20 @@ include "template/navbar.php";
                             <h4 class="mb-0 text-center">Créer un compte</h3>
                         </div>
                         <div class="card-body">
-                            <form class="form" role="form" autocomplete="off" method="POST" action="http://<?= $_SERVER['SERVER_NAME']?>/register">
+                            <form class="form" role="form" autocomplete="off" id="inscription" method="POST" action="http://<?= $_SERVER['SERVER_NAME']?>/register">
                                 <div class="form-row">
                                  
                                     <div class="form-group col-md-4 active-cyan-4">
                                         <label for="inputName">Nom</label>
-                                        <input type="text" name="nom" maxlength="45" class="form-control" placeholder="">
+                                        <input type="text" id='nom' name="nom" required="" maxlength="45" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group col-md-4 active-cyan-4">
                                         <label for="inputName">Prénom</label>
-                                        <input type="text" name="prenom" maxlength="45" class="form-control" placeholder="">
+                                        <input type="text" required="" name="prenom" maxlength="45" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group col-md-4 active-cyan-4">
                                         <label for="inputName">Pseudo</label>
-                                        <input type="text" name="pseudo" maxlength="45" class="form-control" placeholder="">
+                                        <input type="text" required="" name="pseudo" maxlength="45" class="form-control" placeholder="">
                                     </div>
                                 </div>
 <!--                                 <div class="form-group">
@@ -53,6 +53,7 @@ include "template/navbar.php";
                     </div>
 
     </div>
+
 <?php
 include "template/footer.php";
 ?>
