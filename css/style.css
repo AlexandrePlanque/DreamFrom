@@ -48,8 +48,11 @@
       margin: auto;
 }
 html, body {
-    min-height: 100% !important;
     scroll-behavior: smooth;
+}
+
+body {
+    background-color:  #cfcfcf;
 }
 
 .btn-primary:hover,
@@ -225,7 +228,6 @@ html, body {
     min-width: 50px;
     background-position: center;
     background-repeat: no-repeat;
-/*    background-size: cover;*/
 }
 
 .down-arrowimg {
@@ -300,7 +302,8 @@ select_home container-fluid {
 }
 
 .footer {
-    background:#2a5d95 !important;   
+    background:#2a5d95 !important;
+    height:65px;
 }
 
 .test1{

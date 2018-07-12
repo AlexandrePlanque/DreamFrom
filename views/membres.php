@@ -1,10 +1,38 @@
 <?php include "template/header.php";
 include "template/navbar.php";
 ?>
-<div class="team pb-5 membre">    
+<!--<div class="team pb-5 membre">-->    
     <div class="container">
         <!--<h5 class="section-title h1">Liste des membres</h5>-->
         <div class="row col-12">
+            <div class="input-group mb-3">
+  <select class="custom-select col-3" id="inputGroupSelect01">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
+<!--            <div class="input-group ">
+  <select class="custom-select col-3" id="inputGroupSelect04">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <div class="input-group-append">
+    <button class="btn btn-info" type="button">Button</button>
+  </div>
+</div>
+            -->
+            
+            <div class="input-group mb-3 col-3">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-info" type="button"><i class="fas fa-search" ></i></button>
+  </div>
+</div>
+            
             
         <select class="form-control col-3 mr-5" id="theme">
             <option value="">Tous les themes</option>
@@ -62,6 +90,6 @@ include "template/navbar.php";
             </div>
 <?php
 endforeach;?>
-        </div>
+        <!--</div>-->
     </div>
 <?php include "template/footer.php"; ?>

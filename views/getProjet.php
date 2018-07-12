@@ -7,7 +7,6 @@ include "template/header.php";
 include "template/navbar.php";
 
 ?>
-        <div class="background_projet">
         <div class="container">
             <div class="row col-12">
                 <select class="form-control col-3 mr-5" id="theme">
@@ -66,7 +65,6 @@ include "template/navbar.php";
             </div>
 <?php
 endforeach;?>
+        </div>
 <?php include "template/footer.php";?>
-        </div>
 
-        </div>

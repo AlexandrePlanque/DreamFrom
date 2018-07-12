@@ -88,7 +88,7 @@ class DAOUser extends DAO {
     /* ____________________Repository methods____________________ */
 
     public function getAll() {
-                $sql = "select * from user inner join theme on user.theme_id = theme.id order by date_creation asc";
+                $sql = "select * from user inner join theme on user.theme_id = theme.id";
 		$statement = $this->getPdo()->query($sql);
 		$results = $statement->fetchAll();
 		$entities = array();
@@ -118,7 +118,7 @@ class DAOUser extends DAO {
 
 	public function getAllOrder ($array){
             
-                $sql = "select *, theme.intitule from user inner join theme on user.theme_id = theme.id";
+                $sql = "select *, theme.intitule as theme from user inner join theme on user.theme_id = theme.id";
                 foreach($array as $ar){
                     $sql.= $ar;
                 };

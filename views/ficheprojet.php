@@ -3,12 +3,12 @@ include "template/header.php";
 include "template/navbar.php";
 ?>
 
-<div class="background">
-    <div class="box fond"><h3 class="firsttitle text-center animated fadeInDown" style="padding-top: 30px;padding-bottom: 30px;"><?= $projet->getTitre()?></h3></div>
+    <div class="box fond">
+        <h3 class="firsttitle text-center animated fadeInDown" style="padding-top: 30px;padding-bottom: 30px;"><?= $projet->getTitre()?></h3>
+    </div>
     <div class="container-fluid text-center">    
         <div class="row">
             <div class="col-md-8 col-sm-12 col-12">
-                <!--<img class="animated fadeInLeft" src="http://<?= $_SERVER['SERVER_NAME'] ?>/image/drone.jpg"  style="width:80%">-->
                 <img class="animated fadeInLeft imgProjet" src="<?= $projet->getImage()?>"  style="width:80%">
 
 
@@ -164,13 +164,15 @@ include "template/navbar.php";
 <!--                    <div class="tab-pane" id="commentaire" role="tabpanel">En construction</div>-->
             </div>
         </div>
+        
 
 
 
 
 
 <?php include "template/footer.php"; ?>
-    </div>
+
+    
 
 
 

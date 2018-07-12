@@ -33,7 +33,7 @@
             </div>
         </div>
         </div>
-<footer class="footer">
+<footer class="footer" id="footer">
     <div class="text-center py-3">
         <div class="test1 mt-4">
             <div class="test1">© 2018 DreamFrom - Tous droits réservés.</div>
