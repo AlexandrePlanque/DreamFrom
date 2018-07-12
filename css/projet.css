@@ -44,10 +44,10 @@ html{
     margin-bottom: 20px;
 }
 .projet_image{
-    border: 6px white solid;
-    margin-bottom: 0;
-    width: 306px!important;
-    height: 200px!important;
+    border: 3px white solid;
+    /*margin-bottom: 0;*/
+/*    width: 306px!important;
+    height: 200px!important;*/
     
      
 }
@@ -71,9 +71,7 @@ div p{
     padding-left: 20px;
 }
 .creat_proj{
-
     background-color: #4dd0e1;
-    box-shadow: 0 0 0 1px black;
 }
 
 .prog_bar{
@@ -81,7 +79,7 @@ div p{
     max-width: 100px!important;
 }
 .progbar{
-    margin: 20px auto !important;
+    /*margin-left: 14% !important;*/
     width: 100%;
 }
 .progress_opti1{
@@ -224,4 +222,16 @@ a{
 
 .cleanfichepro{
     margin-bottom: 250px;
+}
+
+.card-footer{
+   border-top: none !important;
+}
+.bobo{
+   margin-left: 20px !important;
+}
+
+.listproj{
+    padding-left: 20px;
+    line-height: 2.2em;
 }

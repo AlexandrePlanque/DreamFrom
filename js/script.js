@@ -1,5 +1,6 @@
 $( document).ready(function(){
 
+    
     var url = $(location).attr('href');
     switch (url.split('?')[0]) {
             
@@ -26,8 +27,8 @@ $( document).ready(function(){
     }
          
     $(' #da-thumbs > li ').each( function() { $(this).hoverdir(); } );
-
 //    footerAlwaysInBottom();
+    getImg()
 })
 
 
@@ -89,6 +90,14 @@ function disconnect(){
 //            $('#footer').attr("style""margin-top", (docHeight - footerTop) + "px");
             $('#footer').attr('style','margin-top:'+(docHeight - footerTop)+ "px");
         }
+    }
+    
+    function getImg(){
+        var imgHeight =  $("#imglistproj").height();
+        var imgWidth =  $("#imglistproj").width();
+        $(".projet_image").attr("style", "height:"+((imgHeight) + (imgHeight/2))+"px;")
+//        $(".projet_image").attr("style", "width:"+ imgWidth+"px !important;")
+        
     }
 
 function cleanUp(){
