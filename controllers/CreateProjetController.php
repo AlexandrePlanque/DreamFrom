@@ -47,27 +47,27 @@ class CreateProjetController extends Controller {
         $projet = new Projet();
 
         $creation = new DAOProjet();
-        var_dump($_POST);
         // récupération des données à partir des infos du $_POST
         $projet->setTitre($_POST['titre']);
         $projet->setDescription($_POST['description']);
         $projet->setTheme_id($_POST['theme']);
         $projet->setImage($_POST['image']);
         $projet->setDate_modif("NULL");
-        $projet->setLeader("Aziraphale");
 
         $projet->setDate_creation($datetime);
-var_dump($projet);
-        // verif si un projet avec un nom identique existe deja
-//        if ($creation->verifProjet()) {
-//            $creation->create($projet);
-//        }
+        
+//         verif si un projet avec un nom identique existe deja
+        if ($creation->verifProjet()) {
+
+            $idPro = $creation->create($projet);
+        }
+        
+        header("location: http://".$_SERVER['SERVER_NAME']."/projets/".$idPro);
     }
     
     public function getThemes() {
         
         $themesListe= (new DAOTheme())->getAll();
-        //var_dump($themesListe);
         return $themesListe;
     }
 

@@ -21,70 +21,23 @@ use BWB\Framework\mvc\dao\DAOUser;
  */
 class JoinProjetController extends Controller{
     
-    //cette fonction récupère l'id du user courant 
-    
-    public function getUser() {
-        
-    // initialisation du DAO user 
-        
-        $infoUser = new DAOUser;
-        
-   // récupère l'id du user en cours
-        $userId = $infoUser->getIdByPseudo($_COOKIE['cookie']);
-        echo "<hr>". "userid";
-        var_dump($userId);
-        return $userId;
-    }
-    
-    public function selectUser() {
-        
-    }
-    // récupère l'id du projet 
-    public function getProject(){
-       // $projetId= $this->inputPost();
-        $id = $_POST["projetId"];
-        echo '<hr>'." id du proj";
-        var_dump($id);
-        return $id;
-    }
-    // cette fonction permet à un membre connecté de rejoindre un projet
-    
-    public function joinProject(){
-    // récupératon des données dynamiques nécessaires
-        $userid=  $this->getUser();
-        //var_dump($userid);
-        $projetid = $this->getProject();
-        $datas = array(
-            "user"=>$userid,
-            "projet"=>$projetid
-        );
-        echo "<hr>"."datas";
-        var_dump($datas);
-    // création du models et mise en place des setters
-        $newPlayer = new UserProjet();
-        $newPlayer->setProjet_id($datas["projet"]);
-        $newPlayer->setUser_id($datas["user"]);
-        $newPlayer->setDroit_projet_id(0);
-
-    // création du dao
-        $dao = new DAOUserProjet;
-        $dao->createAsJoiner($newPlayer);
-         echo "<hr>"."newPlayer";
-        var_dump($newPlayer);
-    }
-    
     public function addToProject($id){
-        $ProjetJoiner = new UserProjet();
-        $ProjetJoiner->setProjet_id((int)$id);
-        $ProjetJoiner->setUser_id((int)json_decode($_COOKIE['cookie'],true)['id']);
-        $ProjetJoiner->setDroit_projet(0);
-        (new DAOUserProjet())->create($ProjetJoiner);
         
         echo "http://dreamfrom/projets/".$id;
     }
     
     public function leaveTheProject($id){
+        
         (new DAOUserProjet())->delete(array("id" => json_decode($_COOKIE['cookie'],true)['id'], "idp"=>$id));
+        
+        $admin = (new DAOUserProjet())->whoIsTheBoss();
+        
+        $ProjetJoiner = new UserProjet();
+        $ProjetJoiner->setProjet_id((int)$id);
+        $ProjetJoiner->setUser_id($admin);
+        $ProjetJoiner->setDroit_projet(1);
+        (new DAOUserProjet())->create($ProjetJoiner);
+
         echo "http://dreamfrom/projets/".$id;
     }
     

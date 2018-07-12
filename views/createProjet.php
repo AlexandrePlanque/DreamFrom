@@ -23,10 +23,10 @@
                                 <input type="text" name="titre" class="form-control" placeholder=""required="" required oninvalid="this.setCustomValidity('Nom incorrect')"oninput="setCustomValidity('')">
                             </div>
                                 
-                            <select class="custom-select col-md-6 custom-theme" id="theme">
+                            <select class="custom-select col-md-6 custom-theme" name="theme" id="theme">
                                 <option value="">Themes</option>
                                 <?php foreach ($themes as $theme) : ?> 
-                                    <option value="<?= $theme->getIntitule() ?>"<?= ($this->inputGet()['intitule'] === $theme->getIntitule()) ? "selected='true'" : ""; ?>><?= ucfirst(implode(' ', explode('_', $theme->getIntitule()))) ?></option>
+                                    <option value="<?= $theme->getId(); ?>"><?= ucfirst(implode(' ',explode('_',($theme->getIntitule())))); ?></option>    
                                 <?php endforeach; ?>
                             </select>
                         </div>

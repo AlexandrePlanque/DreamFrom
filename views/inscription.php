@@ -11,7 +11,7 @@ include "template/navbar.php";
                             <h4 class="mb-0 text-center">Créer un compte</h3>
                         </div>
                         <div class="card-body">
-                            <form class="form" role="form" autocomplete="off" method="POST" action="http://<?= $_SERVER['SERVER_NAME']?>/register">
+                            <form class="form" role="form" autocomplete="off" id="inscription" method="POST" action="http://<?= $_SERVER['SERVER_NAME']?>/register">
                                 <div class="form-row">
                                  
                                     <div class="form-group col-md-4 active-cyan-4">
@@ -30,10 +30,6 @@ include "template/navbar.php";
                                         <input type="text" name="pseudo" maxlength="45" class="form-control" placeholder="" required=""required oninvalid="this.setCustomValidity('Pseudo incorrect')"oninput="setCustomValidity('')">
                                     </div>
                                 </div>
-<!--                                 <div class="form-group">
-                                    <label for="inputName">Adresse</label>
-                                    <input type="text" name="adresse"class="form-control" id="inputName" placeholder="">
-                                </div>-->
                                 <div class="form-group active-cyan-4">
                                     <label for="inputEmail3">Email</label>
                                     <div class="input-group mb-2">
@@ -56,6 +52,7 @@ include "template/navbar.php";
                     </div>
 
     </div>
+
 <?php
 include "template/footer.php";
 ?>

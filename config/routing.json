@@ -13,9 +13,6 @@
         "POST": "JoinProjetController:finishFeature",
         "DELETE": "JoinProjetController:quitFeature"
     },
-    "/projet/joinqsdqss":{
-        "POST":"JoinProjetController:joinProject"
-    },
     "/projets": "ProjetController:getProjet",
     "/projets/(:)": "ProjetController:ficheProjet",
     "/inscription": "UserController:register",
