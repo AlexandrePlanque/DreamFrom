@@ -5,9 +5,9 @@
  */
 include "template/header.php";
 include "template/navbar.php";
-
 ?>
-        <div class="container">
+
+        <div class="container debugHeight">
             <div class="row col-12">
                 <select class="form-control col-3 mr-5" id="theme">
                     <option value="">Tous les themes</option>
@@ -62,9 +62,10 @@ include "template/navbar.php";
                         </div>
                     </a>    
                 </div>
+<?php   endforeach;?>
             </div>
-<?php
-endforeach;?>
         </div>
-<?php include "template/footer.php";?>
 
+
+
+<?php include "template/footer.php";?>

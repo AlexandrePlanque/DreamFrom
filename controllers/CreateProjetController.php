@@ -43,11 +43,11 @@ class CreateProjetController extends Controller {
 
 
         // creation d'un nouveau projet
-        // creation d'un nouvel dao de type PRojet
+        // creation d'un nouveau dao de type PRojet
         $projet = new Projet();
 
         $creation = new DAOProjet();
-
+        var_dump($_POST);
         // récupération des données à partir des infos du $_POST
         $projet->setTitre($_POST['titre']);
         $projet->setDescription($_POST['description']);
@@ -57,11 +57,11 @@ class CreateProjetController extends Controller {
         $projet->setLeader("Aziraphale");
 
         $projet->setDate_creation($datetime);
-
+var_dump($projet);
         // verif si un projet avec un nom identique existe deja
-        if ($creation->verifProjet()) {
-            $creation->create($projet);
-        }
+//        if ($creation->verifProjet()) {
+//            $creation->create($projet);
+//        }
     }
     
     public function getThemes() {

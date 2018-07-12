@@ -24,8 +24,10 @@ $( document).ready(function(){
             $('#profil').addClass('active')
             break;
     }
-            
+         
+    $(' #da-thumbs > li ').each( function() { $(this).hoverdir(); } );
 
+//    footerAlwaysInBottom();
 })
 
 
@@ -81,11 +83,11 @@ function disconnect(){
     function footerAlwaysInBottom() {
         var docHeight = $(document).height();
         var footerTop = $('#footer').position().top + $('#footer').height();
-//            alert(docHeight)
-//        if (footerTop < docHeight) {
+
+        if (footerTop < docHeight) {
 //            $('#footer').attr("style""margin-top", (docHeight - footerTop) + "px");
             $('#footer').attr('style','margin-top:'+(docHeight - footerTop)+ "px");
-//        }
+        }
     }
 
 function cleanUp(){
