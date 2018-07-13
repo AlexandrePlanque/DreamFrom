@@ -38,11 +38,17 @@
     "/api/projet/(:)":{
         "GET":"ProfilController:getProjetJson"
     },
+    "/api/user":{
+        "POST":"InscriptionController:SignIn"
+    },
     "/api/default":{
         "GET":"DefaultController:getDatasFromGET",
         "POST":"DefaultController:getDatasFromPOST",
         "PUT":"DefaultController:getDatasFromPUT",
         "DELETE":"DefaultController:delete"
     },
-    "/login": "DefaultController:login"
+    "/login": "DefaultController:login",
+    "/url" :{
+        "GET":"ProjetController:getUrl"
+    }
 }

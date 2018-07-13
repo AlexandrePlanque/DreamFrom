@@ -22,6 +22,12 @@ use BWB\Framework\mvc\dao\DAOUser;
 class JoinProjetController extends Controller{
     
     public function addToProject($id){
+        $ProjetJoiner = new UserProjet();
+        $ProjetJoiner->setProjet_id((int)$id);
+        $ProjetJoiner->setUser_id((int)json_decode($_COOKIE['cookie'],true)['id']);
+        $ProjetJoiner->setDroit_projet(0);
+        (new DAOUserProjet())->create($ProjetJoiner);
+
         
         echo "http://dreamfrom/projets/".$id;
     }

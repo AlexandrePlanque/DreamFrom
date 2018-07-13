@@ -58,7 +58,7 @@ include "template/navbar.php";
                                    <div class="input-group-prepend">
                                        <div class="input-group-text"><i class="fas fa-heart"></i></div>
                                    </div>
-                                     <select class="form-control themeselector" name="theme_id" id="theme">
+                                     <select class="custom-select" name="theme_id" id="theme">
                                          <?php foreach($themes as $theme) :?>
                                         <option name="<?= $theme->getId()?>" value="<?= $theme->getId()?>"<?= ($user->getTheme() === $theme->getIntitule())? "selected='true'": ""; ?>><?= ucfirst(implode(' ',explode('_',$theme->getIntitule())))?></option>
                                         <?php  endforeach; ?>
@@ -125,11 +125,11 @@ include "template/navbar.php";
         <div class="inbox_people">
           <div class="headind_srch">
             <div class="recent_heading">
-              <h4>Recent</h4>
+              <h4>Membres</h4>
             </div>
             <div class="srch_bar">
               <div class="stylish-input-group">
-                <input type="text" class="search-bar"  placeholder="Search" >
+                <input type="text" class="search-bar hide"  placeholder="Search" >
                 <span class="input-group-addon">
                 <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
                 </span> </div>
@@ -140,7 +140,7 @@ include "template/navbar.php";
               <?php if($user->getId() !== $plouc->getId() && $plouc->getContact() !== "0") : ?>
             <div class="chat_list active_chat">
               <div class="chat_people">
-                  <div class="chat_img"> <img src="<?= $plouc->getAvatar() ?>" alt="sunil"> </div>
+                  <div class="chat_img"> <img src="<?= ($plouc->getAvatar() !== "")? $plouc->getAvatar() : '../image/defaultUser.jpg' ?>" alt="sunil"> </div>
                 <div class="chat_ib">
                   <h5 onclick="getMessage(<?= $plouc->getId() ?>)"> <?= $plouc->getPseudo() ?><span class="chat_date"></span></h5>
                 </div>

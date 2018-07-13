@@ -54,5 +54,6 @@
 <script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/projet.js" type="text/javascript"></script>
 <script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/jquery.hoverdir.js"></script>
 <script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/modernizr.custom.97074.js"></script>
+<script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/notify.js" type="text/javascript"></script>
 </body>
 </html>

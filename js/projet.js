@@ -7,6 +7,7 @@ function addingToProject(id){
         type: "GET",
         url : "http://dreamfrom/projet/join/"+id,
         success : function(e){
+            
             window.location.href = e;
         },
         error : function(e){

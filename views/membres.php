@@ -27,12 +27,12 @@ include "template/navbar.php";
         </div>
 
         <div class="row">
-            <section>
+            <section class="col-12">
                 <ul id="da-thumbs" class="da-thumbs">
                     <?php foreach ($users as $user) : ?>
                         <li class="col-2 custom-avatar">
-                            <a class=""href="">
-                                <img class="img-fluid custom-fluid "src="<?= $user->getAvatar() ?>" >
+                            <a class="" href="" style="pointer-events: none;">
+                                <img class="img-fluid custom-fluid "src="<?= ($user->getAvatar() !== "")? $user->getAvatar() : '../image/defaultUser.jpg'?>" >
                                 <div><span><?= $user->getPseudo() ?>
                                         <p class="custom-info"><i class="fas fa-address-book custom-icon" ></i><?= date("d-m-Y", strtotime($user->getDate_creation())); ?></p>
                                         <p><i class="fas fa-heart custom-icon" ></i><?= ucfirst(implode(' ', explode('_', $user->getTheme_id()))) ?></p>  

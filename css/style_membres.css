@@ -75,9 +75,9 @@
 }
 .custom-fluid{
     min-height: 168.3px !important;
-    min-width: 168.3px !important;
+    /*min-width: 168.3px !important;*/
 }
 
 .custom-choice{
-    margin-left: 40px !important;
+    margin-left: 50px !important;
 }

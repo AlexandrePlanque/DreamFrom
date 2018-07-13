@@ -106,7 +106,7 @@ class UserController extends Controller{
 
     public function register() {
         $this->render("inscription");
-//        $this->createUser();
+
     }
 
     public function createUser() {

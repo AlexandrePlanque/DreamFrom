@@ -1,6 +1,6 @@
 $( document).ready(function(){
 
-    
+    $( "body" ).removeClass("hide");
     var url = $(location).attr('href');
     switch (url.split('?')[0]) {
             
@@ -76,7 +76,7 @@ function disconnect(){
     $.ajax({
         type: "GET",
         url: "http://dreamfrom/logout",
-        dataType: 'json',
+        dataType: 'JSON',
 
         });
 }
@@ -103,6 +103,12 @@ function disconnect(){
         var imgHeight =  $("#imglistproj1").height();
         var imgWidth =  $("#imglistproj1").width();
         $(".projet_image").attr("style", "height:"+((imgHeight) + (imgHeight/2))+"px;")
+        
+        if(imgHeight === undefined){
+
+            $(".projet_image").attr("style", "height:"+((144.94) + (144.94/2.))+"px;")
+            
+        }
 //        $(".projet_image").attr("style", "width:"+ imgWidth+"px !important;")
         
     }

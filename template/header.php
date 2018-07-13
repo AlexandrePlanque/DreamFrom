@@ -20,8 +20,9 @@
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/hover-min.css" rel="stylesheet" type="text/css"/>
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/animate.css" rel="stylesheet" type="text/css"/>
         <link href="http://<?= $_SERVER['SERVER_NAME']?>/css/news.css" rel="stylesheet" type="text/css"/>
+        <script src="http://<?= $_SERVER['SERVER_NAME']?>/js/inscription.js" type="text/javascript"></script>
     </head>
-    <body>
+    <body class="hide">
         <a name="haut" id="haut"></a>
         <div><a id="cRetour" class="cInvisible" href="#haut"></a></div>
         <script>

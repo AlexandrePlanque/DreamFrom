@@ -17,7 +17,7 @@
                             <a class="nav-link " href="/membres">Membres</a>
                         </li>
                         <li class="nav-item" id="bar">
-                            <a class="nav-link " href="#">Bar</a>
+                            <a class="nav-link" onclick="$.notify('WorkInProgress !');" href="#">Bar</a>
                         </li>
                         <?= (!isset($_COOKIE['cookie'])? 
                         '<li class="nav-item">

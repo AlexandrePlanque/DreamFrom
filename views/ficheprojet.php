@@ -34,9 +34,10 @@ include "template/navbar.php";
                     <p class="info d-none d-md-block"><?= ucfirst($projet->getTheme())?></p>
                     <div class="info">
                         <!--<button type="button" class="btn btn-info d-none d-md-block" oncl>Rejoindre le Projet</button>-->
-                    <?= (!$projet->getCurrentUserIn())?
+                    <?= (isset($_COOKIE['cookie'])?
+                        (!$projet->getCurrentUserIn())?
                     '<button  id="join_projet" type="button" onclick="addingToProject('.$projet->getId().')" value="60" class="btn btn-info d-none d-md-block">Rejoindre le Projet</button>':
-                                                    '<button type="button" onclick="leaveProject('.$projet->getId().')" class="btn btn-danger d-none d-md-block">Abandonner le Projet</button>'; ?>
+                    '<button type="button" onclick="leaveProject('.$projet->getId().')" class="btn btn-danger d-none d-md-block">Abandonner le Projet</button>':'') ?>
                     </div>
 
                 </div>

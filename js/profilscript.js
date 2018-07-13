@@ -35,7 +35,7 @@ $( document ).ready(function() {
 //$( "#btnprofil" ).click(function
 function displayProfil() {
     
-    $( "#togglepromsg" ).addClass('hide');
+    $( "#togglemsg" ).addClass('hide');
     $( "#toggleprojet" ).addClass('hide');
     $( "#toggleprofil" ).removeClass('hide');
     $( "#btnprofil" ).addClass('activebtn');
