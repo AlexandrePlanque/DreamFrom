@@ -39,7 +39,7 @@ include "template/navbar.php";
 
 
 
-        <div class="row">
+        <div class="row ">
             <?php foreach ($projets as $projet) : ?> 
                 <div class="col-xs-12 col-sm-4 col-md-3" > 
                     <div class="card"> 
@@ -47,7 +47,7 @@ include "template/navbar.php";
 
                             <?php
                             if (($projet->getImage()) !== ""):
-                                echo '<img id="imglistproj" class="img-fluid projet_image" src="' . $projet->getImage() . '" alt="projet image">';
+                                echo '<img id="imglistproj'.$projet->getId().'" class="img-fluid projet_image" src="' . $projet->getImage() . '" alt="projet image">';
                             else:
                                 echo '<img id="imglistproj" class=" img-fluid projet_image" src="../image/default.jpg" alt="default image">';
 
@@ -55,7 +55,7 @@ include "template/navbar.php";
                             ?>
                             <h4 class="text-center"><?= $projet->getTitre() ?></h4> 
                         </a>   
-                        <p>par <?= ucfirst($projet->getLeader()) ?></p> 
+                        <p class="listProjChef">par <?= ucfirst($projet->getLeader()) ?></p> 
                         <div class='d-flex justify-content-center'>
                         <div class="progress progbar progress_opti1">
                             <div class="progress-bar " style="width:<?= $projet->getFeatProgress() ?>%"></div>

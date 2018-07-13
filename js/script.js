@@ -100,8 +100,8 @@ function disconnect(){
     }
     
     function getImg(){
-        var imgHeight =  $("#imglistproj").height();
-        var imgWidth =  $("#imglistproj").width();
+        var imgHeight =  $("#imglistproj1").height();
+        var imgWidth =  $("#imglistproj1").width();
         $(".projet_image").attr("style", "height:"+((imgHeight) + (imgHeight/2))+"px;")
 //        $(".projet_image").attr("style", "width:"+ imgWidth+"px !important;")
         
