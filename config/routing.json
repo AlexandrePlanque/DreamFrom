@@ -1,0 +1,54 @@
+{
+    "/": "HomeController:getHome",
+    "/token": "UserController:testMail",
+    "/membres": "UserController:getUsers",
+    "/creationProjet":"CreateProjetController:createProj",
+    "/createProjet": "CreateProjetController:getview",
+    "/projet/join/(:)":{
+        "GET": "JoinProjetController:addToProject",
+        "DELETE": "JoinProjetController:leaveTheProject"
+    },
+    "/projet/(:)/feature/(:)":{
+        "GET": "JoinProjetController:addToFeature",
+        "POST": "JoinProjetController:finishFeature",
+        "DELETE": "JoinProjetController:quitFeature"
+    },
+    "/projets": "ProjetController:getProjet",
+    "/projets/(:)": "ProjetController:ficheProjet",
+    "/inscription": "UserController:register",
+    "/register": "UserController:createUser",
+    "/validation": "UserController:activation",
+    "/connexion": "UserController:modalConnexion",
+    "/signin": "UserController:login",
+    "/logout": "UserController:logout",
+    "/profil": "ProfilController:getProfil",
+    "/api/default/(:)":{
+        "GET":"DefaultController:getByValue"
+    },
+    "/api/mp/(:)":{
+        "GET":"ProfilController:getMp",
+        "POST":"ProfilController:postMp"
+    },
+    "/api/edit/(:)":{
+        "POST":"ProfilController:editProfil"
+    },
+    "/api/edit/avatar/(:)":{
+        "POST":"ProfilController:editAvatar"
+    },
+    "/api/projet/(:)":{
+        "GET":"ProfilController:getProjetJson"
+    },
+    "/api/user":{
+        "POST":"InscriptionController:SignIn"
+    },
+    "/api/default":{
+        "GET":"DefaultController:getDatasFromGET",
+        "POST":"DefaultController:getDatasFromPOST",
+        "PUT":"DefaultController:getDatasFromPUT",
+        "DELETE":"DefaultController:delete"
+    },
+    "/login": "DefaultController:login",
+    "/url" :{
+        "GET":"ProjetController:getUrl"
+    }
+}

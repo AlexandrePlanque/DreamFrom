@@ -1,0 +1,1 @@
+<div class="card-outline-secondary debugprofil">Vous ne participez à aucun projet pour le moment.</div>

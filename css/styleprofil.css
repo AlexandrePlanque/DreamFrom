@@ -1,0 +1,124 @@
+
+.custombtn{
+    border-left: 15px solid #0B59D0;
+    /*border-width: 10px!important;*/ 
+    box-sizing: border-box!important;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-top-width: 0px!important;
+    border-bottom-width: 0px!important;
+}
+
+.middlebtn{
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+
+.profile-userbuttons{
+    border: 1px solid #b1dafb;
+}
+.profile-userbuttons button{
+    display: block;
+    min-width: 100%;
+}
+
+.custombtn {
+    box-sizing: border-box!important;
+    background-color: #90caf9;
+    border-radius: 0px!important;
+    text-align: start;
+    height:5em;
+
+}
+
+.activebtn{
+    background-color: white;
+    z-index: 1000;
+    font-weight: bold;
+}
+
+.profilavatar{
+    background-color: white!important;
+    width: 30%;
+    vertical-align: bottom !important;
+}
+
+.avatarbtn{
+    margin-top: 32%!important;
+    background-color: #42a5f5!important;
+    color: white;
+    border-radius : 0px!important;
+}
+
+.validbtn{
+    background-color: #42a5f5!important;
+    color: white;
+    
+}
+
+.projetimg{
+    width: 80%!important;
+    height: 50% !important;
+}
+
+.cardprojet{
+    padding:0px!important;
+    width:47%!important;
+}
+
+.hide{
+    /*margin-top: -660px;*/
+    /*display: inline!important;*/
+    display: none!important;
+}
+
+.customprogress{
+    background: linear-gradient(to bottom,  #80e5ff , #00ccff)!important;
+}
+
+.custombgprogress{
+    border: 1px solid grey;
+    background: linear-gradient(to bottom,  #f2f2f2 , #dbdbdb)!important;
+    border-radius: 15px!important
+}
+
+.profil{
+    
+    border: 1px solid lightgrey;
+    z-index:10;
+    background-color:white;
+}
+
+.projetprofil{
+    position: absolute!important;
+    top: 0;
+    left:27%;
+}
+
+.projetshow{
+    padding-bottom: 200px;
+}
+
+/*.profilcont{
+    margin-bottom: 30%;
+}*/
+
+.containerdebug{
+    padding: 60px 0;
+    max-width:1280px;
+    min-height:100%;
+    margin:0 auto;
+    position:relative;
+
+}
+
+body.modal-open {
+    overflow: visible;
+    position: absolute;
+    /*overflow-x:  auto;*/
+    width: 101%;
+    height:101%;
+}

@@ -1,0 +1,241 @@
+
+@media only screen and (max-width: 768px) {
+    .testo{
+        display: inline;
+        margin-bottom: 20px;
+    }
+    .data1{
+        padding-right: 5%;
+    }
+    .data2{
+        padding-right: 5%;
+    }
+}
+
+
+/*body {
+   background-image: url("../image/background_projets.png");
+   background-repeat: no-repeat; 
+
+}*/
+html{
+    overflow-x: hidden;
+}
+
+
+
+
+.active-cyan-4 input[type=search]:focus:not([readonly]) {
+    border: 1px solid #4dd0e1!important;
+    box-shadow: 0 0 0 1px #4dd0e1!important;
+}
+
+
+.card_title2{
+    float: left !important;
+    vertical-align: middle;
+    max-height: 100px;
+    min-height: 90px;
+
+}
+
+.card_global{
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+.projet_image{
+    border: 3px white solid;
+    /*margin-bottom: 0;*/
+/*    width: 306px!important;
+    height: 200px!important;*/
+    
+     
+}
+.card_title{
+    text-align: center;
+    vertical-align: middle;
+    overflow-wrap: break-word;
+    height: 40px;  
+    
+}
+.card_bottom{
+    text-align:  left;
+    padding-left: 20px;
+}
+
+.chef{
+    font-weight: bold;
+}
+
+div p{
+    /*padding-left: 20px;*/
+}
+.creat_proj{
+    background-color: #4dd0e1;
+}
+
+.prog_bar{
+    color:#4dd0e1;
+    max-width: 100px!important;
+}
+.progbar{
+    /*margin-left: 14% !important;*/
+    width: 100%;
+}
+.progress_opti1{
+    margin-top: -10px;
+    width: 70% !important;
+    border: 1px solid grey;
+    background: linear-gradient(to bottom,  #f2f2f2 , #dbdbdb)!important;
+    border-radius: 15px!important
+}
+.progress_opti2{
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+    width: 50% !important;
+    margin: auto;
+    border: 1px solid grey;
+    background: linear-gradient(to bottom,  #f2f2f2 , #dbdbdb)!important;
+    border-radius: 15px!important
+}
+
+.progress_opti{
+    margin-bottom: 10px
+}
+
+.progress-bar{
+    width: 50%;
+}
+
+a{
+    text-decoration: none;
+}
+
+.background{
+    background-image: url('../image/background_fiche_projet.png');
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover!important;*/
+    /*min-height: 50%;*/
+}
+
+.title-color{
+    color: #ffffff;
+}
+
+.fond{
+    position: relative;
+    height: 90px;
+    width: auto;
+    background-color: #ffffff;
+    opacity : 0.7;
+    filter:alpha(opacity=70);
+    margin-bottom: 15px;
+
+}
+
+.accordion .card-header:after {
+    font-family: 'FontAwesome';  
+    content: "\f068";
+    float: right; 
+}
+.accordion .card-header.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\f067"; 
+}
+
+.avatar{
+    width: 25%;
+}
+
+.imgProjet{
+    max-height: 392px!important;
+}
+
+.info{
+    text-align: left;
+    margin-top: 20px;
+
+}
+
+.select_home2 {
+  margin: 50px 0 0 0;
+  border-top: 2px solid #91bbd8;
+  border-bottom :2px solid #91bbd8;
+  font-weight: bold;  
+}
+
+.contain-feature{
+    padding-top: 3% !important;
+}
+
+#description{
+     padding-top: 2% !important;
+}
+
+.btn-custom00{
+    display: inline-block !important;
+}
+
+.btn-custom01{
+    padding-top: 2%;
+}
+.notyetmember{
+    /*visibility: visible;*/
+    /*visibility: hidden;*/
+    display : none;
+}
+.ifmember{
+    text-align: left;
+    margin-bottom: 20px;
+    /*visibility: hidden;*/
+}
+/*.select_home2 a {
+  color: #333;
+}*/
+
+.ficheprojetparti{
+    background-color:#ececec;
+}
+
+.participantContain{
+    margin-left:25px;
+
+}
+.optiFooterCard{
+    background-color: #ececec;
+}
+
+.background_projet{
+    background-image: url('../image/background_projets.png') !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover!important;
+    min-height: 50%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.fichproj{
+    margin-bottom: 50px;
+}
+
+.cleanfichepro{
+    margin-bottom: 250px;
+}
+
+.card-footer{
+   border-top: none !important;
+}
+.bobo{
+   margin-left: 20px !important;
+}
+
+.listproj{
+    padding-left: 20px;
+    line-height: 2.2em;
+}
+
+.listProjChef{
+    padding-left: 20px;
+}
